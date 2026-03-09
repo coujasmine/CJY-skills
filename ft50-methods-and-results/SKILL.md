@@ -1,9 +1,9 @@
 ---
-name: ft50-part-methods-results
+name: ft50-methods-and-results
 description: 用于 Methods 与 Results 部分，校验研究设计是否支撑理论命题，尤其是测量一致性、层级匹配、因果识别与结果解释是否回扣机制。
 ---
 
-# Part: Methods & Results
+# Part: Methods and Results
 
 ## 目标
 让方法服务理论，而不是方法喧宾夺主。

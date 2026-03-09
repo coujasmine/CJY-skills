@@ -1,5 +1,5 @@
 ---
-name: ft50-part-ai-ml
+name: ft50-ai-ml
 description: 用于 AI/ML+管理论文的专门评审与重写，判定 AI/ML 在文中的角色、理论增量类型与方法主导风险，避免“只提升预测”却声称FT50贡献。
 ---
 

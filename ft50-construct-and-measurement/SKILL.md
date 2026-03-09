@@ -1,5 +1,5 @@
 ---
-name: ft50-part-construct-measurement
+name: ft50-construct-and-measurement
 description: 用于新构念与量表 part 的评审与重写，判断是否应引入新构念，并规范既有量表的定义、改编、计分、结构检验与边界说明。
 ---
 

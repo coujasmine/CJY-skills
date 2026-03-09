@@ -1,9 +1,9 @@
 ---
-name: ft50-part-theory-dialogue
+name: ft50-theoretical-background
 description: 用于论文 Theory/Literature Review 部分，判断是否真正与主流理论对话，识别挂名理论、理论拼盘、主干-辅干不清等问题。
 ---
 
-# Part: Theory Dialogue
+# Part: Theoretical Background
 
 ## 目标
 建立“主干理论 + 辅助理论 + 整合逻辑”的清晰结构。

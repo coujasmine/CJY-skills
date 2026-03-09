@@ -1,9 +1,9 @@
 ---
-name: ft50-part-mechanism
+name: ft50-mechanism-model
 description: 用于论文机制 part（假设推导、理论模型、过程解释），强制检查 micro→meso→capability/structure→macro 的完整链条并定位跳步。
 ---
 
-# Part: Mechanism
+# Part: Mechanism Model
 
 ## 目标
 确保论文是“机制论文”，不是“变量相关论文”。

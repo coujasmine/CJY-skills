@@ -1,5 +1,5 @@
 ---
-name: ft50-part-introduction
+name: ft50-introduction
 description: 用于重写或评审论文 Introduction（含选题合法性、现象问题、世界观归属、FT50放大建议）。适用于用户提交题目、引言草稿、研究问题时。
 ---
 

@@ -1,9 +1,9 @@
 ---
-name: ft50-part-theory-building
+name: ft50-theory-and-hypotheses
 description: 用于论文的理论建构 part（理论框架、命题、F&Q、模型图说明），聚焦现象驱动建构、概念创造、边界条件与贡献类型。
 ---
 
-# Part: Theory Building
+# Part: Theory and Hypotheses
 
 ## 目标
 把“变量关系”升级为“机制化理论命题 + 明确边界”。

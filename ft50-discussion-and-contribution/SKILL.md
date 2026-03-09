@@ -1,9 +1,9 @@
 ---
-name: ft50-part-discussion-contribution
+name: ft50-discussion-and-contribution
 description: 用于 Discussion/Conclusion 部分，提炼理论贡献、边界条件、管理启示与局限，避免“重复结果”式讨论。
 ---
 
-# Part: Discussion & Contribution
+# Part: Discussion and Contribution
 
 ## 目标
 把结果上升为清晰、可定位、可争辩的理论贡献。
