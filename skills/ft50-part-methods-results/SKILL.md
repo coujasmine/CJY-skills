@@ -12,12 +12,26 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 
 ## Phase 1: 诊断评审
 
-### Methods 检查
-1. 样本与理论对象匹配（主体、情境、层级）。
-2. 构念测量与定义一致（反映式/形成式区分）。
-3. 识别策略处理内生性（FE/IV/匹配/滞后/CFA/DID/RDD 等）。
-4. 模型与机制一致（避免只跑净效应，须体现中介/调节链条）。
-5. 变量测量是否提供足够的 construct validity 证据。
+### Data & Sample 检查
+1. 是否清楚说明了 empirical setting 及其理论适配性（为什么选择这个情境来检验理论）。
+2. 数据来源是否逐一列出（每个数据库/来源单独说明提供了什么类型的数据）。
+3. 样本构建过程是否透明（初始样本 → 筛选条件 → 缺失/合并导致的样本缩减 → 最终样本量）。
+4. 时间跨度是否明确（起止年份 + 为什么选择这个时间段）。
+5. 观测单位是否明确（firm-year / CEO-quarter / individual-level 等）。
+6. 是否处理了样本选择偏差（survivorship bias / sample-inclusion bias 检验）。
+
+### Variable Measurement 检查
+1. **每个变量**是否包含完整的测量信息链：
+   - 构念名称 → 概念定义 → 操作化方式 → 数据来源 → 支撑文献（citation）→ 计算公式（如有）
+2. 核心自变量/因变量的测量**必须有参考文献支撑**（`following [citation]` 或 `adapted from [citation]`）。
+3. 新构念或非标准测量是否提供了 construct validity 证据（专家评分、CFA、收敛/区分效度等）。
+4. 反映式与形成式测量是否正确区分。
+5. 控制变量是否每一个都给出了**理论纳入理由**（为什么要控制这个变量）和**操作化方式**。
+
+### Methods 检查（设计与模型）
+1. 识别策略处理内生性（FE/IV/匹配/滞后/CFA/DID/RDD 等）。
+2. 模型与机制一致（避免只跑净效应，须体现中介/调节链条）。
+3. 估计方法的选择是否有统计依据（如 Hausman test 决定 FE vs RE）。
 
 ### Results 检查
 1. 结果是否按理论命题顺序报告（base model → main effects → interactions → full model）。
@@ -33,11 +47,30 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 4. 可选加分项：伪造检验（falsification test）、遗漏变量偏差检验（ITCV）、子样本分析。
 
 ### 红线
+- 数据来源不明或无法复现样本构建过程：判"数据透明度不足"。
+- 核心变量（DV/IV）的测量缺少参考文献支撑：判"测量缺乏依据"。
+- 控制变量无理论纳入理由（纯罗列无解释）：判"控制变量论证不足"。
 - 结果能显著但无法解释机制：判"统计成立，理论不足"。
 - 因果语言但无因果识别策略：判"语言越界"。
 - 稳健性仅有一种且未覆盖内生性：判"稳健性不足"。
 
 ### 诊断输出模板
+- Data & Sample 评估：
+  - 情境适配性说明：✓/✗
+  - 数据来源逐一列出：✓/✗
+  - 样本构建过程透明度：✓/✗（是否展示了从初始样本到最终样本的缩减路径）
+  - 时间跨度与理由：✓/✗
+  - 观测单位明确性：✓/✗
+  - 选择偏差处理：✓/✗/不需要
+- Variable Measurement 评估：
+  - 各变量信息链完整性检查（✓ = 完整；✗ = 缺失要素）：
+    - DV：构念名 / 操作化 / 数据来源 / citation / 公式 / 选择理由
+    - IV：构念名 / 操作化 / 数据来源 / citation / 公式 / validity 证据（若新构念）
+    - Moderators：操作化 / 数据来源 / citation / 编码规则
+    - Mediators：操作化 / 数据来源 / citation
+    - Controls：纳入理由 / 操作化 / citation（逐一检查）
+  - 缺失 citation 的变量清单：
+  - 需补充 validity 证据的变量清单：
 - 设计风险清单：
 - 结果解释缺口：
 - 稳健性体系评估（✓已覆盖 / ✗缺失）：
@@ -69,50 +102,110 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 - `We empirically test [theory/model] using longitudinal data from [N] [units] (SIC code [X]) between [start year] and [end year].`
 - `To test the hypotheses outlined above, the key challenge is to [methodological challenge], which we address by [approach].`
 
-#### B. 样本与数据（Sample and Data）
-- `Our sample frame consists of [population] between [start year] and [end year].`
-- `We collected data from multiple sources. First, we obtained [data type] from [database]. Second, we collected [data type] from [database].`
-- `The final sample contains [N] firm-year observations relating to [N] unique firms.`
-- `We analyze our hypotheses using a [random/stratified/full] sample of [N] [firms/companies] over the period [start]–[end].`
+#### B. Data and Sample（数据与样本）
+
+> **写作要求**：Data & Sample 是 Methods 的第一个完整小节，必须让读者清楚了解"数据从哪来、样本怎么构建、最终分析的是什么"。顶刊通常用 1–2 页篇幅，结构如下：
+
+##### B-1. Empirical Setting 与理论适配性（1–2 句）
+说明为什么选择这个情境来检验理论，而不是简单罗列数据。
+- `Our empirical setting is [context]. This setting is particularly suitable for testing our theory because [theoretical advantage: e.g., natural variation in IV, clean identification, relevant boundary conditions].`
+- `We focus on [industry/context] because it provides [theoretical advantage for identification, e.g., sufficient variation in key constructs, regulatory shock, natural experiment].`
+- `We chose [context] as our empirical setting for [N] reasons. First, [reason 1]. Second, [reason 2].`
+
+##### B-2. 数据来源逐一列出（每个数据库单独说明提供了什么数据）
+- `We collected data from multiple sources. First, we obtained [data type, e.g., financial data] from [database, e.g., COMPUSTAT]. Second, we collected [data type, e.g., CEO and board characteristics] from [database, e.g., EXECUCOMP / BOARDEX]. Third, [data type] from [database]. Finally, [data type] from [database].`
 - `We supplement the [primary data] with data from a variety of databases such as [database list].`
+- `[Specific variable] data was obtained from the [specific database], which provides [what the database covers].`
+
+##### B-3. 样本构建过程（必须透明，展示从初始到最终的缩减路径）
+- `Our initial sample frame consists of all [population, e.g., S&P 1500 firms / Fortune 500 companies] between [start year] and [end year].`
+- `We began with [N] firms from [source]. We then excluded [N] firms due to [reason 1, e.g., missing financial data], [N] firms due to [reason 2, e.g., industry restrictions], and [N] firms due to [reason 3, e.g., incomplete board data].`
 - `Events such as mergers, delisting, and missing data resulted in some firms not having complete data, yielding an unbalanced panel of [N] firm-year observations.`
+- `The final sample contains [N] [unit]-[time] observations (e.g., firm-year / CEO-quarter) relating to [N] unique [units] across [N] industries.`
+- `To choose firms randomly, we used a random-number generator to assign a random value to each remaining firm, choosing the [N] highest values for inclusion (Eklund & Mannor, 2021).`
 
-##### 样本选择偏差处理
-- `We tested for sample-inclusion bias by comparing the characteristics of the included and excluded firms using the Kolmogorov-Smirnov two-sample test. Across all archival variables, the results showed no statistically significant difference.`
-- `To choose firms randomly, we used a random-number generator to assign a random value to each remaining firm, choosing the [N] highest values for inclusion.`
+##### B-4. 时间跨度说明
+- `Our sample covers the period from [start year] to [end year]. We chose this time frame because [reason, e.g., data availability, regulatory change, theoretical relevance].`
+- `The independent variables are measured at year t−1, with dependent variables measured at year t, to establish temporal precedence.`
 
-#### C. 因变量（Dependent Variable）
-- `We measure the dependent variable, [DV], based on [specific operationalization] using data from [source].`
-- `Following prior research (e.g., [citation]), we operationalize [DV] as [specific formula/measure].`
+##### B-5. 样本选择偏差处理（如有需要）
+- `We tested for sample-inclusion bias by comparing the characteristics of the included and excluded firms using the Kolmogorov-Smirnov two-sample test. Across all archival variables, the results showed no statistically significant difference (Rhee, 2024).`
+- `To address potential survivorship bias, we include all firms that appear in the sample at any point during our observation window, regardless of whether they exit during the period.`
 
-#### D. 自变量（Independent Variable）
-- `We calculated our independent variable, [IV], by following the [citation] method for [approach].`
-- `[Construct] was operationalized as [measure], following [citation].`
-- `We measure [IV] using [specific data/approach], which captures [what the variable reflects].`
+#### C. Variable Measurement（变量测量）
 
-##### 文本分析类变量的构建（Text-Based Measures）
-- `To develop [measure], we follow the general approach to computer-aided text analysis described by [citation].`
-- `We take both deductive and inductive approaches to generate the list of keywords indicating [construct].`
-- `To validate the keyword measure, we recruited [N] [experts] who independently rated [N] transcripts and found a significantly high correlation between the keyword-based measures and manual ratings (r = [value]; p < [value]).`
-- `We conduct a sentiment analysis to rule out the possibility that [construct] merely reflects [alternative explanation].`
+> **核心写作规范——每个变量必须包含以下信息链**：
+> 1. **构念名称**（Construct name）
+> 2. **操作化方式**（How it is measured / calculated）
+> 3. **数据来源**（Which database / source provides the raw data）
+> 4. **支撑文献**（Citation justifying this measurement approach）——**强制要求，不可省略**
+> 5. **计算公式或编码规则**（If applicable: formula, coding scheme, scale items）
+> 6. **Construct validity 证据**（仅新构念/非标准测量需要：CFA、专家评分、收敛效度等）
+>
+> **详细程度分级**：
+> - **因变量 (DV)**：最详细——需完整说明操作化 + 数据来源 + citation + 为什么选择该测量 + 公式
+> - **核心自变量 (IV)**：与 DV 同等详细——如果是新测量，还需附 construct validity 证据
+> - **调节变量 (Moderators)**：中等详细——操作化 + 数据来源 + citation + 编码规则
+> - **中介变量 (Mediators)**：中等详细——操作化 + 数据来源 + citation + 数据获取挑战说明（如有）
+> - **控制变量 (Controls)**：简洁但完整——每个变量须给出（1）纳入理由（为什么要控制）+（2）操作化方式 + （3）citation，可以按层级分组批量介绍
 
-#### E. 调节变量（Moderating Variables）
-- `To assess [moderator concept] for testing Hypothesis [n], we employ [operationalization].`
-- `[Moderator] was measured dichotomously: firms with [condition] were coded as 1, and firms without as 0.`
-- `We specify [moderator] as the linear combination of [component A] and [component B].`
+##### C-1. 因变量（Dependent Variable）
+- `We measure the dependent variable, [DV name], based on [specific operationalization] using data from [source]. This measure is widely used in prior research (e.g., [citation A]; [citation B]) and captures [what the variable reflects].`
+- `Following prior research (e.g., [citation]), we operationalize [DV] as [specific formula/measure]. We chose this measure because [reason: e.g., it captures both short-term and long-term performance implications / it is less susceptible to manipulation than accounting measures].`
+- `[DV] was computed as [formula], where [define each component]. Data was obtained from [database].`
 
-#### F. 中介变量（Mediating Variables）
-- `To test [mediation hypothesis], we measure [mediator] as [operationalization].`
-- `[Mediator] was collected from [source] and operationalized as [specific measure].`
-- `Because collecting [mediator data] in a longitudinal, cross-sectional research design is challenging, we turn to [data source], following recent studies (e.g., [citation]).`
+##### C-2. 核心自变量（Independent Variable）
+- `We measure [IV name] following the approach developed by [citation]. Specifically, [IV] is calculated as [specific operationalization / formula], using data from [source].`
+- `We calculated our independent variable, [IV], by following the [citation] method for [approach]. This measure captures [conceptual definition in one sentence].`
+- `[Construct] was operationalized as [measure], following [citation]. Higher values indicate [interpretation].`
 
-#### G. 控制变量（Control Variables）
-- `We include control variables to rule out factors whose effects on [DV] might be confounded with those of our covariates.`
-- `We controlled for [variable] because [theoretical reason for inclusion] (e.g., [citation]).`
-- `Because [theoretical reason], we control for [variable], measured as [operationalization].`
-- `At the firm level, we controlled for firm size ([operationalization]), firm age ([operationalization]), and [other controls].`
-- `We also controlled for [CEO/board/industry characteristics] that prior research suggests may affect [DV].`
-- `Finally, we included a set of [year/industry] dummies to capture unobservable [time/industry] heterogeneity.`
+###### 文本分析类变量的构建（Text-Based Measures）——需要额外 validation
+- `To develop [measure], we follow the general approach to computer-aided text analysis described by [citation, e.g., Short et al., 2010; McKenny et al., 2018].`
+- `We take both deductive and inductive approaches to generate the list of keywords indicating [construct]. The deductive approach draws on [source A, e.g., established dictionaries / prior theoretical work]. The inductive approach involves [process, e.g., manual reading of a random subset of transcripts to identify additional keywords].`
+- `The final dictionary contains [N] words/phrases across [N] categories. The complete list of keywords is provided in the Appendix.`
+- `To validate the keyword measure, we recruited [N] [experts, e.g., management scholars / industry professionals / doctoral students] who independently rated [N] [units, e.g., transcripts / letters]. We found a significantly high correlation between the keyword-based measures and manual ratings (r = [value]; p < [value]), providing empirical support for the validity of our measure (following [citation]).`
+- `We also conduct a [sentiment analysis / topic modeling analysis] to rule out the possibility that [construct] merely reflects [alternative explanation, e.g., positive tone rather than genuine strategic attention].`
+
+###### 残差法构建变量（Residual-Based Measures）
+- `Following previous research ([citation]), we operationalized [construct, e.g., CEO overpayment] by taking the residuals from a regression of [outcome, e.g., CEO total compensation] on [determinants: e.g., firm size, performance, CEO tenure, industry dummies]. Positive residuals represent [interpretation, e.g., overpayment] (Pan et al., 2025; Seo et al., 2015).`
+
+###### 指数/复合变量构建（Index / Composite Measures）
+- `Because we have multiple constructs reflecting [concept], we followed the approach of [citation] and created an index variable. We first used principal component analysis (PCA) and obtained [N] factor(s) with eigenvalue greater than one. We then recast the data along the first principal component axis to obtain the [index name] (Pan et al., 2025).`
+- `We calculated our independent variable by following the [citation] method, assigning each [unit] an aggregate score based on the following [N] indicators: (1) [indicator], (2) [indicator], (3) [indicator], and (4) [indicator] (Tuggle et al., 2024).`
+
+##### C-3. 调节变量（Moderating Variables）
+- `To assess [moderator concept] for testing Hypothesis [n], we employ [operationalization], following [citation].`
+- `[Moderator] was measured as [operationalization] using data from [source] ([citation]). Higher values indicate [interpretation].`
+- `[Moderator] was measured dichotomously: [units] with [condition] were coded as 1, and [units] without as 0, following [citation].`
+- `We specify [moderator] as the linear combination of [component A] and [component B], consistent with [citation].`
+
+##### C-4. 中介变量（Mediating Variables）
+- `To test [mediation hypothesis], we measure [mediator name] as [operationalization], following [citation]. Data was obtained from [source].`
+- `Because collecting [mediator data, e.g., CEO cognitive measures] in a longitudinal, cross-sectional research design is challenging, we turn to [data source, e.g., earnings conference call transcripts / annual reports], following recent studies (e.g., [citation A]; [citation B]).`
+
+##### C-5. 控制变量（Control Variables）
+
+> **写作规范**：每个控制变量必须满足三要素——（1）为什么控制（理论理由）+（2）如何测量 +（3）参考文献。可以按层级分组（firm → CEO → board → industry）提高可读性。
+
+- `We include control variables to rule out factors whose effects on [DV] might be confounded with those of our focal variables.`
+
+**Firm-level controls**:
+- `We controlled for firm size, measured as the natural logarithm of [total assets / number of employees], because larger firms may have [reason] ([citation]).`
+- `Firm performance was controlled for using return on assets (ROA), calculated as net income divided by total assets ([citation]), as [theoretical reason].`
+- `We also controlled for firm age, firm slack (operationalized as the debt-to-equity ratio; [citation]), and firm diversification (Herfindahl index of segment sales; [citation]).`
+
+**CEO/Executive-level controls**:
+- `We controlled for CEO duality (coded as 1 if the CEO also serves as board chair, 0 otherwise) because [theoretical reason] ([citation]).`
+- `CEO tenure was included as a control, measured as the number of years since the CEO's appointment, following [citation].`
+
+**Board-level controls**:
+- `We controlled for board size ([citation]) and board independence, measured as the proportion of independent directors ([citation]).`
+
+**Industry/environment-level controls**:
+- `To account for the influence of the industry environment, we controlled for industry dynamism ([operationalization]; [citation]), industry munificence ([operationalization]; [citation]), and industry concentration (Herfindahl index; [citation]) at the [N]-digit SIC level.`
+
+**Fixed effects**:
+- `Finally, we included [year / industry / firm] fixed effects to capture unobservable [time / industry / firm]-level heterogeneity.`
 
 #### H. 估计方法与内生性处理（Estimation and Endogeneity）
 - `To test our hypotheses, we used a [fixed-effect/random-effect/OLS] regression model to capture unobservable [firm/individual] heterogeneities.`
@@ -241,6 +334,10 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 
 | Bad | Better | Reason |
 |-----|--------|--------|
+| `We collected data from COMPUSTAT.` | `We obtained financial data (e.g., total assets, ROA) from the COMPUSTAT database. CEO and board characteristics were collected from EXECUCOMP and BOARDEX, respectively.` | 单一来源 → 逐一列出 |
+| `Our sample is 500 firms.` | `Our initial sample frame consists of all S&P 1500 firms between 2010 and 2020. After excluding firms with missing financial data (N = X) and incomplete board records (N = Y), our final sample contains Z firm-year observations relating to W unique firms.` | 无过程 → 完整构建路径 |
+| `We measure CEO power.` | `Following [citation], we operationalize CEO power as [specific measure], calculated as [formula/coding], using data from [source].` | 缺 citation + 操作化 + 来源 |
+| `We control for firm size and age.` | `We controlled for firm size (natural logarithm of total assets; [citation]) because larger firms may have [reason]. Firm age was included because [reason], measured as [operationalization] ([citation]).` | 无理由无来源 → 三要素齐全 |
 | `We used a questionnaire and did analysis.` | `We collected survey data and estimated [model], controlling for [key covariates].` | 模糊 → 精确 |
 | `H1 is significant.` | `Results support H1: [substantive finding] (β = ..., p < ...).` | 统计优先 → 实质优先 |
 | `See Table 2.` | `As shown in Table 2, [main substantive pattern].` | 空指向 → 内容引导 |
@@ -270,14 +367,16 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 1. **诊断**：基于 Phase 1 诊断结果，确定 Methods 中的设计描述缺口、Results 中的解释缺口、Robustness 中的覆盖缺口。
 2. **术语表**：统一变量名、方法名、统计表达。
 3. **Methods 改写**：按以下顺序组织——
-   - Design overview & empirical setting justification
-   - Sample and data (sources, period, N, sample construction)
-   - Dependent variable
-   - Independent variable(s) + construct validation
-   - Moderating / mediating variables
-   - Control variables (grouped by firm/CEO/board/industry level)
-   - Estimation approach + endogeneity strategy
-   - Model specification (写出完整模型公式)
+   - **Design overview**: 研究设计概述 + empirical setting 的理论适配性
+   - **Data and Sample**: 数据来源逐一列出 → 样本构建过程（初始 → 筛选 → 最终 N）→ 时间跨度 → 观测单位 → 选择偏差处理
+   - **Dependent variable**: 构念名 + 操作化 + 数据来源 + citation + 公式 + 选择理由
+   - **Independent variable(s)**: 同 DV 详细程度 + construct validation（若新构念）
+   - **Moderating variables**: 操作化 + 数据来源 + citation + 编码规则
+   - **Mediating variables**: 操作化 + 数据来源 + citation + 数据获取挑战说明
+   - **Control variables**: 按层级分组（firm → CEO → board → industry），每个变量给出（1）纳入理由 +（2）操作化 +（3）citation
+   - **Estimation approach**: 模型选择 + 统计依据（如 Hausman test）+ 标准误聚类方式
+   - **Endogeneity strategy**: 具体识别策略 + 工具变量选择与排他性论证
+   - **Model specification**: 写出完整模型公式（如有必要）
 4. **Results 改写**：按理论命题顺序改写——
    - Descriptive statistics & correlations
    - 渐进式模型呈现（controls-only → main effects → interactions → full model）
@@ -310,6 +409,16 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 
 ```
 ## Diagnostic Report
+- Data & Sample 评估：
+  - 情境适配性：✓/✗
+  - 数据来源逐一列出：✓/✗
+  - 样本构建透明度：✓/✗
+  - 观测单位明确性：✓/✗
+- Variable Measurement 评估：
+  - DV 信息链：✓/✗ [缺失要素]
+  - IV 信息链：✓/✗ [缺失要素]
+  - 缺失 citation 的变量：[列出]
+  - 需补充 validity 的变量：[列出]
 - 设计风险清单：
   1. ...
   2. ...
