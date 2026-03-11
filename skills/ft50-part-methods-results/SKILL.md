@@ -29,16 +29,19 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 5. 控制变量是否每一个都给出了**理论纳入理由**（为什么要控制这个变量）和**操作化方式**。
 
 ### Methods 检查（设计与模型）
-1. 识别策略处理内生性（FE/IV/匹配/滞后/CFA/DID/RDD 等）。
-2. 模型与机制一致（避免只跑净效应，须体现中介/调节链条）。
-3. 估计方法的选择是否有统计依据（如 Hausman test 决定 FE vs RE）。
+1. 模型选择是否有统计或理论依据（如 Hausman test 决定 FE vs RE；因变量特征决定 OLS/Poisson/Logit 等）。
+2. 是否报告了多重共线性检验（VIF）。
+3. 识别策略处理内生性（FE/IV/匹配/滞后/CFA/DID/RDD 等）。
+4. 模型与机制一致（避免只跑净效应，须体现中介/调节链条）。
+5. 时间滞后结构是否有理论理由（不只是技术性地滞后一年）。
 
 ### Results 检查
-1. 结果是否按理论命题顺序报告（base model → main effects → interactions → full model）。
-2. 是否先解释实质性发现（substantive finding），再报统计数字。
-3. 交互效应是否做了 simple slope test 或 marginal effect 分析。
-4. 异质性/边界结果是否真正对应理论边界。
-5. 中介分析是否采用了当前推荐方法（bootstrapping、Monte Carlo）。
+1. 是否有描述性统计开头段（引表 + 核心变量均值解读 + VIF 报告 + 中心化说明）。
+2. 结果是否按理论命题顺序报告（base model → main effects → interactions → full model）。
+3. 是否先解释实质性发现（substantive finding），再报统计数字。
+4. 交互效应是否做了 simple slope test 或 marginal effect 分析。
+5. 异质性/边界结果是否真正对应理论边界。
+6. 中介分析是否采用了当前推荐方法（bootstrapping、Monte Carlo）。
 
 ### Robustness 检查
 1. 是否有内生性纠正（至少一种：2SLS/CFA/PSM/Heckman/反向因果检验）。
@@ -207,11 +210,37 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 **Fixed effects**:
 - `Finally, we included [year / industry / firm] fixed effects to capture unobservable [time / industry / firm]-level heterogeneity.`
 
-#### H. 估计方法与内生性处理（Estimation and Endogeneity）
-- `To test our hypotheses, we used a [fixed-effect/random-effect/OLS] regression model to capture unobservable [firm/individual] heterogeneities.`
-- `A Hausman test yielded a statistically significant result, which suggests that the use of fixed effects was more appropriate than a random-effects specification.`
-- `Standard errors are clustered at the [firm/industry] level to account for non-independence of errors (Petersen, 2009).`
-- `To reduce the threat of multicollinearity, we mean-centered the key continuous predicting variables. We obtained the variance inflation factors for all variables, and none was above [threshold], indicating that multicollinearity is unlikely to threaten our results.`
+#### D. Statistical Method / Analytical Approach（估计方法）
+
+> **写作规范**：估计方法不是简单声明"我们用了 XX 模型"，而是需要：（1）说明因变量特征如何决定模型选择；（2）给出诊断检验支持模型选择；（3）处理多重共线性；（4）说明标准误处理方式；（5）说明时间滞后结构及其理论理由。
+
+##### D-1. 模型选择与论证（Model Choice and Justification）
+必须说明**为什么选择该模型**，而不是其他替代模型。需提供统计检验或理论依据。
+
+- `The dependent variable is measured by [description, e.g., the number of explorative product introductions], which is a [count / continuous / binary] measure. A [model type] is appropriate for this type of variable because [statistical reason] ([citation]).`
+- `We choose to use a [model, e.g., Poisson model] for [N] reasons. First, [reason 1, e.g., our dependent variable does not exhibit significant overdispersion; therefore a Poisson model is suitable as it assumes the equality of mean and variance (Wooldridge, 1999)]. Second, [reason 2, e.g., the dependent variable does not exhibit an overabundance of zeros; a Vuong test suggests no significant zero inflation]. Third, [reason 3, e.g., a Poisson model is more appropriate when combined with a firm fixed-effects model (Wooldridge, 1999)].`
+- `To test our hypotheses, we used a [fixed-effect / random-effect / OLS] regression model to capture unobservable [firm / individual] heterogeneities.`
+- `A Hausman test yielded a statistically significant result (χ² = [value], p < [value]), which suggests that the use of fixed effects was more appropriate than a random-effects specification.`
+- `We also conduct a [Chow test / likelihood ratio test] to ensure that a [model type] yields the best fit with our data ([citation]). The result indicates that [interpretation].`
+
+##### D-2. 多重共线性处理（Multicollinearity）
+**必须明确报告**，不可省略。
+
+- `To reduce the threat of multicollinearity, we mean-centered the key continuous predicting variables prior to calculating interaction terms.`
+- `We computed the variance inflation factors (VIFs) for all variables; the largest VIF was [value], well below the commonly accepted threshold of 10 ([citation, e.g., Hair et al., 2010]), indicating that multicollinearity is unlikely to threaten our results.`
+- `Our analyses are not affected by the multicollinearity issue (variance inflation factor = [value]).`
+- `Due to their significant correlation, the inclusion of [variable A] and [variable B] in the same model may weaken their explanatory powers. Thus, we have analyzed each variable separately and found [results] (see Table [n] in Additional Materials).`
+
+##### D-3. 标准误与聚类（Standard Errors and Clustering）
+- `We use robust standard errors clustered by [focal firms / industries] to deal with serial autocorrelation and heteroskedasticity ([citation, e.g., Petersen, 2009]).`
+- `Standard errors are clustered at the [firm / industry] level to account for non-independence of errors.`
+
+##### D-4. 时间滞后结构（Lag Structure）
+必须说明滞后的理由，不能只写"we lag one year"。
+
+- `We estimate models using a [N]-year lag between our dependent variable and [independent / control] variables. Since [theoretical process, e.g., pooling and combining organizational resources into outcomes] takes place over time, it is important to leave a sufficient time interval for the benefits of [IV] to manifest in [DV].`
+- `Accordingly, we lag our data such that we analyze [IV] and other controls at year t, [mediator] at year t+1, and [DV] at year t+2.`
+- `The independent variables are measured at year t−1, with dependent variables measured at year t, to establish temporal precedence and mitigate reverse causality concerns.`
 
 ##### 内生性纠正方法
 - **Control Function Approach (CFA)**:
@@ -237,10 +266,23 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 
 ### Results 专用句式模板
 
-#### A. 描述性统计（Descriptive Statistics）
-- `Table [n] provides descriptive statistics and bivariate correlations among the variables.`
-- `All variables used to construct interaction terms were centered prior to calculating interaction terms.`
-- `To test for the presence of multicollinearity, we followed procedures outlined by [citation]. The largest variance inflation factor was [value], well below the commonly accepted threshold of 10, indicating multicollinearity is not an issue.`
+#### A. 描述性统计与数据描述（Descriptive Statistics）
+
+> **写作规范**：描述性统计在顶刊中是 Results 的开头段落，通常 **3–6 句话**，不需要独立大章节。但必须包含以下四个要素：（1）引表；（2）核心 DV/IV 均值的正文解读；（3）VIF 多重共线性报告；（4）变量中心化说明（若有交互项）。
+
+##### 引表 + 核心变量解读
+- `Table [n] presents means, standard deviations, and correlations among the variables included in our analyses.`
+- `In the sample, [DV 的实质含义解读, e.g., a focal firm introduced 2.56 novel products, on average, each year].`
+- `The average [IV name] was [value] (i.e., [实质解读, e.g., 38% of attention was directed toward exploration]).`
+- `The mean and standard deviation of [key variable] are [mean] and [SD], respectively; thus, the distribution of this variable is [not skewed / left-skewed / etc.].`
+
+##### 多重共线性（VIF）——必须报告，1 句即可
+- `Our analyses are not affected by the multicollinearity issue (variance inflation factor = [max value]).`
+- `We computed variance inflation factors for all models; these were less than 10 for all regressions, indicating that multicollinearity was not a concern.`
+- `The largest variance inflation factor was [value], well below the commonly accepted threshold of 10, indicating multicollinearity is not an issue ([citation]).`
+
+##### 变量中心化说明（若有交互项）
+- `All variables used to construct interaction terms were centered prior to calculating interaction terms ([citation, e.g., Aiken & West, 1991]).`
 
 #### B. 主效应报告（Main Effects）—渐进式模型报告
 - `Table [n] presents the results of our analyses. Models [a–b] include only the control variables. Models [c–d] progressively display the results of the hypotheses tests.`
@@ -338,6 +380,8 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
 | `Our sample is 500 firms.` | `Our initial sample frame consists of all S&P 1500 firms between 2010 and 2020. After excluding firms with missing financial data (N = X) and incomplete board records (N = Y), our final sample contains Z firm-year observations relating to W unique firms.` | 无过程 → 完整构建路径 |
 | `We measure CEO power.` | `Following [citation], we operationalize CEO power as [specific measure], calculated as [formula/coding], using data from [source].` | 缺 citation + 操作化 + 来源 |
 | `We control for firm size and age.` | `We controlled for firm size (natural logarithm of total assets; [citation]) because larger firms may have [reason]. Firm age was included because [reason], measured as [operationalization] ([citation]).` | 无理由无来源 → 三要素齐全 |
+| `Table 1 shows the descriptive statistics.` | `Table 1 presents means, standard deviations, and correlations. In the sample, [DV interpretation]. The average [IV] was [value]. Our analyses are not affected by multicollinearity (max VIF = [value]).` | 空引表 → 含解读+VIF |
+| `We used OLS regression.` | `We choose to use a [model] for [N] reasons. First, [DV property]. Second, [diagnostic test]. A Hausman test confirmed FE over RE (χ² = [value], p < [value]).` | 无理由 → 完整论证 |
 | `We used a questionnaire and did analysis.` | `We collected survey data and estimated [model], controlling for [key covariates].` | 模糊 → 精确 |
 | `H1 is significant.` | `Results support H1: [substantive finding] (β = ..., p < ...).` | 统计优先 → 实质优先 |
 | `See Table 2.` | `As shown in Table 2, [main substantive pattern].` | 空指向 → 内容引导 |
@@ -378,7 +422,7 @@ description: 用于评审并润色 Methods、Results 与 Robustness 部分，校
    - **Endogeneity strategy**: 具体识别策略 + 工具变量选择与排他性论证
    - **Model specification**: 写出完整模型公式（如有必要）
 4. **Results 改写**：按理论命题顺序改写——
-   - Descriptive statistics & correlations
+   - Descriptive statistics 开头段（引表 + 核心变量解读 + VIF + 中心化）
    - 渐进式模型呈现（controls-only → main effects → interactions → full model）
    - 每条假设：先说实质发现 → 再报系数与显著性 → 判定结果
    - 交互效应附 simple slope test / marginal effect
