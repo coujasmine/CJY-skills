@@ -36,11 +36,11 @@
 - 输出: 理论化解释、稳健性优先项
 - 失败信号: 只报显著，不回扣机制
 
-## Part 6 Discussion/Conclusion
+## Part 6 Discussion/Limitations/Conclusion
 - 调用 skill: `ft50-part-discussion-contribution`
-- 输入: 讨论草稿
-- 输出: 贡献三条、边界三条、启示与局限
-- 失败信号: 贡献空泛、重复结果
+- 输入: 完整讨论部分
+- 输出: Discussion + Limitations/Future Research + Conclusion 的整合修改
+- 失败信号: 三个子部分口径不一致、贡献空泛、局限与结尾失配
 
 ## Part A AI/ML 专项（可插入任意 part）
 - 调用 skill: `ft50-part-ai-ml`

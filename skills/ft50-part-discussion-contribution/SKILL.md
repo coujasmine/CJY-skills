@@ -1,206 +1,180 @@
 ---
 name: ft50-part-discussion-contribution
-description: 用于评审并润色论文 Discussion/Conclusion 部分，提炼理论贡献、边界条件、管理启示与局限，避免“重复结果”式讨论，并输出 polished 英文改写版本。
+description: 用于统筹论文 Discussion、Limitations/Future Research 与 Conclusion 的整体润色与重写；当用户提交完整讨论部分时，默认联动改写三个子部分，并确保三者使用同一个理论口径与核心命题。
 ---
 
-# Part: Discussion & Contribution
+# Part: Discussion, Limitations, and Conclusion Orchestrator
 
 ## 目标
-把结果上升为清晰、可定位、可争辩的理论贡献，并把 Discussion 写成与 Introduction 首尾闭环的“下半个沙漏”。完成诊断后，直接输出符合 FT50 标准的英文改写版本。
+当用户给的是完整的 Discussion/Conclusion 部分时，默认把 `Discussion + Limitations/Future Research + Conclusion` 当作一个连续收束链整体改写，而不是拆成三个彼此独立的小任务。
 
-## 本 skill 的示范来源
-本 skill 优先吸收以下示范论文的 Discussion 写法共性：
-- JBR 2024：先总结核心发现，再分条写 literature contributions。
-- AMJ 2021/2024 与 SMJ 2024：先点出理论 tension，再解释 findings 如何解决 tension。
-- 典型结构：`main takeaway -> contributions -> boundary/limitations -> future research -> conclusion`。
+这个 skill 的主要职责不是简单分发，而是先统一主命题，再约束三个子部分围绕同一个理论口径、同一个 claims 边界、同一个语气轨迹展开。
 
-这些示范共同说明：
-1. Discussion 不是 Results 的文字复述，而是“新增理解”。
-2. 开头要回答“我们现在到底学到了什么”，不是“表 2/表 3 显示了什么”。
-3. 贡献段通常按理论对话对象展开，而不是按变量或假设编号展开。
-4. 局限要限定外推边界与识别边界，不能把所有缺点机械罗列。
-5. 结尾要回到更大理论或管理问题，以完整句收束，不要用“future research is needed”草草结束。
+## 使用原则
+1. 用户提交完整讨论部分时，默认优先调用本 skill。
+2. 即使用户只强调其中一个子部分，本 skill 也优先检查三部分是否需要联动调整。
+3. 若用户没有特别说明，默认认为三个部分应该联动重写。
 
----
+## skill 的角色
+这个 skill 是“总导演”，不是“路由器”。
 
-## Phase 1: 诊断评审
+它必须先做三件事：
+1. 提炼全文唯一的 `core proposition`
+2. 规定三个子部分各自承担什么功能
+3. 检查三部分是否在同一理论口径下连续收束
 
-### 核心判断
-把 Discussion 当作 5 个连续动作检查：
-1. `Takeaway`：是否先说清楚最重要的发现及其理论含义。
-2. `Contribution`：是否按理论流派/争论点提炼 2-4 个贡献。
-3. `Boundary`：是否说明结论对谁、在何种情境、基于何种设计才成立。
-4. `Implication`：实践启示是否和机制一致，而不是泛泛建议管理者“重视”。
-5. `Closure`：结尾是否有 broader significance，而不是停在技术性 future research。
+## 三个子部分的分工
+- `Discussion`
+  - 负责展开：回答研究问题、解释结果、重写 literature conversation、提出 practical implications。
+- `Limitations and Future Research`
+  - 负责收边界：限定 strongest claim 的适用范围，指出当前不能再往前走到哪里。
+- `Conclusion`
+  - 负责定调：把全文压回一个更高层次、更稳的 proposition，并完成最后收束。
 
-### 执行步骤
-1. 对照 Introduction，先提取开篇 tension、研究问题、预告贡献。
-2. 对照 Results，提取 only 3-4 个最值得进入 Discussion 的发现，不把所有显著结果都搬进来。
-3. 判断 Discussion 开头是否直接回答研究问题/假设支持与否。
-4. 检查每段是否都提供“新增理解”：机制解释、理论修正、边界限定、与文献对话四者至少其一。
-5. 检查贡献是否按“对哪个理论说了什么新话”写，而不是“我们发现 X 显著影响 Y”。
-6. 检查是否比较了既有研究、调和矛盾结果、或澄清先前不一致之处。
-7. 检查局限是否聚焦样本、测量、识别、情境边界，而不是仪式性自我否定。
-8. 检查结尾是否回到 broader phenomenon/managerial problem，而不是以琐碎 future research 收尾。
+## 跨段一致性规则
+以下规则是本 skill 的核心。只要用户给的是完整部分，就必须检查并修正。
 
-### 快速判定
-- 若开头第一段主要在重复系数、显著性、假设编号：判“结果复述型 discussion”。
-- 若贡献句只写“enriches/extends the literature”而未说明具体修正了什么：判“空泛贡献”。
-- 若所有贡献都只是不同说法重复同一发现：判“伪多贡献”。
-- 若把新理论第一次放在 Discussion 才出现：判“理论前置失败”，应回移至 Introduction/Theory。
-- 若为解释异常结果而发明很长的补丁理论：判“pretzel-shaped explanation”风险。
-- 若局限段变成通用模板，和本文样本/方法无关：判“假局限”。
-- 若结尾停在“future research should...”且无 broader significance：判“weak ending”。
+### 1. One Proposition Rule
+Discussion、Limitations、Conclusion 必须服务于同一个 `core proposition`。
 
-### 段落级检查清单
-- 开头段：`question answered + main inference + why it matters`
-- 贡献段 1：核心理论推进或 tension 化解
-- 贡献段 2：边界、机制、条件化规律、或概念澄清
-- 贡献段 3：与相邻文献或方法视角的对话
-- 实践段：谁该做什么，为什么，基于哪条机制
-- 局限段：样本/测量/识别/情境边界
-- 结尾段：回到更大问题，给出一句可记住的 closing claim
+禁止出现：
+- Discussion 说的是 mechanism A
+- Limitations 改成在谈 measurement B
+- Conclusion 最后升华到完全不同的理论主张 C
 
-### 诊断输出模板
-- 开篇回扣是否有效：
-- 核心 takeaway（1-2 句）：
-- 理论贡献（2-4 条，每条含“主张 + 对话对象 + 为何新”）：
-- 与既有文献的关系（支持/修正/调和/挑战）：
-- 边界条件与一般化限制（至少 3 条）：
-- 实践启示（2-3 条）：
-- 局限与未来研究（2-4 条，需一一对应本文设计）：
-- 结尾强度检查：通过/不通过 + 原因
-- 红线检查：通过/不通过 + 原因
-- 结构性修改建议（3-6 条）：
+先写出一句：
+- `Core proposition: [一句话写清全文最终主命题]`
 
----
+后续三个部分都必须围绕这句话服务。
 
-## Phase 2: 英文润色改写
+### 2. Same Conversation Rule
+Discussion 中对话的核心 literatures，Conclusion 必须延续同一套理论口径。
 
-### 强制规则
-1. 最终改写内容必须是英文；不输出中文句子作为正文。
-2. 不改变原始结论方向与核心发现，只改贡献提炼精度、段落组织和论证衔接。
-3. Discussion 必须与 Introduction 首尾闭环，明确回答研究一开始提出的问题。
-4. 每段都要有新增价值，禁止把 Results 段换词重写。
-5. 贡献必须具体到理论主张，禁止仅写“enriches the literature”。
-6. 局限必须与本文设计真实对应，不能套模板。
-7. 结尾必须是 broader implication 或 closing insight，不以 technical future research 句终止。
+禁止：
+- Discussion 用 attention-based view
+- Conclusion 突然换成 broad corporate governance slogan
 
-### 推荐结构
-按以下顺序改写，除非原文已有更强结构：
-1. `Opening takeaway`
-2. `Contribution 1`
-3. `Contribution 2`
-4. `Contribution 3`（可选）
-5. `Managerial/practical implications`
-6. `Limitations and future research`
-7. `Conclusion / closing paragraph`
+Conclusion 可以升层级，但不能换频道。
 
-### Discussion 专用句式模板
-#### 开篇回扣 tension
-- `Taken together, our findings show that [core insight], thereby answering the question of whether/how [research question].`
-- `Rather than simply indicating that [result], our evidence suggests that [higher-order inference].`
-- `These findings help resolve the tension between [view A] and [view B] by showing that [contingent logic].`
+### 3. Claim Discipline Rule
+Discussion 提出的 strongest claim，Limitations 只能限定其边界，不能把它改写成另一种更弱、更模糊、甚至不同类型的 claim。
 
-#### 理论贡献
-- `First, this study extends [theory/literature] by showing that [specific mechanism or conditional pattern].`
-- `More specifically, our findings suggest that [finding], which refines the assumption that [prior assumption].`
-- `Second, we reconcile prior mixed findings on [topic] by demonstrating that [boundary condition or process].`
-- `Third, our results shift attention from [common explanation] to [new explanation], thereby clarifying [theoretical issue].`
+正确关系：
+- Discussion: `what we can claim`
+- Limitations: `how far that claim travels`
+- Conclusion: `why that claim matters`
 
-#### 与文献对话
-- `This pattern is broadly consistent with prior work showing [prior finding], but it adds an important qualification: [qualification].`
-- `Our findings depart from the dominant view that [assumption] by indicating that [new insight].`
-- `Rather than contradicting prior studies, our results suggest that those findings may hold primarily when [boundary].`
+错误关系：
+- Discussion 说因果逻辑
+- Limitations 改口成只是相关性描述
+- Conclusion 又回到强因果口吻
 
-#### 实践启示
-- `For managers, the implication is not simply that they should pay more attention to [X], but that they should [specific action] when [condition].`
-- `This insight is particularly relevant for [actor], because [mechanism-based reason].`
-- `Practically, our findings indicate that [specific governance/resource/coordination action] can help firms [outcome].`
+### 4. Tone Descent Rule
+三个部分的语气必须连续下降，而不是跳跃：
+- Discussion：展开、解释、对话
+- Limitations：收边界、降噪音、控主张
+- Conclusion：压缩、提炼、定调
 
-#### 局限与未来
-- `This study should be interpreted in light of several limitations.`
-- `First, our findings are derived from [sample/context], which may limit generalization to [other context].`
-- `Second, although our design supports [claim], it cannot fully rule out [specific residual concern].`
-- `Future research could examine whether the same mechanism operates in [new context], especially when [boundary].`
-- `An important next step is to test [extension] using [method/design], which would sharpen the boundary of our argument.`
+也就是说，行文应从“展开解释”逐步过渡到“边界限定”，最后进入“高度压缩的最终命题”。
 
-#### 收尾
-- `Overall, this study shows that [X] matters not merely because it affects [proximal outcome], but because it reshapes how firms [broader implication].`
-- `In this way, our findings move the conversation from [old framing] to [new framing].`
-- `Taken together, the study clarifies how [mechanism] shapes [outcome] under [conditions].`
+### 5. No New Logic Late Rule
+Limitations 和 Conclusion 不得引入 Discussion 中没有建立的新机制、新理论主张或新对话对象。
 
-### 高频误用替换
-- Bad: `Our results show that H1 and H2 are supported.`  
-  Better: `Our findings indicate that [substantive takeaway], supporting the view that [theoretical implication].`
-- Bad: `This study enriches the literature on X.`  
-  Better: `This study extends [specific literature] by revealing [specific mechanism/boundary].`
-- Bad: `This finding is interesting and meaningful.`  
-  Better: `This finding matters because it revises the assumption that [old assumption].`
-- Bad: `Managers should pay attention to this issue.`  
-  Better: `Managers should [specific action] when [condition], because doing so helps [mechanism/outcome].`
-- Bad: `Future research should further examine this relationship.`  
-  Better: `Future research could test whether this relationship holds in [context] or under [boundary condition].`
-- Bad: `In conclusion, more research is needed.`  
-  Better: `Overall, the study shows that [broader claim].`
+可以做的：
+- 缩短
+- 提炼
+- 限定
+- 升层级
 
-### 执行流程
-1. 先写 1 句总 takeaway，确保其回答 Introduction 的核心问题。
-2. 将 results-level statements 上提为 inference-level statements。
-3. 按“理论对话对象”而非“假设编号”组织贡献段。
-4. 对每条贡献补全三要素：`claim + conversation partner + novelty`.
-5. 把样本、方法、识别、情境对应到具体局限，不写空泛套话。
-6. 删除对异常结果的过度解释；保留最可信、最简洁的边界说明。
-7. 最后一段必须重写到可单独成立为 closing paragraph。
+不能做的：
+- 新增一个 Discussion 从未铺垫的 mediator
+- 突然换一个理论 stream
+- 最后一段凭空上升到全新规范命题
 
-### 润色输出模板
-1. `Diagnostic Report`
-2. `Polished Discussion`（英文，按段输出完整改写版本）
-3. `Key Edits`（英文，3-8 条）
-4. `Word/Phrase Upgrades`（英文替换对照表）
+### 6. Last-Paragraph Echo Rule
+Conclusion 必须是对 Discussion 开头的 echo，而不是另起一段。
 
----
+要求：
+- Discussion 开头给 `study-level answer`
+- Conclusion 最后一段回到这句 answer
+- 但用更高层、更短、更稳的方式说出来
 
-## 完整输出结构
+理想关系：
+- Opening: `This study shows that ...`
+- Ending: `Taken together, this suggests that ...`
 
+### 7. Practical-Boundary Alignment Rule
+如果 Discussion 给了 management/governance implications，Limitations 不能把边界写得与这些实践建议直接冲突。
+
+例如：
+- 若实践启示只适用于大型上市公司
+- Limitations 就要明确这一点
+- Conclusion 也不能写成对所有组织都成立的口号
+
+## 联动改写顺序
+完整部分必须按以下顺序处理：
+
+1. `Extract the core proposition`
+   - 用一句话写出全文最终主命题。
+
+2. `Rewrite Discussion first`
+   - 先把 Discussion 主体改到位：
+   - study-level answer
+   - conversation-based contributions
+   - practical implications
+
+3. `Rewrite Limitations second`
+   - 不另起炉灶，只对 Discussion 的 strongest claim 做边界限定。
+
+4. `Rewrite Conclusion last`
+   - 用与 Discussion 同一理论口径完成压缩收束。
+
+5. `Run cross-part consistency check`
+   - 检查 proposition 是否一致
+   - 检查 literatures 是否一致
+   - 检查 claim strength 是否前后一致
+   - 检查 practical implications 与边界是否冲突
+   - 检查 conclusion 是否是 echo 而不是新起点
+
+## 改写时必须先写出的 3 个锚点
+在开始联动改写前，先在内部明确以下三句：
+
+1. `Core proposition`
+   - 这篇论文最后到底要让读者带走什么命题？
+
+2. `Strongest defensible claim`
+   - 基于当前设计，最强但仍站得住脚的主张是什么？
+
+3. `Broader significance`
+   - 这个命题为什么对更大的理论或管理问题重要？
+
+如果这三句写不清，说明三个部分还不能开始联动改写。
+
+## 常见失配信号
+- Discussion 很强，Limitations 把自己写垮了。
+- Discussion 很具体，Conclusion 过度空泛。
+- Discussion 在谈机制，Conclusion 在谈价值观。
+- Limitations 提到的边界，Discussion 前面从未铺垫。
+- practical implications 很大，sample boundary 却非常窄。
+- Conclusion 不是回声收束，而是新摘要。
+
+## 默认输出
 ```markdown
-## Diagnostic Report
-- 开篇回扣是否有效：...
-- 核心 takeaway：...
-- 理论贡献：
-  1. [主张] — [对话对象] — [为何新]
-  2. ...
-  3. ...
-- 与既有文献的关系：
-  1. ...
-  2. ...
-- 边界条件与一般化限制：
-  1. ...
-  2. ...
-  3. ...
-- 实践启示：
-  1. ...
-  2. ...
-- 局限与未来研究：
-  1. ...
-  2. ...
-- 结尾强度检查：...
-- 红线检查：...
-- 结构性修改建议：
-  1. ...
-  2. ...
-  3. ...
-
 ## Polished Discussion
-[完整英文改写，按段落输出]
+[英文改写]
 
-## Key Edits
-1. ...
-2. ...
-3. ...
+## Polished Limitations and Future Research
+[英文改写]
 
-## Word/Phrase Upgrades
-| Original | Revised | Reason |
-|----------|---------|--------|
-| ... | ... | ... |
+## Polished Conclusion
+[英文改写]
+
+## Cross-Part Revision Notes
+1. Core proposition: [一句话]
+2. Strongest defensible claim: [一句话]
+3. Broader significance: [一句话]
+4. [说明本次如何保证 Discussion / Limitations / Conclusion 口径一致]
+5. [说明本次如何处理 claim 边界与最终定调]
 ```
+
+只有当用户明确要求“诊断”或“review”时，才额外输出简短问题清单。
