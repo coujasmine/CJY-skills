@@ -45,6 +45,7 @@ description: 用于按《论文专家规范手册》对整篇论文进行分阶�
 - 选题与引言：`ft50-part-introduction`
 - 文献与理论定位：`ft50-part-theory-dialogue`
 - 理论模型与命题：`ft50-part-theory-building`
+- 理论框架与假设体系：`ft50-part-theory-hypotheses`
 - 机制链与假设逻辑：`ft50-part-mechanism`
 - 方法与结果：`ft50-part-methods-results`
 - Discussion/Limitations/Conclusion：`ft50-part-discussion-contribution`

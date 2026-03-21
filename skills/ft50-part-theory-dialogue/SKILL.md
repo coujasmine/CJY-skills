@@ -1,6 +1,6 @@
 ---
 name: ft50-part-theory-dialogue
-description: 用于评审并润色论文 Theory/Literature Review 部分，判断是否真正与主流理论对话，识别挂名理论、理论拼盘、主干-辅干不清等问题，并输出 polished 英文改写版本。
+description: 用于评审并润色论文 Theory/Literature Review 部分，判断是否真正与主流理论对话，识别挂名理论、理论拼盘、主干-辅干不清等问题，并输出 polished 英文改写版本。适用于管理学、战略、公司治理、组织行为等领域，尤其擅长注意力基础观（ABV）、高层梯队理论、代理理论、资源依赖理论的理论对话诊断。
 ---
 
 # Part: Theory Dialogue
@@ -18,12 +18,24 @@ description: 用于评审并润色论文 Theory/Literature Review 部分，判�
 3. 若多理论并用，写清主干-辅干关系与分工。
 4. 判断贡献类型：主流内部深化，还是边缘情境套用。
 
-### 常见主干映射
+### 常见主干映射（扩展版）
 - 边界治理：TCT
 - 异质性绩效/优势：RBV/动态能力
 - 人机或角色接口：Role Theory
 - ESG/社会价值：Stakeholder/CSR
 - 平台与数字协同：生态系统/信息生态
+- **CEO/高管认知与决策**：Upper Echelons Theory (Hambrick & Mason 1984)
+- **注意力与战略议程**：Attention-Based View (Ocasio 1997)
+- **董事会监督与激励**：Agency Theory (Jensen & Meckling 1976)
+- **董事会资源与网络**：Resource Dependence Theory (Pfeffer & Salancik 1978)
+- **战略变革与绩效反馈**：Behavioral Theory of the Firm (Cyert & March 1963)
+
+### ABV理论对话要点（Ocasio 1997; Tuggle 2024 SMJ; Pan et al. 2024; Eklund 2021）
+使用ABV时，必须真正对话以下核心构念，而非仅引用：
+- **situated attention**（情境化注意力）：注意力由情境/规则/资源结构决定
+- **structural distribution of attention**（注意力的结构性分布）：组织结构如何分配注意力
+- **attention channeling**（注意力引导）：谁/什么机制在引导注意力流向
+- 若论文仅说"CEO关注X"而未解释注意力如何被分配/引导：判ABV挂名
 
 ### 红线
 - 同时挂 4+ 理论但每个只 1-2 句：判"理论拼盘"。
