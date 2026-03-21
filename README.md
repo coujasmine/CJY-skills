@@ -1,49 +1,52 @@
-# 论文修改与撰写经验库（CJY Skills）
+# Research Knowledge Base
 
-这是我个人用于论文修改与撰写的经验库。
+这个仓库现在分成两层：
 
-核心定位：
-- 沉淀可复用的写作与修改方法，而不是一次性提示词。
-- 将论文工作拆成可重复执行的 part（引言、理论、机制、方法、讨论等）。
-- 支持后续持续增加、持续修改、持续复用。
+1. `knowledge-base/`：你的个人科研知识库，负责长期积累。
+2. `skills/`：可调用的论文诊断与重写技能，负责即时执行。
 
-## 仓库目标
+如果你第一次打开这个仓库，建议按这个顺序使用：
 
-1. 把“做过且有效”的论文修改经验结构化保存。
-2. 在新论文项目中可直接调用已有技能，减少重复劳动。
-3. 随实践不断迭代技能内容，保持经验库长期可用。
+1. 先看 [docs/START-HERE.md](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/docs/START-HERE.md)
+2. 再看 [docs/REPO-MAP.md](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/docs/REPO-MAP.md)
+3. 真正开始沉淀内容时，进入 [knowledge-base/README.md](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/knowledge-base/README.md)
+4. 需要改论文时，查 [docs/SKILLS-INDEX.md](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/docs/SKILLS-INDEX.md)
 
-## 目录说明
+## 现在的仓库结构
 
-- `skills/`：唯一生效目录。
-  - 每个子目录代表一个可复用技能。
-  - 每个技能至少包含 `SKILL.md`。
+```text
+.
+├── README.md
+├── docs/                 # 仓库入口、使用说明、技能地图
+├── knowledge-base/       # 你的科研知识沉淀
+├── skills/               # 论文专家技能包
+└── assets/               # 原始参考资料
+```
 
-## 当前 skills（FT50 论文写作链路）
+## 你应该怎么用
 
-- `ft50-paper-master`
-- `ft50-part-introduction`
-- `ft50-part-theory-dialogue`
-- `ft50-part-theory-building`
-- `ft50-part-mechanism`
-- `ft50-part-construct-measurement`
-- `ft50-part-methods-results`
-- `ft50-part-ai-ml`
-- `ft50-part-discussion-contribution`
-- `ft50-academic-english-polish`
+- 如果你要做自己的科研知识库：从 `knowledge-base/` 开始。
+- 如果你要改一篇具体论文：从 `skills/` 开始。
+- 如果你不知道用哪个 skill：先看 `docs/SKILLS-INDEX.md`。
+- 如果你不知道一篇文献该放哪：先放进 `knowledge-base/02_文献库/`，再按主题汇总到 `06_专题综述/`。
 
-## 维护原则
+## 四条最常用路径
 
-1. 只在 `skills/` 下新增或修改内容。
-2. 新增技能时，优先按“可复用工作流”写法，而不是按单篇论文写死。
-3. 修改已有技能时，保留核心框架，只优化可执行步骤与判定标准。
-4. 每次实战后回填经验：
-   - 哪些步骤有效
-   - 哪些判断容易出错
-   - 应该新增哪些边界条件或示例
+### 1. 日常读文献
+`knowledge-base/02_文献库/` -> `knowledge-base/06_专题综述/` -> `knowledge-base/05_选题与Idea池/`
 
-## 使用建议
+### 2. 搭自己的研究方向
+`knowledge-base/01_研究方向/` -> `knowledge-base/03_理论库/` -> `knowledge-base/04_方法库/`
 
-- 写新论文时：先用 `ft50-paper-master` 做全局诊断，再进入各 part 精修。
-- 局部返修时：直接调用对应 part skill，聚焦问题段落。
-- 定稿前：使用 `ft50-academic-english-polish` 做学术表达层面的统一与收敛。
+### 3. 推进单个论文项目
+`knowledge-base/09_项目库/` -> `knowledge-base/07_论文写作库/` -> `skills/`
+
+### 4. 修改或诊断论文
+`skills/ft50-paper-master/` 为总入口，其他 `ft50-part-*` 负责分部件处理。
+
+## 目录定位
+
+- [docs](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/docs)：先看这里，解决“这个仓库怎么用”。
+- [knowledge-base](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/knowledge-base)：长期知识沉淀主目录。
+- [skills](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/skills)：可复用的论文工作流。
+- [assets/source-materials](/Users/caojiaying/Desktop/yiyuan mai/论文专家agent/assets/source-materials)：原始手册和抽取文本，不作为日常入口。
