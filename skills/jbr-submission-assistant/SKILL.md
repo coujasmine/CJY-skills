@@ -23,10 +23,10 @@ The skill operates in five modes. Pick **one** mode per invocation based on user
 
 | Mode | When | Primary files to load | Output |
 |---|---|---|---|
-| **POLISH** *(default)* | User has a draft and wants it improved for JBR submission | `references/jbr_polishing_pipeline.md`, `references/jbr_section_rewrite_playbook.md`, `references/jbr_house_style.md`, `references/jbr_claim_evidence_matrix.md`, relevant `examples/*` | Diagnosis + section-by-section rewritten draft + change log |
-| **AUDIT** | User wants a pre-submission diagnosis only | `references/jbr_desk_reject_triggers.md`, `references/jbr_scope_and_format.md`, `references/jbr_submission_workflow.md` | Verdict + top 3 priorities + scored rubric |
-| **SECTION** | User wants one specific section rewritten (intro / abstract / theory / method / results / discussion) | `references/jbr_section_rewrite_playbook.md` + the matching subsection + `examples/full_intro_before_after.md` or `examples/abstract_revision_examples.md` | Annotated before/after for that section |
-| **PACKAGE** | User wants cover letter, response letter, or submission-package QA | `references/cover_letter_and_response.md`, `references/jbr_disclosures_2024.md`, `references/jbr_scope_and_format.md` | Cover/response letter draft + disclosure checklist |
+| **POLISH** *(default)* | User has a draft and wants it improved for JBR submission | `references/jbr_polishing_pipeline.md`, `references/jbr_section_rewrite_playbook.md`, `references/jbr_house_style.md`, `references/jbr_claim_evidence_matrix.md`, `references/jbr_real_exemplar_patterns.md` | Diagnosis + section-by-section rewritten draft + change log |
+| **AUDIT** | User wants a pre-submission diagnosis only | `references/jbr_desk_reject_triggers.md`, `references/jbr_scope_and_format.md`, `references/jbr_submission_workflow.md`, `references/jbr_real_exemplar_patterns.md` (§9 invariants) | Verdict + top 3 priorities + scored rubric |
+| **SECTION** | User wants one specific section rewritten (intro / abstract / theory / method / results / discussion) | `references/jbr_section_rewrite_playbook.md` + the matching subsection + `references/jbr_real_exemplar_patterns.md` (matching section patterns) | Annotated before/after for that section |
+| **PACKAGE** | User wants cover letter, response letter, or submission-package QA | `references/cover_letter_and_response.md`, `references/jbr_disclosures_2024.md`, `references/jbr_scope_and_format.md`, `references/jbr_real_exemplar_patterns.md` (§7 disclosure patterns) | Cover/response letter draft + disclosure checklist |
 | **RESPOND** | User has reviewer comments and wants a response letter | `references/cover_letter_and_response.md`, `examples/reviewer_response_examples.md`, `references/jbr_claim_evidence_matrix.md` | Point-by-point response + revised manuscript change list |
 
 > **Routing rule:** Read only the files listed for the active mode. Do not pre-load all references.
@@ -180,17 +180,19 @@ references/
   jbr_submission_workflow.md            ← 8-stage submission process
   jbr_introduction_and_contribution.md  ← intro / contribution standards
   jbr_method_checklists.md              ← per-method evaluation criteria
-  jbr_exemplar_patterns_2025_ai.md      ← recent JBR exemplars (AI/digital)
+  jbr_real_exemplar_patterns.md         ← pattern catalog from 5 recent JBR
+                                          articles (2024–2025), method ×
+                                          topic diversified; supersedes the
+                                          earlier AI-only exemplar file
   cover_letter_and_response.md          ← letters templates and principles
 examples/
-  abstract_revision_examples.md         ← real before/after
-  contribution_statement_examples.md    ← real before/after
-  full_intro_before_after.md            ← full intro rewrite, annotated
   reviewer_response_examples.md         ← R&R response samples
 agents/
   openai.yaml                           ← runner-side config
 CHANGELOG.md                            ← skill version history
 ```
+
+> **Note on `examples/`:** earlier versions of this skill included three synthetic before/after example files (`abstract_revision_examples.md`, `contribution_statement_examples.md`, `full_intro_before_after.md`). These were removed in v2026.05.b because (a) synthetic examples carry "this-is-my-opinion" risk and (b) their topic content over-fitted to one research domain, harming the skill's reusability. The real-exemplar pattern catalog in `references/jbr_real_exemplar_patterns.md` replaces them with patterns extracted from five published JBR articles, cited for verifiability.
 
 ---
 
