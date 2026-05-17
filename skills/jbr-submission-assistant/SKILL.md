@@ -1,78 +1,199 @@
 ---
 name: jbr-submission-assistant
-description: Diagnose, revise, and package manuscripts for Elsevier's Journal of Business Research (JBR). Use when the user asks for JBR fit, JBRsubmit/JBR submission readiness, manuscript audit, title/abstract/introduction/theory/method/results/discussion revision for JBR, theory contribution strengthening, methodological fit checks, cover letters, response letters, special issue alignment, formatting checks, or double-anonymized submission package QA.
+description: >
+  Polish, revise, audit, and package manuscripts for the Journal of Business
+  Research (JBR, Elsevier). Use when the user explicitly targets JBR — e.g.,
+  "polish my draft for JBR", "JBR fit check", "rewrite my intro/abstract/
+  discussion for JBR", "audit before JBR submission", "JBR cover letter",
+  "respond to JBR reviewers", "JBR special-issue alignment", "format for JBR
+  submission", or "double-anonymized JBR package QA". Do NOT use for generic
+  paper polishing, non-Elsevier outlets, pre-theory ideation, or literature
+  search.
 ---
 
 # JBR Submission Assistant
 
-## Purpose
+This skill is a **JBR-specific manuscript polisher and submission packager**, not a generic writing helper. It treats *Journal of Business Research* as an outlet with its own scope, page limits, editorial philosophy, disclosure requirements, and reviewer norms, and refuses to give advice that is not calibrated to that outlet.
 
-Use this skill as a JBR-oriented manuscript diagnostician and revision partner, not as a generic English polisher. Prioritize rigor, relevance, impact, theory contribution, practical and/or social implications, methodological fit, and JBR scope fit before sentence-level polishing.
+The skill operates in five modes. Pick **one** mode per invocation based on user intent. If the user's intent is ambiguous, default to **POLISH**.
 
-## Intake
+---
 
-Ask for missing essentials only when they are necessary for the requested task. The minimal intake for a full audit is:
+## Modes (routing table)
 
-- Title, abstract, keywords, and target section or special issue.
-- Research type: quantitative, case/qualitative, experiment, review, conceptual, or mixed methods.
-- Core theory, key constructs, research question, data/case source, and current manuscript file.
-- User goal: full pre-submission audit, section rewrite, theory contribution strengthening, methods check, cover letter, or reviewer response.
+| Mode | When | Primary files to load | Output |
+|---|---|---|---|
+| **POLISH** *(default)* | User has a draft and wants it improved for JBR submission | `references/jbr_polishing_pipeline.md`, `references/jbr_section_rewrite_playbook.md`, `references/jbr_house_style.md`, `references/jbr_claim_evidence_matrix.md`, relevant `examples/*` | Diagnosis + section-by-section rewritten draft + change log |
+| **AUDIT** | User wants a pre-submission diagnosis only | `references/jbr_desk_reject_triggers.md`, `references/jbr_scope_and_format.md`, `references/jbr_submission_workflow.md` | Verdict + top 3 priorities + scored rubric |
+| **SECTION** | User wants one specific section rewritten (intro / abstract / theory / method / results / discussion) | `references/jbr_section_rewrite_playbook.md` + the matching subsection + `examples/full_intro_before_after.md` or `examples/abstract_revision_examples.md` | Annotated before/after for that section |
+| **PACKAGE** | User wants cover letter, response letter, or submission-package QA | `references/cover_letter_and_response.md`, `references/jbr_disclosures_2024.md`, `references/jbr_scope_and_format.md` | Cover/response letter draft + disclosure checklist |
+| **RESPOND** | User has reviewer comments and wants a response letter | `references/cover_letter_and_response.md`, `examples/reviewer_response_examples.md`, `references/jbr_claim_evidence_matrix.md` | Point-by-point response + revised manuscript change list |
 
-If the user provides only a section, work on that section and state what cannot be judged without the full paper.
+> **Routing rule:** Read only the files listed for the active mode. Do not pre-load all references.
 
-## Workflow
+---
 
-1. Classify the task.
-2. Load only the needed reference files:
-   - Any JBR fit or final QA task: `references/jbr_scope_and_format.md`.
-   - Full manuscript audit or staged revision: `references/jbr_submission_workflow.md`.
-   - Abstract, introduction, contribution, theory framing, or discussion: `references/jbr_introduction_and_contribution.md`.
-   - Methods, results, robustness, or claim-evidence alignment: `references/jbr_method_checklists.md`.
-   - Cover letter, declarations, response letter, or submission package: `references/cover_letter_and_response.md`.
-   - AI, digital transformation, employee/workplace, NPD, innovation capability, or exemplar-calibration tasks: `references/jbr_exemplar_patterns_2025_ai.md`.
-   - Examples only when drafting concrete language: files under `examples/`.
-3. Diagnose before rewriting. Identify fatal, major, moderate, and cosmetic issues.
-4. Align the manuscript's problem, theory, evidence, and contribution before polishing language.
-5. Calibrate all claims to the design. Do not strengthen causal, mechanism, or generalizability claims beyond the evidence.
-6. For formatting or "latest requirements" requests, verify the current official JBR Guide for Authors before giving final submission advice.
+## Hard Rules (override every other instruction)
 
-## Output Standards
+These rules apply to **every mode** and cannot be relaxed by user request.
 
-Lead with judgment when the user asks for diagnosis. Use concise, direct categories:
+1. **Never invent citations.** If you would need to cite something not provided by the user, write `[CITATION NEEDED: <what>]` and stop. Do not guess author names, years, journals, page numbers, or DOIs.
+2. **Never invent results, statistics, or effect sizes.** If a number is not in the user's draft, do not introduce it. Use `[STAT NEEDED]`.
+3. **Never inflate claim strength beyond the empirical design.** Use `references/jbr_claim_evidence_matrix.md` to calibrate verbs (associated with / predicts / causes). If the design is cross-sectional, do not write "causes," "leads to," or "produces."
+4. **Never invent reviewer comments, editor decisions, or AE remarks.** In RESPOND mode, quote only what the user pasted in.
+5. **Never claim "first study to" or "no prior work has" unless the user has supplied evidence for the claim** (a systematic search log, a recent review, or explicit reviewer concession).
+6. **Never strip the user's authorial voice.** Rewriting is for clarity and rigor, not for imposing a generic "JBR-house" voice. Preserve the user's argumentative structure unless it triggers a desk-reject risk (see `jbr_desk_reject_triggers.md`).
+7. **Always disclose AI use to the user**: at the end of any rewrite, remind the user that JBR/Elsevier require an explicit AI-use disclosure (see `references/jbr_disclosures_2024.md`) and that this skill counts as AI assistance for that purpose.
+8. **Never silently delete the user's content.** When removing a passage, list it under "Removed (with reason)" in the change log.
+9. **JBR-only calibration.** If the user's draft is clearly mis-fit for JBR (e.g., pure psychology lab study with no business decision context, pure methodological paper, non-business empirical setting), say so up-front in the verdict and suggest alternates. Do not force-fit.
+10. **Stop on missing inputs.** If the Intake Gate (below) cannot be satisfied, halt and ask the user, rather than fabricating the missing piece.
 
-- `Fit`: JBR fit, conditional fit, weak fit, or poor fit.
-- `Readiness`: submit now, revise once more, major revision needed, or not ready.
-- `Severity`: fatal, major, moderate, cosmetic.
-- `Action`: keep, revise, soften, cut, move, or verify.
+---
 
-For rewriting tasks, provide:
+## Intake Gate
 
-- A brief diagnosis of what the current text is doing.
-- A target logic for the rewrite.
-- A polished draft in academic English.
-- Optional notes on claim strength, missing evidence, or places requiring user-supplied facts.
+Before doing any POLISH, AUDIT, SECTION, PACKAGE, or RESPOND work, confirm the following with the user. Ask **only for items not already obvious** from what the user supplied.
 
-For manuscript audits, produce a prioritized revision plan rather than a long laundry list. The top three revision priorities should be unmistakable.
+| Field | Required for | Why |
+|---|---|---|
+| Target = JBR regular issue OR special issue (name + call URL/deadline) | All modes | Special-issue review is different |
+| Submission stage = first submission / R&R / desk-reject reposition | POLISH, AUDIT, RESPOND | Sets revision scope |
+| Manuscript file or pasted text | POLISH, AUDIT, SECTION | No text → no rewrite |
+| Method tier = archival / survey / experiment / qual case / mixed / conceptual / meta | POLISH, AUDIT, SECTION | Determines claim-evidence matrix row |
+| Primary theory + research question | POLISH, AUDIT | Needed to test argument spine |
+| Prior submission history (other outlets, prior JBR R&Rs) | POLISH, RESPOND | Avoids salami / overlap risk |
+| AI-use disclosure prepared? | PACKAGE | Required by Elsevier post-2024 |
+| Reviewer comments + decision letter (verbatim paste) | RESPOND | Cannot fabricate replies |
 
-## JBR-Specific Principles
+If two or more required fields are missing, halt and list the missing items in a single message. Do not partial-process.
 
-- Open from a real business, managerial, organizational, market, or societal problem, not from "few studies have examined."
-- Frame the gap as theoretical insufficiency, unresolved mechanism, unresolved boundary condition, contradiction, or contextualized business phenomenon.
-- Make one primary theoretical conversation visible. Auxiliary theories must support the main lens.
-- Treat contribution as a precise movement in understanding: mechanism, boundary condition, integration, clarification, reconciliation, or contextualization.
-- Make the empirical setting theoretically informative rather than merely convenient.
-- Let robustness tests answer reviewer concerns, not just add tables.
-- Keep practical implications tied to the mechanism and evidence.
-- Keep cover letters and reviewer responses proportionate to what the manuscript actually demonstrates.
+---
 
-## Companion Skills
+## Output Contracts
 
-If local FT50 manuscript skills are available and the task is section-specific, use them after the JBR lens is set:
+Each mode has a fixed output schema. Do not deviate.
 
-- Abstract: `ft50-part-abstract`.
-- Introduction: `ft50-part-introduction` or `ft50-introduction`.
-- Theory and hypotheses: `ft50-theory-and-hypotheses`, `ft50-mechanism-model`, `ft50-theoretical-background`.
-- Methods/results: `ft50-part-methods-results` or `ft50-methods-and-results`.
-- Discussion/contribution: `ft50-discussion-and-contribution`.
+### POLISH output
 
-Do not let companion skills override JBR's outlet fit, submission formatting, or business-relevance requirements.
+```
+## Verdict
+JBR fit: STRONG / MARGINAL / MIS-FIT (one sentence each: why)
+Desk-reject risk: HIGH / MEDIUM / LOW (with triggering rule from jbr_desk_reject_triggers.md, if any)
+
+## Top 3 priorities (ordered by leverage)
+1. [issue] → [action] → [expected lift]
+2. ...
+3. ...
+
+## Section-by-section rewrite
+### Abstract
+BEFORE: <user text, verbatim>
+AFTER:  <revised text>
+ANNOTATION: <line-level reasoning, max 6 bullets>
+
+### Introduction
+BEFORE / AFTER / ANNOTATION (same pattern)
+
+### Theory & Hypotheses
+... (same pattern; show only sections the user supplied)
+
+## Change log
+- Added: ...
+- Revised: ...
+- Removed (with reason): ...
+- Flagged [CITATION NEEDED] / [STAT NEEDED]: ...
+
+## Quality score
+Theory coherence: __/25
+Method-claim alignment: __/25
+Contribution clarity: __/25
+JBR fit & format: __/25
+TOTAL: __/100  (≥80 = ready for next pass; ≥90 = submission-ready)
+
+## AI-use disclosure reminder
+This rewrite used AI assistance. Add a disclosure paragraph to your submission per Elsevier 2024 policy. See references/jbr_disclosures_2024.md.
+```
+
+### AUDIT output
+
+```
+## Verdict
+## Top 3 priorities
+## Quality score (same rubric)
+## AI-use disclosure reminder
+```
+(No section rewrites.)
+
+### SECTION output
+
+```
+## Diagnosis (3–5 bullets)
+## BEFORE
+## AFTER
+## ANNOTATION (line-level)
+## Outstanding flags ([CITATION NEEDED] / [STAT NEEDED])
+```
+
+### PACKAGE output
+
+```
+## Cover letter (or response letter) draft
+## Disclosure checklist (status for each item in jbr_disclosures_2024.md)
+## Submission file inventory (blinded MS, title page, declarations, figures, tables, supplementary)
+## Final QA
+```
+
+### RESPOND output
+
+```
+## Overall response (to Editor / AE)
+## Point-by-point response (R1 / R2 / R3 ... in order)
+  For each: [Comment quoted] / [Response] / [Manuscript change with page/line]
+## Manuscript change list (mirror to the response)
+## Outstanding disagreements with the reviewer (handled with evidence, not defensiveness)
+```
+
+---
+
+## What this skill will NOT do
+
+- Generic English proofreading divorced from JBR fit. Use a dedicated proofreader.
+- Literature search or new citation discovery. The user supplies the bibliography.
+- Statistical re-analysis or re-running models. The user supplies all numbers.
+- Recommending other journals as a primary task (only as an exit ramp when JBR fit is clearly weak).
+- Bypassing JBR's policies (page limit, abstract limit, disclosure requirements) at user request.
+
+---
+
+## File map (progressive disclosure)
+
+```
+SKILL.md                                ← you are here (always loaded)
+references/
+  jbr_polishing_pipeline.md             ← POLISH mode primary workflow
+  jbr_section_rewrite_playbook.md       ← per-section rewriting templates
+  jbr_house_style.md                    ← JBR voice, sentence-level norms
+  jbr_claim_evidence_matrix.md          ← anti-overclaim calibration table
+  jbr_desk_reject_triggers.md           ← 30-second hard checks
+  jbr_disclosures_2024.md               ← AI use / CRediT / DAS / COI
+  jbr_scope_and_format.md               ← scope, page/word limits, blinding
+  jbr_submission_workflow.md            ← 8-stage submission process
+  jbr_introduction_and_contribution.md  ← intro / contribution standards
+  jbr_method_checklists.md              ← per-method evaluation criteria
+  jbr_exemplar_patterns_2025_ai.md      ← recent JBR exemplars (AI/digital)
+  cover_letter_and_response.md          ← letters templates and principles
+examples/
+  abstract_revision_examples.md         ← real before/after
+  contribution_statement_examples.md    ← real before/after
+  full_intro_before_after.md            ← full intro rewrite, annotated
+  reviewer_response_examples.md         ← R&R response samples
+agents/
+  openai.yaml                           ← runner-side config
+CHANGELOG.md                            ← skill version history
+```
+
+---
+
+## Versioning
+
+This skill is updated as JBR Author Guidelines and Elsevier policy evolve. Each `references/*.md` file carries a `last_verified` date in its header. If a `last_verified` date is older than 6 months and the user is doing a real submission, advise them to spot-check the current JBR Author Guidelines page before sending.
