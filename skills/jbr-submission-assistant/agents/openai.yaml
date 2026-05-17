@@ -1,0 +1,4 @@
+interface:
+  display_name: "JBR Submission Assistant"
+  short_description: "Diagnose and rewrite JBR submissions"
+  default_prompt: "Use $jbr-submission-assistant to audit my manuscript for JBR fit and submission readiness."
