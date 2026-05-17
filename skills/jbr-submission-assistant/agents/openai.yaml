@@ -1,4 +1,10 @@
 interface:
   display_name: "JBR Submission Assistant"
-  short_description: "Diagnose and rewrite JBR submissions"
-  default_prompt: "Use $jbr-submission-assistant to audit my manuscript for JBR fit and submission readiness."
+  short_description: "Polish, audit, and package manuscripts for Journal of Business Research"
+  default_prompt: "Use $jbr-submission-assistant to polish my draft for JBR submission. Default mode is POLISH (diagnose + section-by-section rewrite). I will paste the draft and tell you the target (regular issue or special issue), submission stage (first / R&R / reposition), and method tier."
+  modes:
+    - POLISH: "Diagnose then rewrite section-by-section (default)"
+    - AUDIT: "Pre-submission diagnosis only, no rewrite"
+    - SECTION: "Rewrite one specific section"
+    - PACKAGE: "Cover letter + disclosures + submission file inventory"
+    - RESPOND: "Reviewer response letter for R&R"
