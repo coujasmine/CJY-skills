@@ -4,6 +4,43 @@ All notable changes to this skill are listed here. The skill follows a date-base
 
 ---
 
+## 2026.05.b — Replace synthetic examples with real-exemplar pattern catalog
+
+### Why this change
+The first 2026.05 release added three synthetic before/after example files (`abstract_revision_examples.md`, `contribution_statement_examples.md`, `full_intro_before_after.md`) where I (the skill author / LLM assistant) wrote both the BEFORE and the AFTER text. Two problems with that:
+
+1. **Authority problem** — my AFTER text was my opinion of what JBR rewards, not what JBR has actually published. Synthetic examples carry the "model-author-as-authority" risk.
+2. **Reusability problem** — the synthetic content was anchored to one research domain (AI / managerial attention / temporal myopia / exploration-exploitation), so the skill would over-fit to that domain when used for unrelated JBR submissions.
+
+The user identified both issues and provided five real JBR articles spanning five method tiers and topics.
+
+### Removed
+- `examples/abstract_revision_examples.md` (synthetic, domain-overfit)
+- `examples/contribution_statement_examples.md` (synthetic, domain-overfit)
+- `examples/full_intro_before_after.md` (synthetic, single-domain)
+- `references/jbr_exemplar_patterns_2025_ai.md` (AI-only; superseded by broader catalog)
+
+### Added
+- `references/jbr_real_exemplar_patterns.md` — pattern catalog extracted from five published JBR articles (2024–2025), each tagged `[P1]–[P5]`:
+  - **P1** Jiang, Liu & Li (2025) — IB / HQ-Sub dyadic survey, social exchange + identity theory integration
+  - **P2** Verginer & Riccaboni (2025) — M&A / staggered DiD on biotech inventors, KBV
+  - **P3** Ran, Zhang, Yang & Chen (2024) — strategy / Chinese panel + multi-FE, RBV with mediators and opposite-sign moderators
+  - **P4** Valtonen et al. (2025) — AI–wellbeing survey, JD-R, honest null direct effect
+  - **P5** Kyriakopoulos et al. (2025) — DT+AI / NPD, PLS-SEM, opposite-sign moderation as contribution
+- Patterns are organized into nine sections (intro, theory, hypotheses, method, results, discussion, disclosures, method-tier routing, structural invariants).
+- Every pattern carries a paper tag for verification; paraphrased per Elsevier copyright (no quotation >15 words).
+
+### Updated
+- `SKILL.md` routing table — modes POLISH, AUDIT, SECTION, PACKAGE now point to `jbr_real_exemplar_patterns.md` instead of synthetic `examples/*` files.
+- `SKILL.md` file map — reflects the new structure with a note explaining why synthetic examples were removed.
+
+### Behavioral effect
+- **POLISH and SECTION mode outputs now anchor to observed JBR patterns**, not to invented examples. The skill will say "this matches Pattern 1.3 observed in [P1] and [P5]" rather than "this matches my proposed Example 2."
+- **The skill is now genuinely reusable across domains.** A user polishing a marketing paper, an M&A paper, or an AI-management paper will pull from the same multi-domain exemplar pool.
+- **Hard Rule 1 (no fabricated citations)** is now reinforced by the exemplar file itself: all patterns cite back to verifiable published papers.
+
+---
+
 ## 2026.05 — Polish-mode pivot (breaking change to invocation model)
 
 ### Reframed
