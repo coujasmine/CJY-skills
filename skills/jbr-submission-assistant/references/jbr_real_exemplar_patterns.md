@@ -75,7 +75,7 @@ All five papers' intros close with a contribution paragraph that names a small n
 - **[P3]** intro contribution: (i) clarify the value of technological resources for resilience (broadens intangible-resource lens); (ii) explore moderating mechanisms of people-dependent intangible resources; (iii) practical contributions for development strategy + financial budget management.
 - **[P5]** intro contribution: (i) recast design thinking as organizational-level dynamic capability; (ii) position AI capabilities as tech-driven innovation enablers; (iii) treat NPD-DM agility as the conversion mediator.
 
-**Polish rule:** Replace any "we enrich the literature" / "we contribute to research on X" with one specific theoretical movement per bullet (mechanism / boundary / integration / reconciliation / contextualization / clarification — see `examples/contribution_statement_examples.md` for the six types, but rewritten generically without specific examples).
+**Polish rule:** Replace any "we enrich the literature" / "we contribute to research on X" with one specific theoretical movement per bullet. Use the six contribution moves directly: mechanism, boundary, integration, reconciliation, contextualization, and clarification. Do not point to the removed synthetic examples; infer the move from the user's theory, evidence, and target JBR conversation.
 
 ---
 
@@ -342,7 +342,8 @@ When a user's manuscript deviates from one of these 20 invariants, surface the d
 
 - **POLISH mode**: Load at Stages 5 (section-by-section rewrite) and 6 (house-style pass) of `jbr_polishing_pipeline.md` to anchor the rewrite to observed JBR conventions.
 - **SECTION mode**: Load whichever section's patterns apply.
-- **AUDIT mode**: Use Section 9 as the 20-invariant checklist for desk-reject + structural-quality scoring.
+- **AUDIT mode**: Use Section 9 as the 20-invariant checklist for desk-reject + structural-quality scoring, and label the audit level as QUICK, STANDARD, or FULL based on available inputs.
+- **REVIEW mode**: Use Section 9 as the structural baseline and Section 8 for closest-method calibration before applying `jbr_reviewer_simulation.md`.
 - **PACKAGE mode**: Use Section 7 for disclosure validation alongside `jbr_disclosures_2024.md`.
 - **RESPOND mode**: Patterns inform reviewer-response wording when reviewers ask about identification, CMV, or claim calibration.
 

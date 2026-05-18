@@ -29,6 +29,8 @@ Required checks:
 - Reliability, validity, factor structure, and discriminant validity are reported for multi-item constructs.
 - Robustness checks test plausible threats: alternative measures, model forms, lag structures, influential observations, omitted variables, selection, reverse causality, and fixed effects.
 
+For archival panel manuscripts, also load `references/methods/archival_panel_checklist.md`. Use that file for sample construction, panel timing, fixed-effects architecture, text/AI-measure validation, endogeneity threats, and robustness sequencing. Do not rely on this generic checklist alone for archival panel designs.
+
 Results narrative:
 
 - Report descriptive statistics and correlations first.

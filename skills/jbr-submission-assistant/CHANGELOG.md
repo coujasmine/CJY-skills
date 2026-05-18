@@ -4,6 +4,42 @@ All notable changes to this skill are listed here. The skill follows a date-base
 
 ---
 
+## 2026.05.c — Add review simulation and graded audit workflow
+
+### Why this change
+The prior polish-primary release made the skill useful for rewrite work, but pre-submission quality control still needed two capabilities:
+
+1. **Simulated peer review** — users often need to know how a JBR Associate Editor, theory reviewer, methods reviewer, and outlet-fit reviewer may attack a manuscript before submission.
+2. **Partial-input diagnosis** — users often provide only an abstract, introduction, or method excerpt. The skill should run the highest feasible audit instead of halting whenever the full manuscript is unavailable.
+
+### Added
+- `REVIEW` mode in `SKILL.md`, with a fixed output contract for simulated editorial decision, AE assessment, Reviewer 1/2/3 reports, and pre-submission revision priorities.
+- Graded `AUDIT` / `REVIEW` levels:
+  - `QUICK_AUDIT` / `QUICK_REVIEW` for title, abstract, keywords, or research question only.
+  - `STANDARD_AUDIT` / `STANDARD_REVIEW` for abstract + introduction + theory or method excerpt.
+  - `FULL_AUDIT` / `FULL_REVIEW` for complete manuscripts.
+- `references/jbr_reviewer_simulation.md` for REVIEW-mode reviewer-role protocol.
+- `references/jbr_track_positioning.md` for JBR disciplinary-track fit and positioning.
+- `references/methods/archival_panel_checklist.md` for archival/panel-data method scrutiny.
+- Lightweight deterministic scripts:
+  - `scripts/check_abstract_word_count.py`
+  - `scripts/check_keywords_count.py`
+  - `scripts/scan_causal_verbs.py`
+
+### Updated
+- `SKILL.md` description, routing table, Intake Gate, Hard Rule 10, output contracts, and file map.
+- `references/jbr_method_checklists.md` now routes archival/panel manuscripts to the dedicated archival checklist.
+- `references/jbr_real_exemplar_patterns.md` no longer points to the removed synthetic `examples/contribution_statement_examples.md` file.
+- `agents/openai.yaml` simplified to supported interface fields and a shorter default prompt.
+
+### Behavioral effect
+- The skill can now simulate likely JBR review risk without rewriting the manuscript.
+- Abstract-only and section-only inputs produce appropriately labeled low/medium-confidence audits rather than immediate stops.
+- Archival/panel manuscripts receive finer checks for sample construction, panel timing, fixed effects, endogeneity, text/AI-measure validation, robustness sequencing, and claim calibration.
+- UI metadata is cleaner and no longer depends on non-standard `modes` entries.
+
+---
+
 ## 2026.05.b — Replace synthetic examples with real-exemplar pattern catalog
 
 ### Why this change
