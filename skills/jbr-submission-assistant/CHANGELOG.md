@@ -4,6 +4,54 @@ All notable changes to this skill are listed here. The skill follows a date-base
 
 ---
 
+## 2026.05.d — Mandatory AI decontamination and LLM-as-measurement audit
+
+### Why this change
+
+The 2026.05.c release added REVIEW mode and graded audits, which made the skill useful as a pre-submission risk simulator. Two gaps remained:
+
+1. **AI-style leakage into outputs.** Every POLISH, SECTION, RESPOND, and PACKAGE pass could quietly produce sentences with AI-generation markers ("leverage," "delve into," "underscore," compulsive three-part lists, em-dash overuse). Reviewers and editors increasingly screen for AI style, so the skill must remove these markers before output, not afterwards.
+2. **LLM-as-measurement is now common but under-audited.** Manuscripts using GPT/Claude/Gemini to construct a focal variable from text (job postings, MD&A, earnings calls, patents) face Reviewer-2 attack points that traditional method checklists do not cover: prompt hygiene, development/validation/holdout separation, human benchmarking, sensitivity to prompt rewording and model swap, false-positive review, and disclosure of the measurement step (not only the writing step).
+
+### Added
+
+- `references/ai_style_markers.md` — catalog of lexical, structural, and hedge markers, plus JBR-specific calibration (manager-visible framing, mechanism over performance) and protected zones (variables, statistics, hypotheses, citations).
+- `references/gpt_measurement_validation.md` — eight-dimension scorecard for LLM-as-measurement designs, with reasonable validation-set size floors, sensitivity requirements, and claim-calibration mapping.
+- `subagents/jbr-ai-decontaminator.md` — Claude Code companion subagent. Standalone-invokable. Surgical restraint: passes clean text through unchanged with an explicit pass signal.
+- `subagents/jbr-gpt-measurement-auditor.md` — Claude Code companion subagent. Audits the LLM-measurement step only (not the broader method). Refuses to estimate validation metrics the manuscript does not report.
+- `scripts/scan_ai_style_markers.py` — mechanical scanner for lexical/structural/causal AI markers. Pairs with `references/ai_style_markers.md` for context-aware rewriting.
+
+### Updated
+
+- `SKILL.md`:
+  - Description and routing table now mention REVIEW, decontamination, and LLM-measurement audits.
+  - Mode count: six modes plus two companion subagents (a documentation change, not a new mode).
+  - New **Hard Rule 11**: AI decontamination is mandatory for every produced output in POLISH, SECTION, RESPOND, PACKAGE. Every output must include a `## AI decontamination` block (pass signal if no markers triggered).
+  - New **Hard Rule 12**: LLM-as-measurement audits use the eight-dimension scorecard. Never estimate validation metrics the manuscript does not report.
+  - Intake Gate adds a field: "Uses LLM as a measurement instrument?"
+  - All five rewrite/audit/review output contracts updated to include the decontamination block and (where applicable) the LLM-measurement scorecard.
+  - New "Companion subagents" section explains installation for Claude Code users and portability for Claude API users.
+  - File map updated; clarifies that `agents/openai.yaml` is the OpenAI runner manifest, not a Claude Code subagent. Claude Code subagents live in `subagents/`.
+
+### Behavioral effect
+
+- POLISH, SECTION, RESPOND, and PACKAGE outputs are decontaminated before being shown to the user. Statistical reports, variable names, hypothesis labels, citations, and theory-specific vocabulary are preserved verbatim.
+- AUDIT and REVIEW modes flag AI markers in the user's existing draft as part of the diagnosis. They do not rewrite.
+- When the method tier is archival/text/AI and an LLM is the measurement instrument, AUDIT/REVIEW apply the eight-dimension scorecard. Missing evidence becomes an explicit Reviewer-2 concern rather than an implicit one.
+- Claim language is calibrated to validation quality: a manuscript with F1 ≤ 0.55 on the focal variable cannot claim the variable is "measured" — only "associated with" or "suggested by."
+- Claude Code users gain two routable specialist subagents that work standalone outside the skill. Claude API users see no change in interface; the skill performs the same work inline.
+
+### Portability notes
+
+- The skill remains fully usable in Claude API, Claude.ai web, and any runner that supports skill activation. Subagent files are optional convenience for Claude Code.
+- The subagents are JBR-specific; they are not general-purpose decontaminators. The decontaminator preserves management-research vocabulary; the measurement auditor refuses non-LLM-measurement designs.
+
+### Compatibility
+
+- Backwards compatible with prior outputs: callers expecting the v2026.05.c output contracts will see one new section (`## AI decontamination`) appended to POLISH/SECTION/RESPOND/PACKAGE outputs and one new sub-block in REVIEW Reviewer 2 / AUDIT diagnoses when LLM-as-measurement is in scope. No fields removed or renamed.
+
+---
+
 ## 2026.05.c — Add review simulation and graded audit workflow
 
 ### Why this change
