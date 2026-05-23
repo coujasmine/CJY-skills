@@ -1,0 +1,24 @@
+version: 2026-05-23
+skill: strategy-science-submission-assistant
+cases:
+  - id: writing_check_mode_trigger
+    prompt: "Run a Strategy Science writing quality check on my introduction; do not rewrite it."
+    expected:
+      mode: WRITING_CHECK
+      actions:
+        - run_check_writing_quality
+        - report_no_rewrite
+  - id: writing_check_three_contributions
+    prompt: "Check this SS contribution paragraph: This study makes three contributions. First, we contribute to AI strategy. Second, we contribute to cognition. Third, we contribute to decision making."
+    expected:
+      mode: WRITING_CHECK
+      flags:
+        - three_contribution_structure
+        - high_ss_positioning_risk
+  - id: writing_check_protected_term
+    prompt: "Check this sentence for AI markers: We estimate robust standard errors clustered by firm."
+    expected:
+      mode: WRITING_CHECK
+      flags:
+        - preserve_technical_use_of_robust
+
