@@ -9,8 +9,10 @@ last_verified: 2026-05-21
 ## Contents
 
 - The SS reviewing system
+- The SS-specific review board
 - The three reviewer archetypes
 - AE archetype
+- Review contract and editorial synthesis
 - Running the simulation
 - Format of each reviewer report
 - Reviewer X: [Theme]
@@ -33,6 +35,60 @@ This file specifies how to simulate an SS peer-review process. Use in REVIEW mod
 - **Decision categories**: Desk Reject / Reject / Major Revision / Minor Revision / Accept.
 - **Double-anonymous**: reviewers do not know authors; authors do not know reviewers (until final acceptance, when AE/editor sign acknowledgments).
 - **Review timeline**: First-round review typically 6-10 weeks. R&R cycle 3-6 months. Total received-to-accept ranges 6-15 months based on the 2026 SI exemplars.
+
+---
+
+## The SS-specific review board
+
+REVIEW mode now uses a calibrated review board rather than only three generic
+reviewer voices:
+
+1. **SS EIC / AE screen**
+   - Desk-reject risk, send-out risk, and fit with the journal's theory-forward
+     strategy domain.
+
+2. **Theory reviewer**
+   - Theoretical lineage, theoretical movement, boundary conditions,
+     counter-arguments, and novelty calibration.
+
+3. **Methods reviewer**
+   - Identification, construct validity, measurement validity, robustness,
+     LLM-as-measurement reporting, and claim-evidence calibration.
+
+4. **Style and positioning reviewer**
+   - Abstract, introduction, contribution paragraph, SS house style, AI-style
+     markers, and accessibility to a broad strategy audience.
+
+5. **Devil's advocate**
+   - The strongest desk-reject or reject-after-review path. This voice should
+     attack the largest weakness, not accumulate minor copyedits.
+
+6. **Editorial synthesizer**
+   - Aggregates the above. It does not introduce new objections; it maps the
+     case to a weighted SS score and next revision move.
+
+---
+
+## Review contract and editorial synthesis
+
+Before reading paper-visible content, declare the review contract from
+`ss_review_contract_protocol.md`:
+
+- SS fit: 20 points
+- Theoretical movement: 25 points
+- Method-claim alignment: 25 points
+- Writing and positioning: 15 points
+- Citation integrity: 15 points
+
+Fatal flaws must be declared before the review is applied. New criteria can
+appear only as `Emergent issue`.
+
+Decision mapping:
+
+- 85-100: submission-ready after light polish
+- 75-84: promising but needs one focused revision
+- 60-74: major pre-submission revision needed
+- below 60: not ready for Strategy Science
 
 ---
 
@@ -113,7 +169,17 @@ Typical AE recommendations:
 
 ## Running the simulation
 
-In REVIEW mode, produce the output specified in SKILL.md. For each level:
+In REVIEW mode, produce the output specified in SKILL.md. Always run the
+three-phase sequence:
+
+1. **Review contract**: declare weights, fatal flaws, and evidence needed before
+   paper-visible assessment.
+2. **Paper-visible review**: apply AE + reviewer reports. If a criterion emerges
+   only after reading, label it `Emergent issue`.
+3. **Editorial synthesis**: aggregate, score, and prioritize. Do not introduce
+   new objections here.
+
+For each review level:
 
 ### QUICK_REVIEW (title + abstract + RQ only)
 

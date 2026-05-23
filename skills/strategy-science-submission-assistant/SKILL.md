@@ -1,16 +1,19 @@
 ---
 name: strategy-science-submission-assistant
 description: >
-  Polish, audit, simulate peer review for, revise, decontaminate AI flavor from,
-  and package manuscripts for Strategy Science (INFORMS). Use when the user
-  explicitly targets Strategy Science — e.g., "polish for Strategy Science",
-  "Strategy Science fit check", "simulate Strategy Science reviewers", "remove
-  AI flavor from my SS draft", "audit before Strategy Science submission",
-  "audit LLM measure for Strategy Science", "Strategy Science cover letter",
-  "respond to SS reviewers", "Strategy Science special issue alignment",
-  "format for Strategy Science submission", or "INFORMS double-anonymized SS
-  package QA". Do NOT use for generic paper polishing, non-INFORMS outlets,
-  AMJ/SMJ/JBR/Organization Science, pre-theory ideation, or literature search.
+  Polish, audit, run writing-quality checks, audit citations, simulate peer
+  review for, revise, decontaminate AI flavor from, and package manuscripts for
+  Strategy Science (INFORMS). Use when the user explicitly targets Strategy
+  Science — e.g., "polish for Strategy Science", "Strategy Science fit check",
+  "Strategy Science writing quality check", "audit citations for Strategy
+  Science", "claim-citation alignment audit", "simulate Strategy Science
+  reviewers", "remove AI flavor from my SS draft", "audit before Strategy
+  Science submission", "audit LLM measure for Strategy Science", "Strategy
+  Science cover letter", "respond to SS reviewers", "Strategy Science special
+  issue alignment", "format for Strategy Science submission", or "INFORMS
+  double-anonymized SS package QA". Do NOT use for generic paper polishing,
+  non-INFORMS outlets, AMJ/SMJ/JBR/Organization Science, pre-theory ideation,
+  or literature search.
 ---
 
 # Strategy Science Submission Assistant
@@ -25,7 +28,7 @@ This skill is a **Strategy Science (SS)-specific manuscript polisher, auditor, p
 
 These four papers span SS's full method range (archival panel + entropy index; 2×2 between-subjects experiment; archival + ML; pure formal/typological theory) and define the patterns this skill enforces.
 
-The skill operates in six modes plus two companion subagents. Pick **one** mode per invocation based on user intent. If the user's intent is ambiguous, default to **POLISH** when the user asks for improvement/rewrite, and **AUDIT** when the user asks for diagnosis/check only.
+The skill operates in eight modes plus companion subagents. Pick **one** mode per invocation based on user intent. If the user's intent is ambiguous, default to **POLISH** when the user asks for improvement/rewrite, **WRITING_CHECK** when the user asks for prose diagnosis only, **CITATION_AUDIT** when the user asks whether references or citations are trustworthy, and **AUDIT** when the user asks for broader submission diagnosis.
 
 ---
 
@@ -35,7 +38,9 @@ The skill operates in six modes plus two companion subagents. Pick **one** mode 
 |---|---|---|---|
 | **POLISH** *(default)* | User has a draft and wants it improved for SS submission | `references/ss_polishing_pipeline.md`, `references/ss_section_rewrite_playbook.md`, `references/ss_house_style.md`, `references/ss_claim_evidence_matrix.md`, `references/ss_real_exemplar_patterns.md`, `references/ai_style_markers.md` | Diagnosis + section-by-section rewritten draft + decontamination pass + change log |
 | **AUDIT** | User wants a pre-submission diagnosis only | `references/ss_desk_reject_triggers.md`, `references/ss_scope_and_format.md`, `references/ss_submission_workflow.md`, `references/ss_track_positioning.md`, `references/ss_real_exemplar_patterns.md` (§9 invariants), `references/ai_style_markers.md` (flag-only), `references/gpt_measurement_validation.md` (if LLM-as-measurement) | QUICK / STANDARD / FULL audit + top priorities + scored rubric + AI-marker flags |
-| **REVIEW** | User wants simulated SS peer review or reviewer attack points before submission | `references/ss_reviewer_simulation.md`, `references/ss_desk_reject_triggers.md`, `references/ss_track_positioning.md`, `references/ss_method_checklists.md`, `references/methods/archival_panel_checklist.md` (if archival/panel), `references/methods/experiment_checklist.md` (if experiment), `references/methods/formal_theory_checklist.md` (if pure theory), `references/gpt_measurement_validation.md` (if LLM-as-measurement), `references/ss_claim_evidence_matrix.md`, `references/ss_real_exemplar_patterns.md` | Simulated AE decision + Reviewer 1/2/3 reports + pre-submission priorities |
+| **WRITING_CHECK** | User wants diagnostic self-review of SS prose before revision, without rewriting | `references/writing_quality_check.md`, `references/ai_style_markers.md`, `references/ss_house_style.md`, `references/ss_real_exemplar_patterns.md` (§9 invariants) | Writing Quality Report + mechanical summary + line-level flags + protected terms preserved |
+| **CITATION_AUDIT** | User wants to check whether references exist and whether citations support claims | `references/citation_verification_protocol.md`, `references/claim_citation_alignment_protocol.md`, `references/ss_claim_evidence_matrix.md`, `references/literature_corpus_entry.schema.json` | Reference existence report + claim-citation alignment matrix + high-risk citation list + missing locator list |
+| **REVIEW** | User wants simulated SS peer review or reviewer attack points before submission | `references/ss_review_contract_protocol.md`, `references/ss_reviewer_simulation.md`, `references/ss_desk_reject_triggers.md`, `references/ss_track_positioning.md`, `references/ss_method_checklists.md`, `references/methods/archival_panel_checklist.md` (if archival/panel), `references/methods/experiment_checklist.md` (if experiment), `references/methods/formal_theory_checklist.md` (if pure theory), `references/gpt_measurement_validation.md` (if LLM-as-measurement), `references/ss_claim_evidence_matrix.md`, `references/claim_citation_alignment_protocol.md`, `references/ss_real_exemplar_patterns.md` | Review Contract + simulated review board + devil's advocate screen + editorial synthesis |
 | **SECTION** | User wants one specific section rewritten (intro / abstract / theory / method / results / discussion) | `references/ss_section_rewrite_playbook.md` + the matching subsection + `references/ss_real_exemplar_patterns.md` (matching section patterns) + `references/ai_style_markers.md` | Annotated before/after for that section + decontamination pass |
 | **PACKAGE** | User wants cover letter, response letter, or submission-package QA | `references/cover_letter_and_response.md`, `references/ss_disclosures.md`, `references/ss_scope_and_format.md`, `references/ss_real_exemplar_patterns.md` (§7 disclosure patterns), `references/ai_style_markers.md` (cover letter only) | Cover/response letter draft + disclosure checklist + decontamination of cover letter |
 | **RESPOND** | User has reviewer comments and wants a response letter | `references/cover_letter_and_response.md`, `references/reviewer_response_examples.md`, `references/ss_claim_evidence_matrix.md`, `references/ai_style_markers.md`, `references/gpt_measurement_validation.md` (if reviewer challenged the measurement) | Point-by-point response + revised manuscript change list + decontamination of response letter |
@@ -46,7 +51,7 @@ The skill operates in six modes plus two companion subagents. Pick **one** mode 
 
 ## Deterministic checks — run the bundled scripts
 
-Four checks in this skill are mechanical: counting abstract words, counting keywords, locating causal verbs, and locating AI-style markers. Estimating these by eye is unreliable: a 225-word abstract may look short by article-exemplar standards but still exceeds the official manuscript abstract limit, and a manual verb sweep silently misses instances. Run the bundled scripts and quote their output instead of guessing.
+Nine checks in this skill are mechanical: counting abstract words, counting keywords, locating causal verbs, locating AI-style markers, aggregating writing-quality risks, measuring sentence-length variation, extracting reference metadata, extracting citation contexts, and checking reference existence metadata. Estimating these by eye is unreliable: a 225-word abstract may look short by article-exemplar standards but still exceeds the official manuscript abstract limit, and a manual verb sweep silently misses instances. Run the bundled scripts and quote their output instead of guessing.
 
 | Script | What it checks | Run in |
 |---|---|---|
@@ -54,8 +59,13 @@ Four checks in this skill are mechanical: counting abstract words, counting keyw
 | `scripts/check_keywords_count.py` | Keyword list has 3-10 entries | AUDIT; POLISH Stage 1 & Stage 7; PACKAGE |
 | `scripts/scan_causal_verbs.py` | Strong causal verbs that may need claim calibration | AUDIT; POLISH Stage 4; REVIEW (Reviewer 2) |
 | `scripts/scan_ai_style_markers.py` | Lexical/structural/causal AI-generation markers | AUDIT & REVIEW (flag only); POLISH/SECTION/RESPOND/PACKAGE (scan before the decontamination pass) |
+| `scripts/check_writing_quality.py` | Aggregate writing-quality report: AI markers, punctuation, openers, structure, burstiness | WRITING_CHECK; optional AUDIT |
+| `scripts/check_sentence_burstiness.py` | Sentence-length variation and burstiness | WRITING_CHECK; POLISH/SECTION when prose feels over-smoothed |
+| `scripts/extract_references.py` | Heuristic extraction from BibTeX or reference lists | CITATION_AUDIT |
+| `scripts/extract_citation_contexts.py` | Citation-bearing sentence contexts for claim-citation alignment | CITATION_AUDIT; REVIEW when citation integrity is a concern |
+| `scripts/verify_references.py` | Offline structural reference audit; optional `--online` Crossref/OpenAlex/Semantic Scholar metadata check | CITATION_AUDIT |
 
-Usage: `python3 scripts/<name>.py <file>`, or pipe text via stdin. The scripts **locate candidates; they do not decide.** A flagged causal verb backed by a DiD design (e.g., Qu et al. 2026's identification strategy) is correct, and "leverage" inside a capital-structure sentence is correct. Always calibrate each hit against the relevant reference file (`ss_claim_evidence_matrix.md` for verbs, `ai_style_markers.md` for markers) before changing the text. The scripts narrow where to look; the reference files decide what to do.
+Usage: `python3 scripts/<name>.py <file>`, or pipe text via stdin. The scripts **locate candidates; they do not decide.** A flagged causal verb backed by a DiD design (e.g., Qu et al. 2026's identification strategy) is correct, and "leverage" inside a capital-structure sentence is correct. Reference verification scripts check metadata, not substantive claim support. Always calibrate each hit against the relevant reference file (`ss_claim_evidence_matrix.md` for verbs, `ai_style_markers.md` for markers, `citation_verification_protocol.md` and `claim_citation_alignment_protocol.md` for citations) before changing the text. The scripts narrow where to look; the reference files decide what to do.
 
 ---
 
@@ -76,6 +86,8 @@ These rules apply to **every mode** and cannot be relaxed by user request.
 11. **AI decontamination is mandatory for every produced output.** Every passage you generate in POLISH, SECTION, RESPOND, and PACKAGE mode must pass through the rules in `references/ai_style_markers.md` before being shown to the user. AUDIT and REVIEW modes flag AI markers in the user's existing text rather than rewrite. The decontamination must (a) preserve all statistical reports, variable names, hypothesis labels, citations, and theory-specific vocabulary verbatim, and (b) be reported in a dedicated `## AI decontamination` block in the output. If no markers triggered, issue an explicit pass signal — do not skip the block.
 12. **LLM-as-measurement audits use `references/gpt_measurement_validation.md`.** When the method tier is archival/text/AI/experiment-with-LLM-coding and the user supplies methods or results material, every audit or review that touches measurement must apply the eight-dimension scorecard from that file. Do not estimate validation metrics the manuscript does not report. (Kanis et al. 2026 use three LLMs with Krippendorff's α = 0.89 against human coders — treat this as a strong recent SS benchmark, not as an official universal cutoff.)
 13. **Theory-forward calibration.** SS is more theory-forward than JBR/SMJ. A pure-empirical paper without a clear theoretical movement (Clough 2026 is pure theory; Kanis/Qu/Asghar are empirical but each names a specific theoretical extension) will not survive SS review. Always check whether the contribution is a *theoretical movement* (extension, integration, reconciliation, boundary refinement, mechanism specification) — not merely "we find X in setting Y."
+14. **Citation support requires evidence, not memory.** In CITATION_AUDIT and REVIEW, never decide that a source supports a claim from model memory. Use user-provided PDFs, excerpts, notes, quote anchors, page/section/paragraph locators, or deterministic metadata checks. If the locator is missing, mark support as `UNKNOWN` and request `[LOCATOR NEEDED]`.
+15. **Writing-quality checks are diagnostic unless explicitly routed to a rewrite mode.** WRITING_CHECK reports line-level risks and suggested actions but does not rewrite text. If the user asks both "check" and "rewrite," run WRITING_CHECK first, then POLISH/SECTION only after reporting the risks.
 
 ---
 
@@ -96,6 +108,8 @@ Before doing any POLISH, AUDIT, REVIEW, SECTION, PACKAGE, or RESPOND work, confi
 | Uses LLM (GPT/Claude/Gemini/Mistral) as a measurement or coding instrument? | POLISH, AUDIT, REVIEW, SECTION (method/results), RESPOND | Triggers gpt_measurement_validation.md scorecard |
 | Pre-registration filed (aspredicted.org, OSF)? | POLISH, AUDIT, REVIEW (if experiment) | SS experiments increasingly cite pre-registration (Kanis et al. 2026) |
 | IRB approval reference | POLISH, AUDIT, PACKAGE (if human subjects) | INFORMS requires explicit IRB statement |
+| Reference list / BibTeX / literature matrix | CITATION_AUDIT, REVIEW when citation integrity is scored | Needed for existence and metadata checks |
+| Source locators (quotes, pages, sections, paragraphs, annotated notes) | CITATION_AUDIT | Needed to judge whether citations support claims; absence becomes `UNKNOWN`, not a guessed judgment |
 
 For POLISH, SECTION, PACKAGE, and RESPOND, if two or more required fields are missing, halt and list the missing items in a single message. For AUDIT and REVIEW, do not halt solely because the full manuscript is unavailable. Instead run the highest feasible level and label the confidence:
 
@@ -106,11 +120,75 @@ For POLISH, SECTION, PACKAGE, and RESPOND, if two or more required fields are mi
 - `STANDARD_REVIEW`: abstract + introduction + theory/method excerpt; simulate targeted AE and reviewer risks.
 - `FULL_REVIEW`: complete manuscript; simulate full AE + Reviewer 1/2/3 reports.
 
+For CITATION_AUDIT, do not halt solely because online metadata checks are unavailable. Run the offline audit, label external statuses `NOT_CHECKED`, and tell the user what would require network or manual verification.
+
 ---
 
 ## Output Contracts
 
 Each mode has a fixed output schema. Do not deviate.
+
+### WRITING_CHECK output
+
+```
+## Writing Quality Report
+Scope: ABSTRACT / INTRODUCTION / FULL MANUSCRIPT / EXCERPT
+Confidence: LOW / MEDIUM / HIGH
+
+## Overall risk
+AI-style risk: LOW / MEDIUM / HIGH
+Readability risk: LOW / MEDIUM / HIGH
+SS positioning risk from prose alone: LOW / MEDIUM / HIGH
+
+## Mechanical summary
+| Check | Count / value | Risk | Action |
+|---|---:|---|---|
+| AI high-frequency terms | ... | ... | ... |
+| Em dashes | ... | ... | ... |
+| Throat-clearing openers | ... | ... | ... |
+| Structural templates | ... | ... | ... |
+| Sentence-length variation | ... | ... | ... |
+
+## Line-level flags
+- [line/paragraph]: "..." - rule - severity - suggested action
+
+## Protected terms preserved
+- "..." - reason
+
+## Do-not-rewrite notice
+This is a diagnostic report. No manuscript text has been rewritten.
+```
+
+### CITATION_AUDIT output
+
+```
+## Citation Audit Level
+REFERENCE_ONLY / CLAIM_CONTEXT / FULL_ALIGNMENT
+Confidence: LOW / MEDIUM / HIGH
+Missing inputs that would change the judgment: ...
+
+## Reference existence report
+| Reference | Crossref | OpenAlex | Semantic Scholar | DOI match | Title similarity | Metadata risk | Action |
+|---|---|---|---|---|---:|---|---|
+| ... | MATCHED / WEAK_MATCH / ERROR / NOT_CHECKED | ... | ... | true/false | ... | LOW / MEDIUM / HIGH | ... |
+
+## Claim-Citation Alignment Audit
+| Claim | Citation | Exists? | Locator? | Supports claim? | Risk | Action |
+|---|---|---|---|---|---|---|
+| ... | ... | YES / NO / NOT_CHECKED | YES / NO | SUPPORTS / PARTIAL / BACKGROUND_ONLY / CONTRADICTS / UNKNOWN | LOW / MEDIUM / HIGH | keep / narrow / move / replace / delete / add_locator / add_citation |
+
+## High-risk citations
+- [claim/citation]: issue -> action
+
+## Missing locators
+- [citation]: [LOCATOR NEEDED: quote / page / section / paragraph]
+
+## Missing citations
+- [claim]: [CITATION NEEDED: ...]
+
+## Evidence limits
+- State what was not supplied and how that limits confidence.
+```
 
 ### POLISH output
 
@@ -151,10 +229,11 @@ Preserved markers (with reason):
 - Flagged [CITATION NEEDED] / [STAT NEEDED] / [MEASUREMENT EVIDENCE NEEDED]: ...
 
 ## Quality score
+SS fit: __/20
 Theoretical contribution & movement: __/25
 Method-claim alignment: __/25
-Argument spine coherence: __/25
-SS fit & INFORMS format: __/25
+Writing and positioning: __/15
+Citation integrity: __/15
 TOTAL: __/100  (≥80 = ready for next pass; ≥90 = submission-ready)
 
 ## AI-use disclosure reminder
@@ -196,6 +275,20 @@ QUICK_REVIEW / STANDARD_REVIEW / FULL_REVIEW
 Confidence: LOW / MEDIUM / HIGH
 Missing inputs that would change the judgment: ...
 
+## Review Contract
+Scope: QUICK_REVIEW / STANDARD_REVIEW / FULL_REVIEW
+Method tier: archival / survey / experiment / formal theory / computational / qual case / mixed / meta / unknown
+Weights:
+- SS fit: __/20
+- Theoretical movement: __/25
+- Method-claim alignment: __/25
+- Writing and positioning: __/15
+- Citation integrity: __/15
+Fatal flaws declared before paper-visible review:
+- ...
+Evidence needed:
+- ...
+
 ## Simulated editorial decision
 Desk reject / Send out for review / Major revision risk / Minor revision risk
 
@@ -220,6 +313,32 @@ LLM-measurement scorecard (if applicable; see gpt_measurement_validation.md):
 Major concerns (theoretical movement clarity, AI-marker concerns when systemic):
 Minor concerns:
 Required revision:
+
+## Devil's Advocate Review
+P0 fatal issues:
+P1 major issues:
+P2 polish:
+Strongest rejection argument:
+
+## Editorial Synthesis
+Decision simulation:
+- Desk reject risk: HIGH / MEDIUM / LOW
+- Review probability: HIGH / MEDIUM / LOW
+- Revision burden: LIGHT / MODERATE / HEAVY
+
+Score:
+- SS fit: __/20
+- Theoretical movement: __/25
+- Method-claim alignment: __/25
+- Writing and positioning: __/15
+- Citation integrity: __/15
+- Total: __/100
+
+Decision mapping:
+≥85: submission-ready after light polish
+75–84: promising but needs one focused revision
+60–74: major pre-submission revision needed
+<60: not ready for Strategy Science
 
 ## Pre-submission revision priority
 1. Must fix before submission
@@ -269,16 +388,19 @@ Level: SURGICAL / MODERATE / SYSTEMIC / PASS
 
 ## Companion subagents (Claude Code only)
 
-Two companion subagents ship with this skill in `subagents/`. They are SS-specific and can be invoked **standalone** outside the skill, or routed to **automatically** from the appropriate modes.
+Five companion subagents ship with this skill in `subagents/`. They are SS-specific and can be invoked **standalone** outside the skill, or routed to **automatically** from the appropriate modes.
 
 | Subagent | When to invoke | Mode that auto-routes |
 |---|---|---|
 | `ss-ai-decontaminator` | Remove AI-generation markers from a passage of strategy-research prose. Surgical restraint — passes clean text through unchanged. Preserves SS-specific theory vocabulary (mental representations, cognitive flexibility, governance, ecosystem, foresight, etc.) verbatim. | POLISH, SECTION, RESPOND, PACKAGE — runs on every rewritten passage |
 | `ss-llm-measurement-auditor` | Audit an LLM-as-measurement or LLM-as-coder design (prompt hygiene, multi-LLM consistency à la Kanis et al., Krippendorff α, sensitivity, reporting) before SS submission or in R&R. | AUDIT (when method tier uses LLM measurement/coding), REVIEW (Reviewer 2: Method and Evidence) |
+| `ss-claim-citation-auditor` | Audit whether manuscript claims are supported by the cited sources, with separate checks for reference existence, locator anchors, and claim support. | CITATION_AUDIT; REVIEW when citation integrity is scored |
+| `ss-devils-advocate-reviewer` | Attack the paper's strongest desk-reject path: SS misfit, weak theoretical movement, overclaiming, AI-style prose, or citation fragility. | REVIEW after the main reviewer reports |
+| `ss-editorial-synthesizer` | Aggregate AE/reviewer/devil's-advocate/citation/writing findings into a weighted editorial verdict. Does not introduce new objections. | REVIEW final synthesis |
 
 **Installation note for Claude Code users:** copy or symlink `strategy-science-submission-assistant/subagents/*.md` into your project's `.claude/agents/` directory so Claude Code can route to them by description match. The skill's modes continue to work without the subagents — they call the same logic inline via `references/ai_style_markers.md` and `references/gpt_measurement_validation.md`. The subagents exist for users who want each capability available as a standalone routable specialist.
 
-**Portability note for Claude API and other runners:** the skill is fully self-contained. The subagents are an optional convenience for Claude Code; in API contexts the skill performs the same decontamination and measurement-audit work inline.
+**Portability note for Claude API and other runners:** the skill is fully self-contained. The subagents are an optional convenience for Claude Code; in API contexts the skill performs the same decontamination, measurement-audit, citation-audit, devil's-advocate, and synthesis work inline.
 
 ---
 
@@ -286,6 +408,7 @@ Two companion subagents ship with this skill in `subagents/`. They are SS-specif
 
 - Generic English proofreading divorced from SS fit. Use a dedicated proofreader.
 - Literature search or new citation discovery. The user supplies the bibliography.
+- Claim-citation support judgments from memory. The user supplies source locators or excerpts.
 - Statistical re-analysis or re-running models. The user supplies all numbers.
 - Recommending other journals as a primary task (only as an exit ramp when SS fit is clearly weak; alternates include SMJ, Organization Science, AMJ, AMD, JBR, JoM).
 - Bypassing SS/INFORMS policies (disclosure requirements, blinding, etc.) at user request.
@@ -301,6 +424,11 @@ Two companion subagents ship with this skill in `subagents/`. They are SS-specif
 SKILL.md                                ← you are here (always loaded)
 references/
   ss_polishing_pipeline.md              ← POLISH mode primary workflow
+  writing_quality_check.md              ← WRITING_CHECK aggregate prose QA
+  citation_verification_protocol.md     ← CITATION_AUDIT metadata/existence
+  claim_citation_alignment_protocol.md  ← CITATION_AUDIT claim support rules
+  ss_review_contract_protocol.md        ← REVIEW pre-commitment and scoring
+  literature_corpus_entry.schema.json   ← Optional local literature matrix schema
   ss_section_rewrite_playbook.md        ← per-section rewriting templates
   ss_house_style.md                     ← SS voice, INFORMS norms, sentence-level
   ss_claim_evidence_matrix.md           ← anti-overclaim calibration table
@@ -334,18 +462,34 @@ subagents/
   ss-llm-measurement-auditor.md         ← Claude Code subagent for LLM-as-
                                           measurement validation (companion to
                                           AUDIT/REVIEW when method tier uses LLM)
+  ss-claim-citation-auditor.md          ← Claude Code subagent for claim-
+                                          citation alignment and locator checks
+  ss-devils-advocate-reviewer.md        ← Claude Code subagent for adversarial
+                                          SS desk-reject risk review
+  ss-editorial-synthesizer.md           ← Claude Code subagent for final weighted
+                                          editorial synthesis
 scripts/                                ← run these; see "Deterministic checks"
   check_abstract_word_count.py          ← mechanical SS abstract-length check
   check_keywords_count.py               ← mechanical 3-10 keyword check
   scan_causal_verbs.py                  ← causal-language calibration scan
   scan_ai_style_markers.py              ← mechanical AI-marker scanner
                                           (lexical + structural + causal)
+  check_writing_quality.py              ← WRITING_CHECK aggregate controller
+  check_sentence_burstiness.py          ← sentence-length variation measure
+  extract_references.py                 ← BibTeX/reference-list extractor
+  extract_citation_contexts.py          ← citation-bearing claim contexts
+  verify_references.py                  ← offline/optional online metadata check
 agents/
   openai.yaml                           ← runner-side config (not a Claude
                                           Code subagent; this is the OpenAI
                                           agent runner manifest)
 evals/                                  ← trigger and behavior eval prompts
   evals.json
+  writing_quality_cases.yaml
+  citation_audit_cases.yaml
+  review_contract_cases.yaml
+tests/
+  fixtures/                             ← tiny script smoke-test fixtures
 ```
 
 > **Note on `agents/` vs `subagents/`:** `agents/openai.yaml` is the runner manifest for the OpenAI agent platform — it is **not** a Claude Code subagent. The Claude Code subagents live in `subagents/`. The two folders have unrelated purposes and use different file formats.

@@ -1,15 +1,7 @@
-name: strategy-science-submission-assistant
-description: ...
-entrypoint: SKILL.md
-tools:
-  - scripts/check_abstract_word_count.py
-  - scripts/check_keywords_count.py
-  - scripts/scan_causal_verbs.py
-  - scripts/scan_ai_style_markers.py
-modes:
-  - POLISH
-  - AUDIT
-  - REVIEW
-  - SECTION
-  - PACKAGE
-  - RESPOND
+interface:
+  display_name: "Strategy Science Submission Assistant"
+  short_description: "Strategy Science / INFORMS writing QA, citation audit, review simulation, rewrite, and submission QA"
+  default_prompt: "Use $strategy-science-submission-assistant to diagnose, run a writing-quality check, audit citations, simulate Strategy Science reviewers for, or revise my manuscript; I will provide the target issue (regular or special issue), submission stage, method tier (archival / experiment / formal theory / etc.), draft text, references/source locators, or reviewer comments."
+
+policy:
+  allow_implicit_invocation: true

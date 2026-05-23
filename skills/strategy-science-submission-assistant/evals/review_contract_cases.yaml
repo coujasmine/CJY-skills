@@ -1,0 +1,22 @@
+version: 2026-05-23
+skill: strategy-science-submission-assistant
+cases:
+  - id: review_contract_before_review
+    prompt: "Simulate Strategy Science reviewers for this paper."
+    expected:
+      mode: REVIEW
+      required_blocks:
+        - Review Contract
+        - Paper-visible review
+        - Editorial Synthesis
+  - id: review_weighted_score
+    prompt: "Give me a Strategy Science pre-submission review board verdict."
+    expected:
+      mode: REVIEW
+      rubric:
+        ss_fit: 20
+        theoretical_movement: 25
+        method_claim_alignment: 25
+        writing_positioning: 15
+        citation_integrity: 15
+

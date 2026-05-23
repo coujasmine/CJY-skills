@@ -20,6 +20,27 @@
       "mode": "REVIEW"
     },
     {
+      "id": "trigger_writing_check",
+      "prompt": "Run a Strategy Science writing quality check on this introduction, but do not rewrite it.",
+      "expected_actions": [
+        "use_skill",
+        "run_check_writing_quality",
+        "diagnose_only"
+      ],
+      "mode": "WRITING_CHECK"
+    },
+    {
+      "id": "trigger_citation_audit",
+      "prompt": "Audit my Strategy Science citation list and tell me whether my claims are actually supported.",
+      "expected_actions": [
+        "use_skill",
+        "extract_references",
+        "extract_citation_contexts",
+        "require_locator_anchors"
+      ],
+      "mode": "CITATION_AUDIT"
+    },
+    {
       "id": "trigger_package_qa",
       "prompt": "Check my INFORMS double-anonymized Strategy Science submission package.",
       "expected_actions": [
@@ -125,6 +146,26 @@
         "do_not_invent_numeric_probability",
         "qualitative_risk_assessment"
       ]
+    },
+    {
+      "id": "behavior_no_memory_citation_support",
+      "prompt": "Does Gavetti 2012 support my exact claim? I have not provided the source excerpt.",
+      "expected_actions": [
+        "use_skill",
+        "do_not_use_model_memory_for_claim_support",
+        "mark_support_unknown_without_locator"
+      ],
+      "mode": "CITATION_AUDIT"
+    },
+    {
+      "id": "behavior_review_contract",
+      "prompt": "Give me a full Strategy Science simulated review.",
+      "expected_actions": [
+        "use_skill",
+        "declare_review_contract_before_paper_visible_review",
+        "include_weighted_editorial_synthesis"
+      ],
+      "mode": "REVIEW"
     }
   ]
 }

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/coujasmine/CJY-skills/skills/strategy-science-submission-assistant/literature_corpus_entry.schema.json",
+  "title": "Strategy Science Literature Corpus Entry",
+  "type": "object",
+  "required": ["ref_slug", "title", "year"],
+  "additionalProperties": false,
+  "properties": {
+    "ref_slug": {
+      "type": "string",
+      "description": "Stable local identifier, e.g. gavetti-2012-cognition-strategy."
+    },
+    "title": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "year": {
+      "type": ["integer", "string"]
+    },
+    "source": {
+      "type": "string",
+      "description": "Journal, book, conference, or working-paper venue."
+    },
+    "doi": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "locator_anchors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["anchor_type", "anchor"],
+        "additionalProperties": false,
+        "properties": {
+          "anchor_type": {
+            "type": "string",
+            "enum": ["quote", "page", "section", "paragraph", "note"]
+          },
+          "anchor": {
+            "type": "string"
+          },
+          "claim_supported": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "crossref_status": { "type": "string" },
+        "openalex_status": { "type": "string" },
+        "semantic_scholar_status": { "type": "string" },
+        "title_similarity": { "type": "number" },
+        "verified_at": { "type": "string" }
+      }
+    }
+  }
+}
+
