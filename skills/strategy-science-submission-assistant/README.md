@@ -2,23 +2,7 @@
 
 这是一个面向 **Strategy Science (INFORMS)** 投稿的专项 skill，不是泛用论文润色器。它的目标是把论文送审前最容易被 Strategy Science 编辑和审稿人抓住的问题提前暴露出来：理论贡献是否够 sharp，方法和 claim 是否对齐，AI 风格是否明显，引用是否真实且支持 claim，投稿包是否符合 INFORMS 要求。
 
-## 这次优化是否必要
 
-必要，但不应该把它改成通用论文工厂。
-
-更合理的定位是：保持 Strategy Science 专项判断力，同时增加三个工程化质量闸门。
-
-1. **WRITING_CHECK**
-   - 只检查，不改写。
-   - 用于 AI-style marker、破折号/开头套话、三段式贡献、句长单调等写作风险。
-
-2. **CITATION_AUDIT**
-   - 检查 reference 是否存在、citation 是否有 locator、claim 是否真的被 citation 支持。
-   - 原则是：没有 source excerpt / quote / page / section anchor，就不凭模型记忆判断支持关系。
-
-3. **Calibrated REVIEW**
-   - 从三位 reviewer 模拟升级为带 review contract 的 Strategy Science review board。
-   - 新 rubric: SS fit 20 + theoretical movement 25 + method-claim alignment 25 + writing/positioning 15 + citation integrity 15。
 
 ## 功能模式
 
