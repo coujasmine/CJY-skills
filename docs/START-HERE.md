@@ -29,7 +29,7 @@
 回答的是：你长期知道什么、积累了什么、接下来可以做什么。
 
 ### `skills/`
-回答的是：当你拿到论文草稿、摘要、理论部分、方法结果时，应该如何诊断和改写。
+回答的是：当你处于具体的研究阶段（评 idea、做研究设计、投稿前润色、转 Word 排版）时，应该如何按目标期刊或上游环节去诊断、改写、打包。目前 4 个 skill：`utd24-proposal-optimizer`（上游）、`jbr-submission-assistant`、`strategy-science-submission-assistant`、`markdown-word`。
 
 ## 推荐的使用顺序
 

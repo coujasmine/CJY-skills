@@ -37,12 +37,17 @@
 - `11_复盘与成长`：导师反馈、月度复盘、拒稿经验
 
 ### `skills/`
-放可直接调用的“论文专家”技能。
+放可直接调用的“论文专家”技能。目前 4 个 skill，按使用阶段分两类：
 
-使用原则：
-- 整篇稿件：优先 `ft50-paper-master`
-- 单独 part：按 `ft50-part-*` 找对应模块
-- 最后统一语言润色：`ft50-academic-english-polish`
+**上游研究向**
+- `utd24-proposal-optimizer` — idea / design / proposal 阶段优化，针对 UTD24（SMJ、AMJ、ASQ、OS、MS strategy/innovation/entrepreneurship、AMR）
+
+**期刊投稿向**
+- `jbr-submission-assistant` — 投 Journal of Business Research 时润色 / 审查 / 模拟评审 / AI 风格去除 / 投稿包打包
+- `strategy-science-submission-assistant` — 投 Strategy Science 时的同类工具
+- `markdown-word` — Markdown → Word 投稿格式排版（已支持 JBR、Strategy Science、generic 模板）
+
+详细 mode、subagent、调用顺序见 `docs/SKILLS-INDEX.md`。
 
 ### `assets/source-materials/`
 放原始手册、抽取文本和不适合作为日常入口的底层资料。

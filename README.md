@@ -41,8 +41,11 @@
 ### 3. 推进单个论文项目
 `knowledge-base/09_项目库/` -> `knowledge-base/07_论文写作库/` -> `skills/`
 
-### 4. 修改或诊断论文
-`skills/ft50-paper-master/` 为总入口，其他 `ft50-part-*` 负责分部件处理。
+### 4. 推进 / 投稿一篇论文
+- 上游（idea / design / proposal 阶段）：`skills/utd24-proposal-optimizer/`
+- 投 JBR：`skills/jbr-submission-assistant/`
+- 投 Strategy Science：`skills/strategy-science-submission-assistant/`
+- 转 Word、按期刊格式排版：`skills/markdown-word/`
 
 ## 目录定位
 
