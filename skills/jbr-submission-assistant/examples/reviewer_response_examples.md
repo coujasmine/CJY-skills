@@ -1,3 +1,12 @@
+---
+file: reviewer_response_examples.md
+purpose: >
+  Short worked examples of reviewer-response tone and structure (clarifying
+  theory, softening causal language, partial adoption). Used in RESPOND mode
+  alongside cover_letter_and_response.md.
+last_verified: 2026-05-17
+---
+
 # Reviewer Response Examples
 
 Use these examples for tone and structure.

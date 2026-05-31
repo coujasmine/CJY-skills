@@ -34,6 +34,11 @@ Then classify what is supplied:
 
 Run `references/jbr_desk_reject_triggers.md` as a fast hard-check. Any single trigger fires → escalate to user immediately.
 
+Run the mechanical checks with the bundled scripts rather than estimating by eye — a 154-word abstract looks fine but trips a HIGH trigger:
+
+- `python3 scripts/check_abstract_word_count.py <abstract>` — abstract ≤ 150 words
+- `python3 scripts/check_keywords_count.py "<kw1; kw2; …>"` — 4–6 keywords
+
 Common triggers:
 - Abstract > 150 words or < 100 words
 - Manuscript > 45 double-spaced pages (full submission)
@@ -107,7 +112,7 @@ For each weak hypothesis, propose a rewrite that adds the missing element (mecha
 
 Use `references/jbr_claim_evidence_matrix.md` to verify each claim is matched to its design's claim-strength ceiling.
 
-For every causal-sounding verb in the manuscript (causes, leads to, produces, drives, generates, results in, makes, gives rise to), check the design row in the matrix. If the design does not support the verb, propose a softened verb (associated with, predicts, is linked to, conditional on, consistent with).
+Run `python3 scripts/scan_causal_verbs.py <manuscript>` first so no causal verb is missed in a manual sweep. For every verb the scan flags (causes, leads to, produces, drives, generates, results in, enables, determines, demonstrates), check the design row in the matrix. The scan only locates candidates — a verb backed by credible identification (DiD, IV, RDD, experiment) is correct and should be kept. If the design does not support the verb, propose a softened verb (associated with, predicts, is linked to, conditional on, consistent with).
 
 Other method checks (see `references/jbr_method_checklists.md`):
 - Construct definitions precede measures
@@ -173,6 +178,11 @@ Verify (see `references/jbr_disclosures_2024.md` and `references/jbr_scope_and_f
 - Title page separate, with full author info
 - Figures/tables placed per JBR convention
 - Keywords: 4–6, mapped to JBR's audience
+
+Re-run the two mechanical scripts on the final draft so the format checklist reflects the polished text, not the intake draft:
+
+- `python3 scripts/check_abstract_word_count.py <final abstract>`
+- `python3 scripts/check_keywords_count.py "<final keywords>"`
 
 **Gate:** A "Disclosure & Format Checklist" is produced with status (✓ ready / ✗ missing) for each item.
 

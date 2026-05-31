@@ -19,6 +19,24 @@ The roster below intentionally covers method × topic diversity so that polishin
 
 ---
 
+## Contents
+
+- **Source paper roster** — the five tagged JBR articles [P1]–[P5]
+- **Section 1 — Introduction patterns** (Patterns 1.1–1.4)
+- **Section 2 — Theoretical framework patterns** (Patterns 2.1–2.3)
+- **Section 3 — Hypothesis statement patterns** (Patterns 3.1–3.3)
+- **Section 4 — Method section patterns** (Patterns 4.1–4.4)
+- **Section 5 — Results section patterns** (Patterns 5.1–5.4)
+- **Section 6 — Discussion section patterns** (Patterns 6.1–6.5)
+- **Section 7 — Disclosure patterns** (Patterns 7.1–7.4)
+- **Section 8 — Cross-method synthesis** — which paper to use as a model for each design
+- **Section 9 — Cross-paper structural commonalities** — the 20-invariant "JBR shape" checklist
+- **How this file is used** — per-mode loading guidance
+
+When polishing or auditing a specific section, jump to the matching Section above; for a structural audit, go straight to Section 9.
+
+---
+
 ## Source paper roster
 
 | Tag | Citation | Method tier | Topic |

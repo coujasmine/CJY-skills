@@ -1,3 +1,16 @@
+---
+file: jbr_scope_and_format.md
+purpose: >
+  JBR scope-fit tests, formatting limits (page/abstract/keyword), blinding
+  requirements, and special-issue fit checks. Used in AUDIT, PACKAGE, and
+  POLISH Stage 1 & 7.
+last_verified: 2026-05-17
+note: >
+  Elsevier journal pages and submission portals change. If last_verified is
+  more than 6 months before the submission date, re-check the official Guide
+  for Authors linked below.
+---
+
 # JBR Scope and Format
 
 Source note: Based on Elsevier ScienceDirect's Journal of Business Research Guide for Authors checked on 2026-05-17. Verify the current official guide before final submission because journal pages and submission systems can change.

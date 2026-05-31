@@ -98,6 +98,14 @@ If **any** HIGH trigger fires, surface it at the top of the verdict block. Polis
 2. **POLISH mode**: run at Stage 1; surface HIGH triggers at the top of the output; continue polish but flag.
 3. Do **not** invent a desk-reject reason that is not on this list. If you spot a likely issue not covered, raise it as "Potential issue (not on standard checklist)" so the user can judge.
 
+### Run the bundled scripts for the mechanical triggers
+
+Triggers B1, B3, and E1 are countable — do not eyeball them. Run the scripts and quote their output in the verdict:
+
+- B1 (abstract length): `python3 scripts/check_abstract_word_count.py <abstract>`
+- B3 (keyword count): `python3 scripts/check_keywords_count.py "<kw1; kw2; …>"`
+- E1 (causal verbs in observational designs): `python3 scripts/scan_causal_verbs.py <manuscript>` — then confirm each hit against `jbr_claim_evidence_matrix.md`; a causal verb is only a trigger when the design cannot support it.
+
 ---
 
 ## Severity grading rubric for the AUDIT score

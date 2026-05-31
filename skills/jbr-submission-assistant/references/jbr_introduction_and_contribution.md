@@ -1,3 +1,12 @@
+---
+file: jbr_introduction_and_contribution.md
+purpose: >
+  Standards for title, abstract, introduction, theory positioning, contribution
+  typing, and discussion. Used in POLISH Stage 3 and in SECTION-mode rewrites of
+  intro/abstract/discussion.
+last_verified: 2026-05-17
+---
+
 # JBR Introduction and Contribution
 
 Use this reference for title, abstract, introduction, theory contribution, and discussion work.

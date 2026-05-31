@@ -206,6 +206,8 @@ If any check fails, revert and try again. A partial decontamination with intact 
 
 ## 7. How modes use this file
 
+Before applying this catalog by hand, run `python3 scripts/scan_ai_style_markers.py <text>` to get a fast, complete list of lexical/structural/causal marker candidates with line numbers. The scan is a locator, not a decision-maker: it cannot tell whether "leverage" is financial-leverage usage or AI filler. Use its output to target the manual pass described below; the catalog and the protected-zone rules in §4 decide what actually changes.
+
 - **POLISH mode**: load this file before producing the AFTER block. Every AFTER passage is decontaminated before being shown to the user.
 - **SECTION mode**: same as POLISH, but only the targeted section.
 - **RESPOND mode**: applies to the response letter prose and any revised manuscript passages mentioned in the response.

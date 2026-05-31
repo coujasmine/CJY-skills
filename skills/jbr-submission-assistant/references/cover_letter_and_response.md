@@ -1,3 +1,11 @@
+---
+file: cover_letter_and_response.md
+purpose: >
+  Templates and principles for JBR cover letters and point-by-point reviewer
+  response letters. Used in PACKAGE and RESPOND modes.
+last_verified: 2026-05-17
+---
+
 # Cover Letter and Response Letter
 
 Use this reference for JBR cover letters, reviewer responses, and submission-package language.

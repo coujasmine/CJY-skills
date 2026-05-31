@@ -1,3 +1,13 @@
+---
+file: jbr_method_checklists.md
+purpose: >
+  Per-method-tier evaluation criteria (archival/survey, experiment, qualitative,
+  review, conceptual, mixed) plus claim-evidence calibration. Used in POLISH
+  Stage 4 and REVIEW mode (Reviewer 2). Routes archival/panel designs to
+  methods/archival_panel_checklist.md.
+last_verified: 2026-05-17
+---
+
 # JBR Method Checklists
 
 Use this reference for methods, results, robustness, and claim-evidence alignment.

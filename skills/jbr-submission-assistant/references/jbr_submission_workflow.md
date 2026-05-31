@@ -1,3 +1,12 @@
+---
+file: jbr_submission_workflow.md
+purpose: >
+  Eight-stage submission process for a full or near-full JBR draft, from
+  manuscript audit through final package QA. Used in AUDIT mode and as the
+  process backbone behind POLISH.
+last_verified: 2026-05-17
+---
+
 # JBR Submission Workflow
 
 Use this sequence for manuscripts that already have a full or near-full draft and need to become submission-ready.

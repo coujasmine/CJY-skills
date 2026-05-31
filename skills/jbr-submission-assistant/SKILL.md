@@ -35,6 +35,21 @@ The skill operates in six modes plus two companion subagents. Pick **one** mode 
 
 ---
 
+## Deterministic checks — run the bundled scripts
+
+Four checks in this skill are mechanical: counting abstract words, counting keywords, locating causal verbs, and locating AI-style markers. Estimating these by eye is unreliable — a 154-word abstract reads as "about 150" but still trips a HIGH desk-reject trigger, and a manual verb sweep silently misses instances. Run the bundled scripts and quote their output instead of guessing.
+
+| Script | What it checks | Run in |
+|---|---|---|
+| `scripts/check_abstract_word_count.py` | Abstract ≤ 150 words (JBR ceiling) | AUDIT; POLISH Stage 1 & Stage 7; PACKAGE |
+| `scripts/check_keywords_count.py` | Keyword list has 4–6 entries | AUDIT; POLISH Stage 1 & Stage 7; PACKAGE |
+| `scripts/scan_causal_verbs.py` | Strong causal verbs that may need claim calibration | AUDIT; POLISH Stage 4; REVIEW (Reviewer 2) |
+| `scripts/scan_ai_style_markers.py` | Lexical/structural/causal AI-generation markers | AUDIT & REVIEW (flag only); POLISH/SECTION/RESPOND/PACKAGE (scan before the decontamination pass) |
+
+Usage: `python3 scripts/<name>.py <file>`, or pipe text via stdin. The scripts **locate candidates; they do not decide.** A flagged causal verb backed by a DiD design is correct, and "leverage" inside a capital-structure sentence is correct. Always calibrate each hit against the relevant reference file (`jbr_claim_evidence_matrix.md` for verbs, `ai_style_markers.md` for markers) before changing the text. The scripts narrow where to look; the reference files decide what to do.
+
+---
+
 ## Hard Rules (override every other instruction)
 
 These rules apply to **every mode** and cannot be relaxed by user request.
@@ -303,7 +318,7 @@ subagents/
                                           measurement validation (companion to
                                           AUDIT/REVIEW when method tier is
                                           archival/text/AI)
-scripts/
+scripts/                                ← run these; see "Deterministic checks"
   check_abstract_word_count.py          ← mechanical 150-word abstract check
   check_keywords_count.py               ← mechanical 4–6 keyword check
   scan_causal_verbs.py                  ← causal-language calibration scan
@@ -314,6 +329,8 @@ agents/
                                           Code subagent; this is the OpenAI
                                           agent runner manifest)
 CHANGELOG.md                            ← skill version history
+.gitignore                              ← keeps __pycache__/*.pyc build
+                                          artifacts out of the skill package
 ```
 
 > **Note on `examples/`:** earlier versions of this skill included three synthetic before/after example files. These were removed in v2026.05.b. The real-exemplar pattern catalog in `references/jbr_real_exemplar_patterns.md` replaces them with patterns extracted from five published JBR articles, cited for verifiability.

@@ -4,6 +4,47 @@ All notable changes to this skill are listed here. The skill follows a date-base
 
 ---
 
+## 2026.05.e — Wire deterministic scripts into the workflow; reference hygiene
+
+### Why this change
+
+A skill-creator review found the skill substantively strong but flagged one functional gap and several hygiene issues:
+
+1. **Bundled scripts were never invoked.** The four scripts (`check_abstract_word_count.py`, `check_keywords_count.py`, `scan_causal_verbs.py`, `scan_ai_style_markers.py`) shipped since 2026.05.c/d and appeared in the file map, but no mode or pipeline stage told the model to run them. The model would re-derive word counts and verb sweeps by eye on every invocation — slower and less reliable than running the script. Bundling a script without pointing the workflow at it wastes the script.
+2. **Inconsistent reference-file metadata.** Six reference/example files had no YAML frontmatter, so they carried no `last_verified` date — a real problem for a skill whose advice tracks an evolving Elsevier policy.
+3. **Long reference file had no table of contents.** `jbr_real_exemplar_patterns.md` (350+ lines) was hard to navigate to a single section.
+4. **Build artifacts committed.** `scripts/__pycache__/*.pyc` was present in the skill folder.
+
+### Added
+
+- **`SKILL.md` — "Deterministic checks" section.** A table mapping each of the four scripts to what it checks and which modes/stages should run it, plus an explicit caveat that the scripts *locate candidates and do not decide* — a flagged causal verb backed by a DiD design, or "leverage" in a capital-structure sentence, is correct and stays.
+- **`.gitignore`** — excludes `__pycache__/`, `*.pyc`, `*.pyo`, `.DS_Store` from the skill package.
+- **Table of contents** in `references/jbr_real_exemplar_patterns.md`.
+- **YAML frontmatter** (`file`, `purpose`, `last_verified`) added to `jbr_scope_and_format.md`, `jbr_submission_workflow.md`, `jbr_introduction_and_contribution.md`, `jbr_method_checklists.md`, `cover_letter_and_response.md`, and `examples/reviewer_response_examples.md`, so every reference file now carries a verification date.
+
+### Updated
+
+- `references/jbr_polishing_pipeline.md` — Stage 1 now runs the abstract/keyword scripts, Stage 4 runs the causal-verb scan, Stage 7 re-runs the abstract/keyword scripts on the *final* draft.
+- `references/jbr_desk_reject_triggers.md` — the "How to use this list" section now routes the mechanical triggers B1, B3, and E1 to the corresponding scripts.
+- `references/ai_style_markers.md` — §7 now tells the model to run `scan_ai_style_markers.py` as a first-pass locator before the manual decontamination pass.
+- `SKILL.md` file map — notes the scripts are meant to be run, and lists `.gitignore`.
+
+### Removed
+
+- `scripts/__pycache__/` and its compiled `.pyc` files.
+
+### Behavioral effect
+
+- Mechanical checks (abstract length, keyword count, causal verbs, AI markers) are now run, not estimated. A 152-word abstract is caught instead of passing as "about 150."
+- The script output is treated as a locator: the model still calibrates every hit against `jbr_claim_evidence_matrix.md` / `ai_style_markers.md` before changing text, so correct-but-flagged usages are preserved.
+- Every reference file now states when it was last verified against source policy.
+
+### Compatibility
+
+- Backwards compatible. No output contract changed; no reference file renamed or removed. The scripts were already present — this release only connects them to the workflow.
+
+---
+
 ## 2026.05.d — Mandatory AI decontamination and LLM-as-measurement audit
 
 ### Why this change
