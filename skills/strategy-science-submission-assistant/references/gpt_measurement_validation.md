@@ -6,7 +6,7 @@ purpose: >
   approach (gpt-4.1, claude-opus-4-1-20250805, mistral-large-latest;
   Krippendorff α = 0.89 against human coders). Use this as a strong recent exemplar, not an official cutoff. Used in AUDIT and REVIEW modes
   whenever LLMs serve as measurement or coding instruments.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # LLM-as-Measurement Validation Scorecard for Strategy Science
@@ -191,7 +191,7 @@ Does NOT apply when:
 
 **What to check:**
 - Is the LLM use disclosed in the methods?
-- Is it disclosed in the AI-use disclosure statement (see `ss_disclosures.md`)?
+- Is it reported in the methods/appendixes and covered by an AI-use transparency statement if the portal, cover letter, editor, or funder requests one (see `ss_disclosures.md`)?
 - Are prompts in an appendix?
 - Is the validation procedure described in detail?
 - Are model versions named?
@@ -199,11 +199,11 @@ Does NOT apply when:
 
 **Failure modes:**
 - Methods section glosses over LLM use ("we coded the data using LLM-assisted classification")
-- No AI-use disclosure
+- No AI-use transparency language where requested, or no methods disclosure for LLM-as-measurement/coding
 - Prompts not shared
 - Generic model names without version pins
 
-**Strong SS precedent:** Kanis 2026 documents LLMs by name and version, includes the system prompt in Appendix A, reports the Krippendorff α, names the human-coder subset, and discloses LLM use in the methods and AI-use disclosure.
+**Strong SS precedent:** Kanis 2026 documents LLMs by name and version, includes the system prompt in Appendix A, reports the Krippendorff α, names the human-coder subset, and reports LLM use in the methods and transparency materials.
 
 **Status options:** ✓ Pass / ⚠ Weak (some elements documented; others missing) / ✗ Missing
 

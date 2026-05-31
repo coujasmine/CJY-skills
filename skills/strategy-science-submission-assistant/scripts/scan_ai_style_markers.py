@@ -63,6 +63,14 @@ LEXICAL_PATTERNS: list[tuple[str, str, str]] = [
     (r"\bcutting[- ]edge\b", "L1.1 cutting-edge", "new / recent"),
     (r"\bstate[- ]of[- ]the[- ]art\b", "L1.1 state-of-the-art", "current / leading"),
     (r"\bbreakthroughs?\b", "L1.1 breakthroughs", "advances"),
+    (r"\bmultifaceted\b", "L1.1 multifaceted", "specify the dimensions or delete"),
+    (r"\b(rich|valuable)\s+insights?\b", "L1.1 generic-insights", "name the finding or delete"),
+    (r"\bcomplex\s+interplay\b", "L1.1 complex-interplay", "specify the relationship"),
+    (r"\b(crucial|critical)\s+role\b", "L1.1 critical-role", "name the role/effect/mechanism or delete"),
+    (r"\bincreasingly\s+important\b", "L1.1 increasingly-important", "specify what changed or delete"),
+    (r"\bfertile\s+ground\b", "L1.1 fertile-ground", "use empirical context / setting"),
+    (r"\bfill(s|ed|ing)?\s+(an?\s+)?gap\b", "L1.1 fill-gap", "answer a question / test a mechanism / extend a lineage"),
+    (r"\bcontribute(s|d|ing)?\s+to\s+our\s+understanding\b", "L1.1 contribute-understanding", "specify the theoretical movement"),
     # Filler openers
     (r"\bIt\s+is\s+important\s+to\s+note\s+that\b", "L1.2 filler-opener", "delete and state the point directly"),
     (r"\bIt\s+is\s+worth\s+noting\s+that\b", "L1.2 filler-opener", "delete and state the point directly"),
@@ -71,11 +79,14 @@ LEXICAL_PATTERNS: list[tuple[str, str, str]] = [
     (r"\bIt\s+is\s+interesting\s+to\s+note\s+that\b", "L1.2 filler-opener", "delete and state the point directly"),
     (r"\bIn\s+recent\s+years,\s+there\s+has\s+been\s+growing\s+interest\s+in\b", "L1.2 filler-opener", "replace with the concrete phenomenon"),
     (r"\bIn\s+today'?s\s+rapidly\s+changing\s+business\s+environment\b", "L1.2 filler-opener", "delete entirely"),
+    (r"\bIn\s+an\s+era\s+(where|when|of)\b", "L1.2 filler-opener", "replace with the concrete change or setting"),
+    (r"\bAs\s+(organizations|firms|companies)\s+increasingly\b", "L1.2 filler-opener", "keep only if the trend is evidenced and necessary"),
     (r"\bAs\s+mentioned\s+earlier,\b", "L1.2 filler-opener", "delete; trust the reader"),
     (r"\bBuilding\s+on\s+the\s+above,\b", "L1.2 filler-opener", "delete; trust the structure"),
     (r"\bTo\s+put\s+it\s+simply,\b", "L1.2 filler-opener", "delete or rephrase"),
     (r"\bSimply\s+put,\b", "L1.2 filler-opener", "delete"),
     (r"^\s*(Furthermore|Moreover|Additionally),\s", "L1.2 transition-opener", "usually deletable; let the logic carry"),
+    (r"^\s*(Notably|Importantly|Crucially|Together),\s", "L1.2 adverb-opener", "vary repeated openers; use a subject-led sentence or delete"),
     # Vague attribution
     (r"\bvarious\s+studies\s+have\s+shown\b", "L1.4 vague-attribution", "cite specific studies or delete the framing"),
     (r"\bit\s+is\s+widely\s+accepted\s+that\b", "L1.4 vague-attribution", "cite or rephrase"),
@@ -88,6 +99,7 @@ LEXICAL_PATTERNS: list[tuple[str, str, str]] = [
     (r"\bappears\s+to\s+seemingly\b", "L1.3 hedge-stack", "use 'appears to' or 'seemingly,' not both"),
     (r"\bcould\s+potentially\s+be\s+considered\b", "L1.3 hedge-stack", "use 'may be'"),
     (r"\btends\s+to\s+typically\b", "L1.3 hedge-stack", "use 'typically'"),
+    (r"\bconsistent\s+with\s+(the|our)\s+[^.]{1,80}?\s+logic\b", "L1.3 repeated-logic-formula", "do not repeat for every interaction; vary the evidentiary move"),
     # LLM anthropomorphizing (SS-specific concern)
     (r"\bthe\s+(llm|ai|model|algorithm)\s+(understands|understood|knows|knew|decides|decided|believes|believed|thinks|thought)\b", "L3.4 anthropomorphizing", "rewrite to 'produced output that...' or 'classified as...'"),
 ]
@@ -97,6 +109,8 @@ LEXICAL_PATTERNS: list[tuple[str, str, str]] = [
 STRUCTURAL_PATTERNS: list[tuple[str, str, str]] = [
     (r"\bnot\s+only\b[^.]{0,200}?\bbut\s+also\b", "S2.3 balanced-sentence", "break the parallel unless contrast is theoretically meaningful"),
     (r"\bon\s+the\s+one\s+hand\b[^.]{0,400}?\bon\s+the\s+other\s+hand\b", "S2.3 balanced-sentence", "use only for genuine theoretical contrast"),
+    (r"\b(NOTABLY|Notably|notably),\s[^.]{0,200}\.\s+(IMPORTANTLY|Importantly|importantly),\s[^.]{0,200}\.", "S2.3 serial-adverb-openers", "avoid paired adverb openers across adjacent sentences"),
+    (r"\b(CRUCIALLY|Crucially|crucially),\s[^.]{0,200}\.\s+(TOGETHER|Together|together),\s[^.]{0,200}\.", "S2.3 serial-adverb-openers", "avoid paired adverb openers across adjacent sentences"),
     (r"\bHaving\s+established\b[^.]{0,150}?,\s*we\s+now\s+turn\s+to\b", "S2.4 echo-transition", "delete; the heading signals the turn"),
     (r"\bBuilding\s+on\s+the\s+above\s+discussion,\s+we\b", "S2.4 echo-transition", "delete"),
     (r"\bAs\s+discussed\s+earlier,\b", "S2.4 echo-transition", "usually deletable"),
@@ -172,6 +186,8 @@ def main() -> int:
     print("  - SS theoretical vocabulary (mental representations, governance, ecosystem, etc.) is ALWAYS preserved.")
     print("  - LLM anthropomorphizing is a HIGH concern for SS reviewers — fix every instance.")
     print("  - Three-vague-contribution patterns trigger HIGH desk-reject (SS-D5).")
+    print("  - Repeated 'Notably/Importantly/Crucially/Together' openers and repeated")
+    print("    'consistent with the X logic' interaction glosses are model-trace risks.")
     print()
     print(f"{'Line':>4}  {'Rule':<28}  {'Match':<32}  Hint")
     print("-" * 110)

@@ -1,7 +1,7 @@
 ---
 file: ss_polishing_pipeline.md
 purpose: Primary workflow for POLISH mode. Defines the eight-stage pipeline that turns a user draft into a Strategy Science submission-ready manuscript.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Polishing Pipeline (POLISH mode)
@@ -16,6 +16,7 @@ last_verified: 2026-05-21
 - Stage 4 — Method ↔ Claim Calibration
 - Stage 5 — LLM-Measurement Audit (conditional)
 - Stage 6 — Section-by-Section Rewrite
+- Stage 6.5 — Human Voice / Anti-Template Pass
 - Stage 7 — SS House-Style Pass (sentence-level)
 - Stage 8 — Disclosures, Format, Submission Sanity
 - Output Assembly
@@ -67,7 +68,7 @@ Common SS triggers (full list in `ss_desk_reject_triggers.md`):
 - LLM-as-measurement without inter-rater reliability against humans
 - Pure-theory paper without typology/framework summary
 - Mis-fit lineage (paper would be at home at another outlet)
-- AI-use disclosure missing
+- AI-use transparency language missing when AI assisted writing/coding/measurement
 - IRB statement missing (for human-subjects work)
 
 **Gate:** No HIGH-severity trigger fires, or user has confirmed they will fix the trigger before submission.
@@ -132,16 +133,18 @@ If the lineage is unclear or mis-fit:
 
 ## Stage 3 — Theory & Theoretical Movement Strengthening
 
-Use `references/ss_introduction_and_contribution.md` and `references/ss_track_positioning.md`.
+Use `references/ss_introduction_and_contribution.md` and `references/ss_track_positioning.md`. If the manuscript is AI/cognition, aggregation, resource-reconfiguration, M&A, or theory-forward conceptual work, also load `references/ss_expanded_exemplar_corpus_2024_2026.md` and select the closest exemplar logic before rewriting.
 
 Checks:
 - **Primary theoretical lineage** is named and visible by page 2 of the intro
 - **Supporting lineages** are clearly auxiliary (not parallel primaries)
+- **Exemplar logic match** is explicit: identify whether the manuscript is repairing an assumption (Csaszar and Eklund), mapping a new technology into SDM processes (Csaszar et al. 2024), making a contrarian theory-based-view argument (Felin and Holweg), integrating growth and exit/resource-reconfiguration logics (Gibbs et al.), or following another SS pattern
 - **Mechanisms** are explicit: every hypothesis (or proposition for theory papers) names the cognitive/structural/strategic logic, not just the direction
 - **Boundary conditions** appear when the paper has moderators or contextual contingencies (Asghar et al. introduce financial market volatility; Clough introduces environmental dynamism, systemic uncertainty, demand heterogeneity)
 - **Counter-arguments** are addressed (not buried in limitations). Both Kanis and Asghar engage cognitive-overload counter-arguments before stating their predictions.
 - **Hypotheses are falsifiable** (can be rejected by the data; not tautological)
 - **Theoretical movement** is named explicitly in the contribution paragraph: extension / mechanism specification / boundary refinement / integration / reconciliation / new construct. SS rejects vague "we contribute to the literature on X" framings.
+- **Claim verbs and wording** match the exemplar logic: "derive/recover/retrofit" for formal aggregation, "may/could/comparable with" for AI capability mapping, "we disagree/we grant/not X but Y" for contrarian theory, and "amplified when" for mechanism-testing moderators
 
 For each weak hypothesis, propose a rewrite that adds the missing element (mechanism, boundary, counter-argument). Do not invent theory the user has not signaled they want.
 
@@ -151,7 +154,7 @@ For pure-theory papers, this stage becomes:
 - Does the typology / framework have a parsimonious summary (table or figure)?
 - Are the testable predictions stated for future empirical work?
 
-**Gate:** Each hypothesis has a stated mechanism; the contribution paragraph names one or two specific theoretical movements (not a list of three vague claims).
+**Gate:** Each hypothesis has a stated mechanism; the contribution paragraph names one or two specific theoretical movements (not a list of three vague claims); the argument's paragraph logic and claim verbs are calibrated to the closest SS exemplar rather than only its topic area.
 
 ---
 
@@ -218,8 +221,30 @@ For each section:
 - AFTER = rewritten text
 - ANNOTATION = up to 6 bullets explaining why each substantive change was made
 - Preserve voice (Hard Rule 6); preserve all of the user's own citations; flag missing or weak citations as `[CITATION NEEDED: <what>]`
+- Before writing the AFTER block, identify two or three author-specific features worth preserving: preferred theoretical vocabulary, directness, paragraph order, or a local sentence rhythm that is clear. Do not replace these merely to make the prose sound more polished.
+- Avoid model-default paragraph scaffolds: broad opener -> literature gap -> three contributions; "while X, Y" contrast without real contrast; "this has important implications" closers; and repeated contribution restatements.
 
 **Gate:** Every supplied section has a BEFORE / AFTER / ANNOTATION block.
+
+---
+
+## Stage 6.5 — Human Voice / Anti-Template Pass
+
+Apply `references/ai_style_markers.md` before the SS house-style pass. This stage prevents the rewrite itself from creating model traces.
+
+For each AFTER passage, check:
+- **Author continuity:** Does at least one sentence retain the user's original argumentative cadence or directness when it was already clear?
+- **Specificity:** Are generic words ("important", "nuanced", "complex", "rich", "critical") replaced by the actual mechanism, construct, or empirical object?
+- **Paragraph rhythm:** Do adjacent paragraphs avoid the same template and sentence-length band?
+- **Mechanical parallelism:** Did you remove overused "not only X but also Y" constructions unless they mark a real theoretical contrast?
+- **Results-language variation:** In interaction-term interpretation, did you avoid repeating "consistent with the X logic" for every coefficient or marginal effect?
+- **Sentence-opener variation:** Are "Notably," "Importantly," "Crucially," and "Together," used sparingly rather than as a sequence of paragraph starters?
+- **Hinge discipline:** Does each paragraph contain a real argumentative hinge ("This creates a problem because...", "If this mechanism is correct...", "The relevant distinction is...") only when the logic requires it?
+- **No ornamental upgrades:** Did the rewrite avoid replacing plain author wording with showier words such as "underscore", "pivotal", "multifaceted", or "shed light on"?
+
+If the answer to any check is no, revise the AFTER text before Stage 7. When the user's original sentence is clearer than the generated sentence, restore the user's sentence.
+
+**Gate:** The AFTER text no longer reads over-smoothed, uniformly balanced, or generically "polished."
 
 ---
 
@@ -243,18 +268,20 @@ Apply `references/ss_house_style.md` to the AFTER text:
 ## Stage 8 — Disclosures, Format, Submission Sanity
 
 Verify (see `references/ss_disclosures.md` and `references/ss_scope_and_format.md`):
-- AI-use disclosure paragraph drafted (this skill counts as AI assistance)
-- Author-contribution statement (CRediT-style or "All authors contributed equally")
-- Data Availability Statement
-- Conflict of interest statement
-- Funding statement
+- AI-use transparency statement prepared when AI assisted writing, coding, analysis, or measurement (this skill counts as AI assistance)
+- Author-contribution statement prepared if requested/finalized (CRediT-style or "All authors contributed equally")
+- Data access/retention statement prepared if portal/editor/funder/method design calls for it
+- Conflict of interest statement or "none" response prepared if requested
+- Funding statement prepared; disclose all supporting funding
 - IRB/ethics statement (if human/animal subjects)
 - Pre-registration link, anonymized (if pre-registered)
 - Manuscript abstract <=200 words; ScholarOne abstract field <=250 words
 - Keywords 3-10
 - Blinded manuscript (no author identifiers, no acknowledgements that reveal identity, no self-citations in the form "in our earlier work, X")
-- Title page separate, with full author info
-- Tables/figures with SE in parentheses, INFORMS-style notes
+- ScholarOne author metadata ready; separate title-page file only if requested
+- Tables/figures with SE in parentheses, INFORMS-style notes, cited in order and grouped after references
+- Text/figure source files use embedded standard fonts and no custom fonts
+- Figure source files meet INFORMS production specs: original images >=300 dpi, editable vector source for graphs/drawings where possible, high-quality editable PDFs >=600 dpi, accepted formats prepared, and color figures checked in grayscale
 - References in INFORMS author-year style
 - Hypothesis labels in bold-italic INFORMS style
 
@@ -277,7 +304,7 @@ Assemble the final POLISH output per the schema in SKILL.md:
 4. AI decontamination block
 5. Change log
 6. Quality score (0-100, four sub-scores: theoretical contribution & movement / method-claim alignment / argument spine coherence / SS fit & INFORMS format)
-7. AI-use disclosure reminder
+7. AI-use transparency reminder
 
 ---
 

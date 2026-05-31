@@ -1,7 +1,7 @@
 ---
 file: ss_house_style.md
 purpose: Strategy Science (INFORMS) house style — voice, sentence-level norms, citation conventions, formatting idioms. Used in POLISH Stage 7 and SECTION rewrites.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # Strategy Science House Style
@@ -206,9 +206,9 @@ across the experimental conditions.
 
 ## Footnotes vs. Endnotes
 
-- **Footnotes**: numbered superscripts within the page; used for substantive asides.
-- **Endnotes**: numbered, appear after Acknowledgments and before References. Used at SS for longer methodological clarifications or peripheral notes.
-- Both used in practice; Clough uses 17 endnotes; Asghar uses 14+ footnotes; Kanis uses 2 endnotes.
+- Official Strategy Science submission guidance says endnotes and footnotes should be avoided. If a note is necessary, keep it brief and indicate it within the text.
+- Published SS articles sometimes contain endnotes or footnotes after review and production; treat those as article-level examples, not as permission to add notes freely at submission.
+- During polishing, move substantive notes into the main text or an online supplement where possible.
 
 ---
 
@@ -237,6 +237,33 @@ SS hedges precisely. Common patterns:
 - "additional analyses indicate" / "additional analyses suggest" — mechanism explanations (Kanis idiom)
 - "tentative evidence that..." — secondary findings (Asghar idiom)
 
+For interaction terms and moderation results, avoid using the same interpretive
+formula repeatedly. "Consistent with the X logic" is acceptable once, but a run
+of interaction sentences should vary by evidentiary role: one may state the
+direction of the coefficient, another may name the boundary condition, another
+may compare the pattern with an alternative mechanism, and another may flag
+limits in what the interaction can establish.
+
+### Argument-logic wording from the expanded corpus
+
+Use `ss_expanded_exemplar_corpus_2024_2026.md` when sentence-level polish needs
+to mirror a specific SS argument style.
+
+| Logic | Useful verbs and phrasing | Claim ceiling |
+|---|---|---|
+| Assumption repair / formal aggregation | derive, recover, rationalize, aggregate, retrofit, reconcile, analytically tractable | Use "show" for derived formal results; use "can" for model extensions |
+| AI capability mapping | may, could, comparable with, current LLMs, AI-augmented SDM, search/representation/aggregation | Avoid deterministic "will"; tie claims to current models and task context |
+| Contrarian TBV / causal reasoning | we disagree, we grant, the relevant distinction is, not X but Y, theory-based causal logic | Do not overstate as "AI cannot"; delimit routine vs. uncertain settings |
+| Resource reconfiguration / M&A | integrated process, parallel rather than sequential, keystone resource, resource-level trigger, amplified when | Treat moderators as mechanism probes, not generic contingencies |
+
+High-quality SS prose often uses one decisive hinge sentence per paragraph:
+
+- "The key insight is..."
+- "This creates a problem because..."
+- "If this mechanism is correct, then..."
+- "This perspective reveals X not merely as Y, but as Z."
+- "The relevant distinction is not X, but Y."
+
 ### Avoid
 
 - Hype words: "groundbreaking", "revolutionary", "paradigm-shifting", "unprecedented", "first ever", "remarkable"
@@ -244,6 +271,9 @@ SS hedges precisely. Common patterns:
 - Verbal nouns when verbs work: "the utilization of" → "using"
 - "The fact that" → just delete it
 - Redundant qualifiers: "completely unique", "totally novel"
+- Repeated sentence-openers: "Notably," "Importantly," "Crucially," "Together," across adjacent paragraphs
+- Mechanical paired syntax: "not only X but also Y" unless the contrast is doing real theoretical work
+- Repeated interaction glosses: "consistent with the X logic" for every coefficient or marginal effect
 
 ---
 
@@ -301,7 +331,7 @@ Conventions:
 
 ## Length and proportionality
 
-Official submission constraint: the assembled manuscript should not exceed 35 pages all-inclusive, including title page, abstract, reference list, figures, and tables. A paper above the limit needs an explicit cover-letter explanation and should be treated as a format risk before review.
+Official submission constraint: the assembled manuscript should not exceed 35 pages all-inclusive, including abstract, reference list, figures, and tables in the manuscript package. A paper above the limit needs an explicit cover-letter explanation and should be treated as a format risk before review.
 
 Approximate targets under the 35-page all-inclusive cap:
 
@@ -361,4 +391,4 @@ Pattern:
 - Pre-registration link (after acceptance only; anonymized during review)
 - Funding source
 
-For double-anonymous review, **strip everything that identifies authors** and place it in a separate Title Page document.
+For double-anonymous review, **strip everything that identifies authors** from the manuscript. Enter author/institution details in ScholarOne and provide a separate title-page file only if the portal or editor requests one.

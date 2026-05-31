@@ -35,11 +35,16 @@ it locates risks and suggests actions, but it does not rewrite the manuscript.
 
 3. **Throat-clearing openers**
    - Flag openers such as "It is important to note that," "In recent years,"
-     "There has been growing interest in," and generic transitions.
+     "There has been growing interest in," repeated "Notably/Importantly/
+     Crucially/Together" starts, and generic transitions.
    - Action: replace with the concrete phenomenon or claim.
 
 4. **Structural pattern warnings**
    - Flag vague three-contribution structures.
+   - Flag mechanical paired syntax such as "not only X but also Y" when the
+     contrast is not theoretically doing work.
+   - Flag repeated interaction-result glosses such as "consistent with the X
+     logic" across multiple coefficients or marginal effects.
    - Flag repeated paragraph templates such as claim -> however -> implication.
    - Flag generic paragraph endings that only say the point has implications.
    - SS introductions should present one or two precise theoretical movements,
@@ -102,4 +107,3 @@ SS positioning risk from prose alone: LOW / MEDIUM / HIGH
 ## Do-not-rewrite notice
 This is a diagnostic report. No manuscript text has been rewritten.
 ```
-

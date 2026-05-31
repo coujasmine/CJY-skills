@@ -102,7 +102,7 @@ For each dimension, assign one of:
 ### Dimension 8: Reporting and disclosure
 
 - Is the LLM use disclosed in the methods?
-- Is it disclosed in the AI-use disclosure statement?
+- Is it reported in the methods/appendixes and covered by AI-use transparency language if the portal, cover letter, editor, or funder requests one?
 - Are prompts in an appendix?
 - Are model versions named?
 - Is replicability addressed (acknowledging that LLM versions may update)?
@@ -206,7 +206,7 @@ SS reviewers occasionally ask: why LLM rather than human? Acceptable: scale, con
 
 This subagent's full catalog is in `references/gpt_measurement_validation.md`. The catalog is the source of truth; this file gives the operational logic.
 
-For methods-related disclosure issues (e.g., AI-use disclosure paragraph), pair with the `ss-ai-decontaminator` subagent (which can decontaminate the methods prose).
+For methods-related transparency issues (e.g., LLM-use reporting in Methods or AI-use transparency language), pair with the `ss-ai-decontaminator` subagent (which can decontaminate the methods prose).
 
 ---
 
@@ -293,7 +293,7 @@ UNACCEPTABLE for SS submission. The measurement procedure as described would tri
 4. **Conduct human validation** on a subset of N ≥ 100 items; report Krippendorff's α (target ≥ 0.80) or Cohen's κ.
 5. **Add a second LLM** (e.g., Claude or Mistral) for sensitivity analysis; report inter-LLM agreement.
 6. **Address hallucination** explicitly in the prompt (e.g., "only classify based on the text provided; do not invent information").
-7. **Disclose AI use** in the methods section and in the AI-use disclosure statement.
+7. **Report AI use transparently** in the methods section and prepare AI-use transparency language for the portal/cover letter if requested.
 8. **Consider** following the Kanis et al. (2026) template (see references/gpt_measurement_validation.md §"Reporting template").
 
 ### Anthropomorphizing flags

@@ -21,4 +21,12 @@ cases:
       mode: WRITING_CHECK
       flags:
         - preserve_technical_use_of_robust
-
+  - id: writing_check_mechanical_parallelism
+    prompt: "Check this SS results paragraph: Notably, H2 is supported. Importantly, the interaction is consistent with the capability logic. Crucially, the next interaction is consistent with the governance logic. Together, the findings not only support our hypotheses but also offer rich insights."
+    expected:
+      mode: WRITING_CHECK
+      flags:
+        - serial_adverb_openers
+        - repeated_interaction_logic_formula
+        - not_only_but_also_reflex
+        - generic_insights

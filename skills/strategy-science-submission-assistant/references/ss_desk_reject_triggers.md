@@ -1,7 +1,7 @@
 ---
 file: ss_desk_reject_triggers.md
 purpose: 30-second hard-check list for Strategy Science. Any HIGH trigger fires → flag immediately to the user. Used at Stage 1 of the polishing pipeline and as the AUDIT mode core.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Desk-Reject Triggers
@@ -10,7 +10,7 @@ last_verified: 2026-05-21
 
 - A. Scope & Fit
 - B. Format (mechanical)
-- C. Disclosures (INFORMS post-2024)
+- C. Ethics and disclosure readiness
 - D. Argument Spine & Theoretical Movement (the SS-critical layer)
 - E. Method ↔ Claim (cross-check with `ss_claim_evidence_matrix.md`)
 - F. Originality & Overlap
@@ -52,25 +52,26 @@ If **any** HIGH trigger fires, surface it at the top of the verdict block. Polis
 | B1 | Manuscript abstract >200 words, or ScholarOne metadata abstract >250 words | HIGH | Trim to <=200 words for the manuscript; keep portal text <=250 words |
 | B2 | Abstract is extremely short (<100 words) or missing theory/design/contribution elements | MEDIUM | Expand for substance; SS has no official minimum, but a thin abstract weakens editorial screening |
 | B3 | Keywords <3 or >10 | HIGH | Adjust to the official 3-10 keyword range |
-| B4 | Title page is not separate from blinded manuscript, OR blinded manuscript contains author identifiers | HIGH | Move author info to a separate title page; redact from MS |
+| B4 | Blinded manuscript contains author names, institutions, acknowledgments, or other identifiers | HIGH | Redact the manuscript; enter author details in ScholarOne and use a separate title-page file only if requested |
 | B5 | Self-citations phrased as "in our earlier work" or "our previous paper" | HIGH | Rewrite as third-person citation, OR remove until acceptance |
 | B6 | Hypotheses not labeled in INFORMS bold-italic style (e.g., **Hypothesis 1.** *...*) | LOW | Reformat to match SS convention |
 | B7 | Citations use comma between author and year (e.g., "Csaszar, 2018" instead of "Csaszar 2018") | MEDIUM | Apply INFORMS author-year convention throughout |
 | B8 | References inconsistent or in non-INFORMS style (mixed APA/Harvard/Chicago/AMA) | MEDIUM | Apply INFORMS-style consistently (see ss_scope_and_format.md) |
-| B9 | Acknowledgements include identifying information (grant numbers, institutional thanks, specific reviewer names) in blinded MS | HIGH | Remove from blinded MS; place on title page |
+| B9 | Acknowledgements include identifying information (grant numbers, institutional thanks, specific reviewer names) in blinded MS | HIGH | Remove from blinded MS; provide only through author-identifying metadata/title-page material if requested |
 | B10 | Tables show t-statistics instead of standard errors in parentheses | LOW | Convert to SE per SS norm |
 | B11 | Pre-registration link visible in blinded MS (e.g., contains author name in URL) | HIGH | Use anonymous OSF view link or omit until acceptance |
+| B12 | Figure source files rely on custom fonts, nonembedded fonts, low-resolution images, noneditable graph bitmaps, or color distinctions that collapse in grayscale | MEDIUM | Rebuild with standard embedded fonts, >=300 dpi images, editable vector/PDF source where possible, and grayscale-safe line/point encodings |
 
-## C. Disclosures (INFORMS post-2024)
+## C. Ethics and disclosure readiness
 
 | # | Test | Severity | Fix |
 |---|---|---|---|
-| C1 | No AI-use disclosure paragraph | HIGH | Add a disclosure statement (see `ss_disclosures.md`); this skill counts as AI assistance |
-| C2 | No author-contribution statement (when 2+ authors) | MEDIUM | Add a CRediT-style or "All authors contributed equally" statement (Asghar et al. used the equal-contribution model) |
-| C3 | No Data Availability Statement | MEDIUM | Add a DAS even if "data not publicly available" — INFORMS expects this |
-| C4 | No Conflict of Interest statement | MEDIUM | Add one, even if "the authors declare none" |
+| C1 | AI assisted writing, coding, analysis, or measurement but no AI-use transparency language is prepared | MEDIUM (HIGH if LLM is a measurement/coding instrument and methods omit it) | Prepare precise language; for LLM-as-measurement, report models/prompts/validation in Methods and appendixes |
+| C2 | No author-contribution statement is prepared when 2+ authors and the portal/final package requests one | LOW | Prepare a CRediT-style or "All authors contributed equally" statement if needed |
+| C3 | No data access/retention plan for an empirical paper, especially when raw data may be requested for editorial review | LOW/MEDIUM | Prepare a short data access/retention statement; do not call it an unconditional SS requirement unless the portal/editor/funder requires it |
+| C4 | Possible conflict of interest not disclosed | MEDIUM | Disclose possible perceived conflicts in the cover letter or related portal questions; state none if asked |
 | C5 | Human-subjects work without IRB / ethics statement | HIGH | Add IRB approval reference (Kanis et al. cite TU Bergakademie Freiberg Project ID 2024-08), OR explain exemption |
-| C6 | Funding source not disclosed | MEDIUM | Add funding statement |
+| C6 | Funding source that supported the research is not disclosed | MEDIUM | Add funding statement |
 | C7 | Pre-registration claim without OSF/aspredicted link | MEDIUM | Add the link OR remove the claim |
 
 ## D. Argument Spine & Theoretical Movement (the SS-critical layer)

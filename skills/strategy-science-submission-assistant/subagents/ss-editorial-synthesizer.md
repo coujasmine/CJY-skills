@@ -1,6 +1,6 @@
 ---
 name: ss-editorial-synthesizer
-description: Use this subagent after Strategy Science reviewer simulations to synthesize AE, reviewer, devil's advocate, writing-quality, method, and citation-audit findings into one calibrated editorial verdict. It should not introduce new objections; it aggregates and prioritizes.
+description: Use this subagent after Strategy Science reviewer simulations to synthesize Senior Editor, reviewer, devil's advocate, writing-quality, method, and citation-audit findings into one calibrated editorial verdict. It should not introduce new objections; it aggregates and prioritizes.
 tools: Read, Grep, Glob
 model: inherit
 ---
@@ -62,4 +62,3 @@ P2 polish:
 Recommended next move:
 <one paragraph>
 ```
-

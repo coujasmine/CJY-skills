@@ -1,7 +1,7 @@
 ---
 file: ss_method_checklists.md
 purpose: Per-method evaluation criteria for Strategy Science submissions. High-level checklists; method-specific deep dives are in references/methods/.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Method Checklists
@@ -233,7 +233,7 @@ See `references/gpt_measurement_validation.md` for the full 8-dimension scorecar
 - **Human benchmark**: Krippendorff's α = 0.89 between LLM and human coders on a validation subset of 220 items is the demonstrated bar.
 - **Prompt transparency**: Full prompts in Appendix (Kanis Appendix A).
 - **Version pinning**: Specific model versions cited (claude-opus-4-1-20250805) — not just "Claude".
-- **Disclosure**: AI use must be disclosed in the methods AND in the AI-use disclosure statement.
+- **Transparency**: LLM use as a measurement/coding instrument must be reported in Methods and appendixes with model details, prompts, and validation; prepare an AI-use transparency statement for the portal/cover letter if requested.
 
 ---
 

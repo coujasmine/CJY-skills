@@ -32,6 +32,7 @@ This playbook gives section-by-section rewriting templates calibrated to Strateg
 - [ ] Describes the empirical design (or analytical approach for theory papers)
 - [ ] Reports the key finding(s) — including nulls/surprises if relevant
 - [ ] States the theoretical contribution in 1-2 specific moves (not a list of three vague items)
+- [ ] Uses exemplar-calibrated claim verbs (e.g., "derive" for formal theory, "may/could" for AI futures, "is consistent with" for archival mechanism probes)
 - [ ] No undefined acronyms (or define on first use)
 - [ ] No citations (SS abstracts typically have zero citations)
 - [ ] No first-person introductions ("In this paper, we...") — go directly to substance
@@ -75,6 +76,7 @@ See `references/ss_introduction_and_contribution.md` for the full ¶1-¶7 struct
 - [ ] Method/setting-fit explained in ¶4
 - [ ] Headline findings (or framework outputs) in ¶5
 - [ ] Contribution paragraph: ONE OR TWO specific moves (not a list)
+- [ ] Argument logic matched to the nearest SS exemplar, not only the topic (see `ss_expanded_exemplar_corpus_2024_2026.md`)
 - [ ] Total length 4-6 pages double-spaced
 - [ ] Citations dense in early paragraphs (anchoring) and thin in later (after the lineage is established)
 
@@ -86,6 +88,17 @@ See `references/ss_introduction_and_contribution.md` for the full ¶1-¶7 struct
 | "We contribute to the [literature] by [generic claim]" | "We extend [specific lineage, with anchor citation] by [specific theoretical movement]" |
 | "We are the first to..." (without evidence) | "We add to an emerging stream of work on X (cite 3-5 anchors) by..." |
 | "Our practical implications include..." (boilerplate) | "Our findings may guide managers to [specific action tied to the mechanism]" |
+
+### Exemplar-matching rule
+
+Before rewriting the introduction, classify the manuscript's logic gap:
+
+- Assumption repair -> Csaszar and Eklund (2026) style.
+- AI capability mapping -> Csaszar et al. (2024) style.
+- Contrarian theory/TBV -> Felin and Holweg (2024) style.
+- Integrated resource-reconfiguration process -> Gibbs et al. (2026) style.
+
+Then adapt paragraph sequencing and verbs from that profile. Do not copy prose.
 
 ---
 
@@ -99,6 +112,7 @@ See `references/ss_introduction_and_contribution.md` for the full ¶1-¶7 struct
 - [ ] Each hypothesis names the cognitive/structural/strategic mechanism
 - [ ] Counter-arguments are addressed (not buried in limitations)
 - [ ] Boundary conditions are stated explicitly
+- [ ] If moderators are present, each one is framed as a diagnostic probe of the proposed mechanism ("if this mechanism is operating, the effect should be amplified when...")
 - [ ] Hypothesis labels in bold-italic INFORMS style: `**Hypothesis 1a (H1a).** *...*`
 - [ ] Each hypothesis is falsifiable
 - [ ] Total length 8-15 pages double-spaced

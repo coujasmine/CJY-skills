@@ -72,6 +72,15 @@ When the following words appear in the rewrite **outside their technical meaning
 | cutting-edge | new, recent |
 | state-of-the-art | current, leading |
 | breakthroughs | advances |
+| multifaceted | specify the dimensions, or delete |
+| rich insights / valuable insights | name the finding, or delete |
+| complex interplay | specify the relationship, or delete |
+| critical role / crucial role | role, effect, mechanism, or delete |
+| increasingly important | specify what changed, or delete |
+| salient / salient issue (as filler) | important, visible, or delete |
+| fertile ground | useful setting, empirical context, or delete |
+| fill a gap | answer a question, test a mechanism, extend a lineage |
+| contributes to our understanding | specify the theoretical movement |
 
 ### 1.2 Filler openers (delete or replace)
 
@@ -86,10 +95,13 @@ These phrases inflate sentences without adding meaning. Default: delete and star
 - "Furthermore," / "Moreover," / "Additionally," at the start of a sentence — usually deletable
 - "In recent years, there has been growing interest in …" — replace with the concrete phenomenon
 - "In today's rapidly changing business environment, …" — delete entirely
+- "In an era where …" — replace with the concrete change or setting
+- "As organizations/firms increasingly …" — keep only if the trend is evidenced and necessary
 - "As mentioned earlier, …" — delete; trust the reader
 - "Building on the above, …" — delete; trust the structure
 - "To put it simply, …" — delete or rephrase
 - "Simply put, …" — delete
+- "Notably, …" / "Importantly, …" / "Crucially, …" / "Together, …" — acceptable once in a section; repeated sentence-openers are a model trace. Replace with a subject-led sentence, a section-specific transition, or no transition.
 
 ### 1.3 Hedge stacks
 
@@ -182,6 +194,7 @@ AI rewrites overuse:
 - "not only X but also Y"
 - "while X, Y" (as a contrastive frame)
 - "on the one hand … on the other hand"
+- paired sentence openings across adjacent paragraphs (e.g., "Notably..." then "Importantly..." then "Together...")
 
 Use these only when X and Y are genuinely parallel and the contrast is theoretically meaningful (Asghar et al. genuinely use "on one hand / on the other" for competing theoretical predictions, which is appropriate). Otherwise, break the parallel: state X, then state Y in its own sentence.
 
@@ -206,6 +219,47 @@ AI rewrites often append a generic implication sentence to every body paragraph 
 ### 2.7 Bullet-list reflex
 
 AI rewrites tend to convert running prose into bullets. SS academic prose almost never uses bullets in main text; bullets appear in appendices, supplementary materials, or tables. Convert bulleted lists back to prose unless the user explicitly wants bullets.
+
+### 2.8 Over-smoothed paragraph templates
+
+AI-polished academic prose often feels too frictionless: every paragraph starts broad, adds a contrast, and ends with a generic implication. Flag and revise when two or more adjacent paragraphs share the same skeleton:
+
+- broad trend or literature-gap opener
+- "however/while" contrast that does not carry a real theoretical tension
+- "this study examines..." or "by examining..." bridge sentence
+- generic closer about implications, insights, or understanding
+
+Repair by restoring the manuscript's actual logic. Start with the phenomenon, mechanism, finding, or theoretical premise that matters in that paragraph. Keep a slightly uneven but clear authorial rhythm over a uniformly polished rhythm.
+
+### 2.9 Excessive abstraction lift
+
+AI rewrites often replace concrete author language with abstract editorial language:
+
+- "firms changed their supplier contracts" -> "firms navigated complex interorganizational dynamics"
+- "managers used ChatGPT to compare startups" -> "decision-makers leveraged AI-enabled capabilities"
+- "the coefficient becomes smaller" -> "the effect attenuates in a nuanced manner"
+
+Prefer the concrete version unless the abstract term is the manuscript's defined construct. When in doubt, choose the author's concrete noun and add the SS concept around it, not instead of it.
+
+### 2.10 Repeated interaction-interpretation formula
+
+Results sections often need to interpret interaction terms. AI rewrites make these interpretations sound mechanical by repeating the same clause:
+
+- "consistent with the X logic"
+- "consistent with our Y logic"
+- "this is consistent with the Z mechanism"
+- "Together, these results suggest..."
+
+Do not attach the same "consistent with the X logic" formula to every interaction. Vary the interpretive move according to what the coefficient or marginal effect actually does:
+
+- "This pattern fits the X mechanism: ..."
+- "The interaction is strongest where X theory would expect it to be strongest."
+- "The estimate is in line with H2, although the confidence interval warrants caution."
+- "The moderation result points to the boundary condition implied by..."
+- "The pattern is easier to reconcile with X than with Y."
+- "The result supports the direction of H3 but does not establish the proposed mechanism."
+
+Use "consistent with" only when the evidence cannot prove the mechanism. Use stronger wording only when the design supports it. Avoid opening every result-interpretation sentence with "Notably," "Importantly," "Crucially," or "Together."
 
 ---
 
@@ -295,9 +349,10 @@ For every rewrite that triggered decontamination:
 2. **Protected zones** — did you preserve every variable, statistic, hypothesis, and citation?
 3. **SS-vocabulary preservation** — did you preserve the field's working theoretical vocabulary (§1.5)?
 4. **Voice continuity** — does the rewritten passage match the voice of nearby untouched sentences?
-5. **Mechanism integrity** — did any rewrite weaken or distort the author's stated mechanism?
-6. **Lineage anchoring** — did each theoretical claim retain its citation anchor?
-7. **Pass signal** — if no markers triggered, did you issue the pass signal rather than inventing changes?
+5. **Human trace** — did you preserve clear author-specific directness, sentence rhythm, and concrete nouns rather than replacing them with generic editorial polish?
+6. **Mechanism integrity** — did any rewrite weaken or distort the author's stated mechanism?
+7. **Lineage anchoring** — did each theoretical claim retain its citation anchor?
+8. **Pass signal** — if no markers triggered, did you issue the pass signal rather than inventing changes?
 
 If any check fails, revert and try again. A partial decontamination with intact substance beats a thorough decontamination that drifts the argument.
 

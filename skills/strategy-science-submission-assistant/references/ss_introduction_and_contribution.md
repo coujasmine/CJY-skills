@@ -102,6 +102,36 @@ If included, this should be brief and tie back to the mechanism. Example: "Final
 
 ---
 
+## Expanded exemplar logic from the 2024-2026 corpus
+
+When the introduction feels topically relevant but not yet SS-grade, diagnose
+which argument logic it should follow. Use `ss_expanded_exemplar_corpus_2024_2026.md`
+for details.
+
+| Manuscript situation | Strong SS logic | Exemplar pattern |
+|---|---|---|
+| A classic assumption is too simple | Assumption repair: name the assumption, show the behavioral or strategic limitation, then offer an operational way to use a better assumption | Csaszar and Eklund (2026) |
+| A new technology affects strategic decision-making | Process mapping: define the SDM process, show why the technology changes feasibility, test or illustrate current capability, then map implications to search/representation/aggregation | Csaszar et al. (2024) |
+| The paper challenges a dominant AI or cognition premise | Contrarian theory: state the prevailing claim, grant its valid domain, isolate the hidden premise, then replace it with a theory-based causal mechanism | Felin and Holweg (2024) |
+| Growth and exit, buy and divest, or adjacent strategy processes are treated separately | Integrated process: show why a sequential account is misspecified, introduce the event or condition that forces simultaneity, and derive mechanism-testing moderators | Gibbs et al. (2026) |
+
+The practical instruction for POLISH and SECTION mode is: do not merely match
+the topic. Match the *logic gap*. A manuscript about AI can follow Csaszar et
+al.'s capability-mapping logic or Felin and Holweg's contrarian-TBV logic; the
+choice depends on its thesis, not its keyword list.
+
+### Introduction wording patterns to reuse cautiously
+
+- Assumption repair: "A central yet often implicit assumption..." -> "this leaves underspecified how..." -> "we develop a framework/method that..."
+- Process mapping: "Given these opportunities and uncertainties..." -> "we address three questions..." -> "we connect X to search, representation, and aggregation..."
+- Contrarian theory: "We grant that..." -> "however, this does not imply..." -> "the relevant distinction is..."
+- Integrated reconfiguration: "existing work treats X and Y as sequential..." -> "we propose an integrated process..." -> "if the mechanism is correct, the effect should be amplified when..."
+
+Use these as scaffolds, not copied prose. The user's own constructs, evidence,
+and citations must fill the scaffold.
+
+---
+
 ## Contribution language calibration
 
 Use the verb that matches the movement and design:

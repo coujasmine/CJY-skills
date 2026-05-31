@@ -3,7 +3,7 @@ file: cover_letter_and_response.md
 purpose: >
   Cover letter and response-to-reviewers templates for Strategy Science / INFORMS
   submissions. Used in PACKAGE and RESPOND modes.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Cover Letter and Response Templates
@@ -16,7 +16,7 @@ last_verified: 2026-05-21
 - D. Common SS reviewer-response patterns
 - E. Response letter common mistakes
 - F. Tips for difficult R&R situations
-- G. AI-use disclosure for cover letters and response letters
+- G. AI-use transparency for cover letters and response letters
 
 
 This file provides templates and principles for writing cover letters (first submission and R&R) and point-by-point response letters at Strategy Science / INFORMS.
@@ -67,10 +67,14 @@ cognitive / etc.] research agenda [and the special issue's focus on X].
 
 This manuscript is not under review elsewhere and has not been previously
 published. All authors have approved the submission. The manuscript has been
-prepared for double-anonymous review with author identifiers placed on a
-separate title page. We have included AI-use, conflict-of-interest, funding,
-and data availability disclosures per INFORMS policy. [Add IRB statement if
-applicable: This study received IRB approval from [Institution; Project ID].]
+prepared for double-anonymous review, with author names, institutions, and
+acknowledgments removed from the manuscript. We have disclosed any perceived
+conflicts of interest, funding, prior/substantially overlapping work, and use
+of the same database where applicable. [If AI assistance was used and the
+portal/cover letter asks for transparency: We used [model/tool] for [specific
+task], reviewed and edited all AI-assisted content, and take full responsibility
+for the manuscript.] [Add IRB statement if applicable: This study received IRB
+approval from [Institution; Project ID].]
 [Add pre-registration statement if applicable: This study was pre-registered
 at [anonymized OSF link]; see Methods.]
 
@@ -101,11 +105,11 @@ Sincerely,
 
 ### Structure
 
-1. **Salutation** — Same editor (or new AE if assigned).
+1. **Salutation** — Same editor or Senior Editor.
 
 2. **Resubmission statement** — "We are pleased to resubmit our revised manuscript titled '[Title]' (manuscript ID: [ID]) for consideration as an article at Strategy Science."
 
-3. **Round and timeline** — "We have responded to all comments from the Editor, the Associate Editor, and Reviewers 1, 2, and 3."
+3. **Round and timeline** — "We have responded to all comments from the Editor, the Senior Editor, and Reviewers 1, 2, and 3."
 
 4. **Summary of major changes** — 3-5 bullets summarizing the most significant revisions. Do NOT enumerate every change — that's what the response letter is for.
 
@@ -124,7 +128,7 @@ Dear Editor [Name]:
 
 We are pleased to resubmit our revised manuscript titled "[Title]" (manuscript
 ID: [STSC-YYYY-NNNN]) for consideration as an article at *Strategy Science*.
-We have responded to all comments from the Editor, the Associate Editor, and
+We have responded to all comments from the Editor, the Senior Editor, and
 Reviewers 1, 2, and 3.
 
 Major revisions in this version include:
@@ -144,7 +148,7 @@ provided as a separate document.
 We continue to confirm that the manuscript is original, not under review
 elsewhere, and meets all INFORMS disclosure requirements.
 
-We thank the Editor, Associate Editor, and Reviewers for the thoughtful and
+We thank the Editor, Senior Editor, and Reviewers for the thoughtful and
 constructive engagement. We look forward to your decision.
 
 Sincerely,
@@ -166,7 +170,7 @@ Sincerely,
 
 1. **Opening greeting and orientation** — 1 paragraph thanking the editor and reviewers; orient the reader to the response structure.
 
-2. **Editor / AE response** — Address editor comments first.
+2. **Editor / Senior Editor response** — Address editor comments first.
 
 3. **Reviewer 1 response** — Quote each comment verbatim, then respond, then state the manuscript change with page/line/section reference.
 
@@ -202,12 +206,12 @@ argument, citing Dane (2010) and Haas & Ham (2015)."]
    - ✗ "Reviewer 2 misunderstands our identification strategy. As we already stated on page 18..."
 6. **Don't be defensive.** Reviewers are usually trying to help. Even when their suggestions seem off-base, respond constructively.
 7. **Don't add new content without disclosure.** If you change the theory or add a new analysis, flag it clearly so reviewers can find it.
-8. **AI-use disclosure for responses.** If AI was used to draft the response, disclose this in the cover letter.
+8. **AI-use transparency for responses.** If AI was used to draft the response, prepare a concise transparency statement for the cover letter or portal if requested.
 
 ### Opening greeting template
 
 ```
-We are grateful to the Editor, the Associate Editor, and Reviewers 1, 2, and
+We are grateful to the Editor, the Senior Editor, and Reviewers 1, 2, and
 3 for the thoughtful and constructive feedback. The comments have substantially
 improved the manuscript, particularly in [areas, e.g., "the sharpness of our
 theoretical contribution and the rigor of our identification strategy"].
@@ -341,7 +345,7 @@ If R1 says "make it shorter" and R2 says "add more analysis":
 
 - Address both: trim some content AND add the requested analysis (perhaps in an appendix)
 - Acknowledge the tension in the cover letter
-- Let the AE adjudicate
+- Let the Senior Editor adjudicate
 
 ### Reviewer asks for something impossible
 
@@ -353,18 +357,18 @@ If a reviewer asks for data or analysis that genuinely cannot be done:
 
 ### Editor's letter conflicts with reviewers
 
-If the AE's letter contradicts a reviewer's suggestion:
+If the Senior Editor's letter contradicts a reviewer's suggestion:
 
-- Follow the AE's guidance (they have the recommendation power)
-- Note the conflict explicitly in the response: "Reviewer 1 suggested X. The Associate Editor's letter indicated Y. We have followed Y..."
+- Follow the Senior Editor's guidance (they have decision authority)
+- Note the conflict explicitly in the response: "Reviewer 1 suggested X. The Senior Editor's letter indicated Y. We have followed Y..."
 
 ---
 
-## G. AI-use disclosure for cover letters and response letters
+## G. AI-use transparency for cover letters and response letters
 
 If AI was used to draft any part of the cover letter or response letter:
 
-- Disclose in the cover letter (not in the response letter, which goes to reviewers)
-- Example: "We used [LLM] in drafting portions of this response letter. All AI-generated text has been reviewed by all authors, and we take full responsibility for the content."
+- Prepare a brief transparency statement for the cover letter or portal if requested. The response letter may go to reviewers, so do not put author-identifying information there.
+- Example: "We used [LLM] to help organize and polish portions of this response letter. All AI-assisted text has been reviewed by the authors, and we take full responsibility for the content."
 
 This skill's PACKAGE and RESPOND modes count as AI assistance.

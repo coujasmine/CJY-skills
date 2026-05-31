@@ -4,8 +4,10 @@ purpose: >
   Pattern catalog extracted from 4 recent Strategy Science articles (2026),
   diversified by method. Used as concrete reference for what SS prose, structure,
   and contribution framings look like in practice. Cited in POLISH, AUDIT, and
-  REVIEW modes when an exemplar comparison is needed.
-last_verified: 2026-05-21
+  REVIEW modes when an exemplar comparison is needed. Pair with
+  ss_expanded_exemplar_corpus_2024_2026.md when argument logic and wording
+  calibration from the 2024-2026 user-supplied corpus is needed.
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Real Exemplar Patterns
@@ -25,6 +27,12 @@ last_verified: 2026-05-21
 
 
 This catalog extracts patterns from four published Strategy Science articles spanning the method range. Each pattern is verifiable in the source articles. Use these as concrete anchors when polishing or auditing — show the user the published example rather than describing it abstractly.
+
+For deeper argument-logic and wording calibration from Csaszar and Eklund
+(2026), Csaszar et al. (2024), Felin and Holweg (2024), and Gibbs et al.
+(2026), load `ss_expanded_exemplar_corpus_2024_2026.md`. Use that file to
+choose the manuscript's argument architecture; use this file for section-level
+SS formatting and prose-pattern checks.
 
 > **Source articles:**
 > - **Asghar et al.** (Asghar N, Coff RW, Mawdsley JK, Meyer-Doyle P, 2026). *Human Capital and Strategic Foresight: Evidence from Managers' Stock Purchases.* Strategy Sci. 0(0), Articles in Advance, DOI 10.1287/stsc.2024.0328 — archival panel + entropy index + BHAR + insider trading
@@ -379,8 +387,8 @@ These are non-negotiable patterns. Use them as desk-reject triggers if absent.
 8. **Acknowledgments** thank editor by name, reviewers, conference audiences, specific colleagues
 9. **IRB approval cited** for human-subjects work
 10. **Pre-registration cited** when applicable
-11. **AI-use disclosure** for LLM-assisted writing or measurement
-12. **Endnotes** (not just footnotes) for substantive asides
+11. **AI-use transparency** for LLM-assisted writing or measurement where requested or methodologically necessary
+12. **Notes** for substantive asides appear in some published articles, but the official submission guide says endnotes and footnotes should be avoided
 13. **Two specific theoretical movements** (not three vague claims) in the contribution paragraph
 14. **Theory-paper voice**: "we propose / we argue / the framework predicts" for pure-theory papers; "we find / we show / our results indicate" for empirical papers — never mix
 15. **Settings argued to be informative** for the theoretical mechanism ("fruit fly" arguments, established-task adaptations, scale-of-data arguments)

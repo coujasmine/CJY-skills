@@ -1,7 +1,7 @@
 interface:
   display_name: "Strategy Science Submission Assistant"
-  short_description: "Strategy Science / INFORMS writing QA, citation audit, review simulation, rewrite, and submission QA"
-  default_prompt: "Use $strategy-science-submission-assistant to diagnose, run a writing-quality check, audit citations, simulate Strategy Science reviewers for, or revise my manuscript; I will provide the target issue (regular or special issue), submission stage, method tier (archival / experiment / formal theory / etc.), draft text, references/source locators, or reviewer comments."
+  short_description: "Strategy Science / INFORMS argument calibration, writing QA, citation audit, review simulation, rewrite, and submission QA"
+  default_prompt: "Use $strategy-science-submission-assistant to diagnose, calibrate Strategy Science argument logic and wording, run a writing-quality check, audit citations, simulate Strategy Science reviewers for, or revise my manuscript; I will provide the target issue (regular or special issue), submission stage, method tier (archival / experiment / formal theory / etc.), draft text, references/source locators, or reviewer comments."
 
 policy:
   allow_implicit_invocation: true

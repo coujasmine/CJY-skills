@@ -1,0 +1,7 @@
+Behavioral strategy examines how boundedly rational managers represent strategic problems (Gavetti 2012; Missing 2020).
+Ecosystem research emphasizes complementarities across interdependent actors (Adner and Kapoor 2010, Jacobides et al. 2018).
+Strategy Science strongly prefers theory-forward papers.
+
+# References
+
+This section should be ignored by citation coverage extraction (Unused 2021).

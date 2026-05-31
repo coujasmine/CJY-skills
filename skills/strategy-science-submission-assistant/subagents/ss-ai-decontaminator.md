@@ -67,6 +67,11 @@ Replace the following when used non-technically. The technical use is allowed wh
 | cutting-edge | new, recent |
 | state-of-the-art | current, leading |
 | breakthroughs | advances |
+| multifaceted | specify the dimensions, or delete |
+| rich insights / valuable insights | name the finding, or delete |
+| complex interplay | specify the relationship, or delete |
+| critical role / crucial role | role, effect, mechanism, or delete |
+| fill a gap | answer a question, test a mechanism, extend a lineage |
 | It is important to note that | (delete; just state the point) |
 | It is worth noting that | (delete; just state the point) |
 | It should be noted that | (delete; just state the point) |
@@ -75,6 +80,7 @@ Replace the following when used non-technically. The technical use is allowed wh
 | Furthermore, *(opening sentence)* | also, in addition — or delete |
 | Moreover, *(opening sentence)* | also, in addition — or delete |
 | Additionally, *(opening sentence)* | also — or delete |
+| Notably / Importantly / Crucially / Together *(repeated openers)* | use a subject-led sentence, a section-specific transition, or delete |
 
 Do **not** replace these when they are operating in their technical sense (e.g., "robust standard errors," "pivotal role" inside governance theory, "leverage" in capital structure, "navigate" in option-value strategy).
 
@@ -88,6 +94,8 @@ Do **not** replace these when they are operating in their technical sense (e.g.,
 - **Closing every paragraph with a generic implication sentence** — keep only when the implication advances the argument.
 - **All sentences within a narrow length range (20-28 words)** — break up two or three to add natural variation.
 - **Bullet points in main text** — convert back to running prose (SS does not use bullets in main text).
+- **Repeated interaction-interpretation formula** ("consistent with the X logic" after every interaction term) — vary the evidentiary move: direction, boundary condition, alternative mechanism, or limitation.
+- **Serial adverb openers** ("Notably... Importantly... Crucially... Together...") — replace most with subject-led sentences or concrete transitions.
 
 ### C. Argument-hedge markers (AI-typical safety hedging)
 

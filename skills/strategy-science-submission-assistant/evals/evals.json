@@ -30,13 +30,37 @@
       "mode": "WRITING_CHECK"
     },
     {
+      "id": "trigger_deai_mechanical_parallelism",
+      "prompt": "Revise this Strategy Science results paragraph so it no longer sounds like LLM prose: Notably, H2 is supported. Importantly, the interaction is consistent with the resource logic. Crucially, the second interaction is consistent with the governance logic. Together, the results not only support our theory but also offer rich insights.",
+      "expected_actions": [
+        "use_skill",
+        "flag_serial_adverb_openers",
+        "flag_repeated_consistent_with_logic",
+        "flag_not_only_but_also",
+        "vary_results_interpretation_language"
+      ],
+      "mode": "SECTION"
+    },
+    {
       "id": "trigger_citation_audit",
       "prompt": "Audit my Strategy Science citation list and tell me whether my claims are actually supported.",
       "expected_actions": [
         "use_skill",
         "extract_references",
         "extract_citation_contexts",
+        "audit_citation_coverage",
         "require_locator_anchors"
+      ],
+      "mode": "CITATION_AUDIT"
+    },
+    {
+      "id": "behavior_bidirectional_citation_coverage",
+      "prompt": "For my Strategy Science paper, check which in-text citations are absent from references and which references are not cited in the manuscript.",
+      "expected_actions": [
+        "use_skill",
+        "audit_citation_coverage",
+        "flag_cited_missing_reference",
+        "flag_uncited_reference"
       ],
       "mode": "CITATION_AUDIT"
     },
@@ -166,6 +190,17 @@
         "include_weighted_editorial_synthesis"
       ],
       "mode": "REVIEW"
+    },
+    {
+      "id": "behavior_preserve_author_voice",
+      "prompt": "Polish this Strategy Science paragraph, but keep my direct author voice and remove the ChatGPT feel.",
+      "expected_actions": [
+        "use_skill",
+        "preserve_clear_author_phrasing",
+        "avoid_over_smoothing",
+        "run_ai_decontamination"
+      ],
+      "mode": "POLISH"
     }
   ]
 }

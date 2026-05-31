@@ -5,7 +5,7 @@ purpose: >
   (sharpening theoretical contribution, softening causal language, validating
   LLM measurement, engaging counter-arguments). Used in RESPOND mode alongside
   cover_letter_and_response.md.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Reviewer Response Examples
@@ -70,7 +70,7 @@ We considered implementing an instrumental-variable analysis but found no plausi
 
 This validation procedure follows recent SS exemplars including the parallel approach used by [prior published work in SS].
 
-**Manuscript change:** Methods Section 3.X (page Y); new Appendix A (page Z); AI-use disclosure updated.
+**Manuscript change:** Methods Section 3.X (page Y); new Appendix A (page Z); AI-use transparency language updated where requested.
 
 ---
 

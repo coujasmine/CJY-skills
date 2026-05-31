@@ -1,7 +1,7 @@
 ---
 file: ss_reviewer_simulation.md
-purpose: Simulates Strategy Science Associate Editor + 3-reviewer process for pre-submission stress-testing. Used in REVIEW mode.
-last_verified: 2026-05-21
+purpose: Simulates Strategy Science Senior Editor + reviewer process for pre-submission stress-testing. Used in REVIEW mode.
+last_verified: 2026-05-31
 ---
 
 # Strategy Science Reviewer Simulation
@@ -11,7 +11,7 @@ last_verified: 2026-05-21
 - The SS reviewing system
 - The SS-specific review board
 - The three reviewer archetypes
-- AE archetype
+- Senior Editor archetype
 - Review contract and editorial synthesis
 - Running the simulation
 - Format of each reviewer report
@@ -23,18 +23,18 @@ last_verified: 2026-05-21
 
 This file specifies how to simulate an SS peer-review process. Use in REVIEW mode to surface the most likely reviewer concerns before submission.
 
-> **Hard rule:** Do not invent specific reviewer names, decision quotes, or AE remarks. Simulate the *type* of reviewer concern based on patterns observed in SS published papers and standard INFORMS reviewing practice.
+> **Hard rule:** Do not invent specific reviewer names, decision quotes, or Senior Editor remarks. Simulate the *type* of reviewer concern based on patterns observed in SS published papers and standard INFORMS reviewing practice.
 
 ---
 
 ## The SS reviewing system
 
 - **Editor-in-Chief**: rotates; recent SI editors include Felipe Csaszar.
-- **Associate Editor (AE)**: one assigned, makes the recommendation to the EIC.
-- **Reviewers**: typically 2-3 expert reviewers.
+- **Senior Editor**: Strategy Science's official guide says Senior Editors have autonomy to accept, reject, or request revision and incorporate reviewer evaluations into their own judgment.
+- **Reviewers**: expert reviewers, including Editorial Review Board members and field specialists.
 - **Decision categories**: Desk Reject / Reject / Major Revision / Minor Revision / Accept.
-- **Double-anonymous**: reviewers do not know authors; authors do not know reviewers (until final acceptance, when AE/editor sign acknowledgments).
-- **Review timeline**: First-round review typically 6-10 weeks. R&R cycle 3-6 months. Total received-to-accept ranges 6-15 months based on the 2026 SI exemplars.
+- **Double-anonymous**: reviewers do not know authors; authors do not know reviewers.
+- **Review timeline**: do not report exact expected timing unless the user supplies a verified source. If a revision is invited, the official guide asks for resubmission within three months and no later than one year.
 
 ---
 
@@ -43,7 +43,7 @@ This file specifies how to simulate an SS peer-review process. Use in REVIEW mod
 REVIEW mode now uses a calibrated review board rather than only three generic
 reviewer voices:
 
-1. **SS EIC / AE screen**
+1. **SS EIC / Senior Editor screen**
    - Desk-reject risk, send-out risk, and fit with the journal's theory-forward
      strategy domain.
 
@@ -150,15 +150,15 @@ Typical R3 concerns:
 
 ---
 
-## AE archetype
+## Senior Editor archetype
 
-The AE typically synthesizes the three reviewers and adds editor-level judgment:
+The Senior Editor synthesizes reviewer input and adds editor-level judgment:
 
 - **Strategic fit with the journal**: Does this advance SS's intellectual program?
 - **Theoretical contribution worth the publication slot**: Is this a "good paper" or a "good SS paper"?
 - **R&R feasibility**: Can the issues raised by reviewers be addressed in a revision, or are they fundamental?
 
-Typical AE recommendations:
+Typical Senior Editor recommendations:
 - "Desk reject" — fit or contribution issues that cannot be fixed in revision
 - "Reject after review" — multiple reviewers identify fundamental issues; revision unlikely to succeed
 - "Major revision" — meaningful issues but a clear path to resolution
@@ -174,7 +174,7 @@ three-phase sequence:
 
 1. **Review contract**: declare weights, fatal flaws, and evidence needed before
    paper-visible assessment.
-2. **Paper-visible review**: apply AE + reviewer reports. If a criterion emerges
+2. **Paper-visible review**: apply Senior Editor + reviewer reports. If a criterion emerges
    only after reading, label it `Emergent issue`.
 3. **Editorial synthesis**: aggregate, score, and prioritize. Do not introduce
    new objections here.
@@ -183,7 +183,7 @@ For each review level:
 
 ### QUICK_REVIEW (title + abstract + RQ only)
 
-- AE assessment: 3-4 sentences on SS fit and likely desk-screen outcome
+- Senior Editor assessment: 3-4 sentences on SS fit and likely desk-screen outcome
 - R1: 2-3 concerns on theoretical positioning visible from the abstract
 - R2: 2-3 concerns on method/design visible from the abstract (e.g., "the abstract claims causality but mentions only correlation")
 - R3: 2-3 concerns on fit and contribution sharpness
@@ -191,7 +191,7 @@ For each review level:
 
 ### STANDARD_REVIEW (+ intro/theory/method excerpt)
 
-- AE assessment: 5-7 sentences with specific desk-reject triggers cross-referenced
+- Senior Editor assessment: 5-7 sentences with specific desk-reject triggers cross-referenced
 - R1: 5-7 concerns from theory section, including missing anchor citations
 - R2: 5-7 concerns from method section, including identification and measurement
 - R3: 4-6 concerns from fit and contribution
@@ -199,7 +199,7 @@ For each review level:
 
 ### FULL_REVIEW (complete manuscript)
 
-- AE assessment: full memo (10-15 sentences) including recommended decision
+- Senior Editor assessment: full memo (10-15 sentences) including recommended decision
 - R1: full review (10-15 concerns; major + minor + required revisions)
 - R2: full review (10-15 concerns; method + identification + measurement + robustness)
 - R3: full review (8-12 concerns; fit + contribution + writing + AI-markers)
@@ -236,7 +236,7 @@ The authors examine [paraphrased RQ] using [paraphrased design] and find [paraph
 
 ## What NOT to do
 
-1. **Do not invent reviewer names or AE names.** Use "Reviewer 1", "Reviewer 2", "Reviewer 3", "Associate Editor".
+1. **Do not invent reviewer names or Senior Editor names.** Use "Reviewer 1", "Reviewer 2", "Reviewer 3", "Senior Editor".
 2. **Do not invent quotes from real reviewers.** The simulation gives the *type* of concern, not actual paste from any specific review.
 3. **Do not predict acceptance.** Predict "desk reject risk" / "major revision risk" / "minor revision risk" — never claim a paper will be accepted.
 4. **Do not soft-pedal serious issues.** If the lineage is mis-fit or the contribution is vague, R3 will say so; the simulation should say so.
@@ -249,7 +249,7 @@ The authors examine [paraphrased RQ] using [paraphrased design] and find [paraph
 The four exemplar papers show what a successful SS submission looks like after reviewer engagement:
 
 - **Kanis et al. 2026** explicitly thanks Felipe Csaszar (editor) for "highly constructive comments." The paper reports null effects on the main DV — a sign that reviewers pushed for honest reporting, not headline-chasing. The "Additional analyses indicate" pattern likely emerged from reviewer requests to explore mechanisms.
-- **Qu et al. 2026** thanks "Brian Clark and JP Eggers" for invaluable insights (likely AE-suggested reviewers). The paper has a Hypothesis 1 + Hypothesis 2 structure (relatively simple), suggesting the original submission may have been more complex and was trimmed during revision.
+- **Qu et al. 2026** thanks specific colleagues for insights. The paper has a Hypothesis 1 + Hypothesis 2 structure (relatively simple), suggesting the original submission may have been more complex and was trimmed during revision.
 - **Asghar et al.** uses a "fruit fly" justification for the empirical setting — a phrase Asghar attributes to the foresight literature but also a common reviewer-anticipating move.
 - **Clough 2026** is single-authored pure theory; the reviewer process likely involved demands for typology clarity (the trilemma and 2×2 matrix in Table 6 and Figure 1 may be artifacts of revision).
 
@@ -274,7 +274,7 @@ These exemplars are calibration anchors. A simulated review should produce conce
 ### R&R (2nd round) to SS
 
 - At this stage, reviewers expect the paper to be near-final
-- Major new concerns at 2nd round usually indicate the reviewer or AE has lost confidence
+- Major new concerns at 2nd round usually indicate the reviewer or Senior Editor has lost confidence
 - Minor revision is the typical positive outcome
 
 ### Special issue submission

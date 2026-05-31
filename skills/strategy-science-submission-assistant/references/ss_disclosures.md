@@ -1,16 +1,16 @@
 ---
 file: ss_disclosures.md
-purpose: Strategy Science / INFORMS disclosure requirements — AI use, author contributions, data availability, conflicts of interest, IRB, funding. Used in PACKAGE and POLISH Stage 8.
-last_verified: 2026-05-21
+purpose: Strategy Science / INFORMS ethics and disclosure readiness — AI transparency, author contributions, data access/retention, conflicts of interest, IRB, funding. Used in PACKAGE and POLISH Stage 8.
+last_verified: 2026-05-31
 ---
 
-# Strategy Science Disclosure Requirements
+# Strategy Science Ethics and Disclosure Readiness
 
 ## Contents
 
-- 1. AI / LLM use disclosure
+- 1. AI / LLM use transparency
 - 2. Author contribution statement
-- 3. Data Availability Statement (DAS)
+- 3. Data access / retention statement
 - 4. Conflict of Interest (COI) statement
 - 5. Funding statement
 - 6. Ethics / IRB statement
@@ -21,24 +21,28 @@ last_verified: 2026-05-21
 - Post-acceptance vs. blinded-review differences
 
 
-INFORMS journals (including Strategy Science) require explicit disclosures across multiple categories. This file lists each, gives template language, and flags when each is required.
+The current Strategy Science submission page requires authors to certify compliance with journal and INFORMS ethics policies, disclose possible perceived conflicts of interest, funding, prior/substantially overlapping work, and related submissions using the same database when relevant. INFORMS' ethics page permits generative AI use in manuscript preparation but says authors remain fully responsible for the accuracy, integrity, originality, and verification of AI-assisted content. It also says authors may be asked to provide raw data for editorial review and should retain data long enough to support verification or replication.
+
+This file separates official hard requirements from prudent transparency language. Do not label AI-use or DAS language as an unconditional Strategy Science requirement unless the current portal, a special-issue call, funder, or method design makes it required.
 
 > Source: INFORMS PubsOnline policies and observed patterns in published SS articles (2026 issues). Verify the current Author Guide and submission portal before final submission, as INFORMS updates policies periodically.
 
 ---
 
-## 1. AI / LLM use disclosure
+## 1. AI / LLM use transparency
 
-### When required
+### When to prepare
 
-ALWAYS, if the manuscript was prepared with any assistance from generative AI tools (including ChatGPT, Claude, Gemini, Mistral, Llama, or domain-specific models).
+Prepare a precise transparency statement whenever the manuscript was prepared with assistance from generative AI tools (including ChatGPT, Claude, Gemini, Mistral, Llama, or domain-specific models). Use it when the portal, cover letter, journal correspondence, method section, coauthor policy, or funder policy calls for disclosure.
 
 This includes:
 - **Writing assistance**: drafting, editing, language polish, summarization — even partial
 - **Measurement / coding**: using LLMs to classify text, code variables, label cases
 - **Analysis assistance**: using LLMs to suggest code, interpret outputs, or generate visualizations
 - **Idea generation**: using LLMs in literature search, hypothesis brainstorming
-- **This skill**: counts as AI assistance and must be disclosed
+- **This skill**: counts as AI assistance; tell the user to prepare a transparent statement even when the portal does not expose an explicit AI field
+
+Official policy anchor: INFORMS allows authors to use generative AI tools, but AI tools may not be listed as authors, and authors bear full responsibility for the accuracy, integrity, and originality of the submitted work.
 
 ### Template language (writing assistance only)
 
@@ -48,23 +52,24 @@ This includes:
 
 > To classify [construct] in our [experiment / archival text analysis], we used [model names and version pins] with consistency assessed via [metric] and validation against human coders on a subset of [N] items. We document our prompts in Appendix [X] and our validation procedure in Section [X.Y]. We additionally used [model name and version] for language polishing of [sections]; the authors reviewed and edited all AI-assisted text and take full responsibility for the manuscript content.
 
-### Template language (no AI use)
+### Template language (no AI use, if the portal asks)
 
 > The authors did not use generative AI tools in the preparation of this manuscript.
 
 ### Placement
 
-- In the manuscript: typically at the end of the Methods section, or in an "AI Use Statement" sub-section before Acknowledgments. Some authors place it in Acknowledgments.
-- On the submission portal: INFORMS may require a checkbox + free-text statement at submission.
+- In the manuscript: for LLM-as-measurement/coding, report model names, prompts, validation, and human verification in Methods and appendixes because it is part of the research design.
+- For writing assistance only: use a brief transparency statement in the cover letter or portal free-text field if requested.
+- On the submission portal: answer any AI-related prompt if present.
 - In the blinded manuscript: include the model details and procedure, but omit anything that identifies the authors.
 
 ---
 
 ## 2. Author contribution statement
 
-### When required
+### When to prepare
 
-When there are 2+ authors. INFORMS does not mandate CRediT taxonomy specifically, but expects clear delineation of contributions.
+When there are 2+ authors. The current Strategy Science submission page requires all authors and institutions to be identified in ScholarOne and all authors to approve submission. It does not state a universal initial-submission CRediT requirement, but an author-contribution note is useful for title-page material, final files, and coauthor governance.
 
 ### Template options
 
@@ -86,16 +91,16 @@ When there are 2+ authors. INFORMS does not mandate CRediT taxonomy specifically
 
 ### Placement
 
-- In the blinded manuscript: omit (it would identify authors). Place in Title Page document.
+- In the blinded manuscript: omit (it would identify authors). Place in ScholarOne author metadata or a title-page file only if requested.
 - After acceptance: include in the final published manuscript.
 
 ---
 
-## 3. Data Availability Statement (DAS)
+## 3. Data access / retention statement
 
-### When required
+### When to prepare
 
-ALWAYS. INFORMS expects an explicit statement even when data are not publicly available.
+Prepare a data access/retention statement when the portal, editor, funder, special-issue call, or research design calls for it. The current Strategy Science submission page does not state a universal Data Availability Statement requirement. INFORMS ethics guidance says authors may be asked to provide raw data for editorial review and should retain data long enough to support verification or replication.
 
 ### Template language options
 
@@ -117,8 +122,8 @@ ALWAYS. INFORMS expects an explicit statement even when data are not publicly av
 
 ### Placement
 
-- In the manuscript, typically at the end of the Methods section or in a dedicated "Data Availability" subsection.
-- On the submission portal: INFORMS submission may have a separate data field.
+- In the manuscript, typically at the end of the Methods section or in a dedicated "Data Availability" subsection when included.
+- On the submission portal: answer any data/code/reproducibility field if present.
 
 ---
 
@@ -126,7 +131,7 @@ ALWAYS. INFORMS expects an explicit statement even when data are not publicly av
 
 ### When required
 
-ALWAYS. Even when there is no conflict, state it explicitly.
+When a possible personal, professional, institutional, or financial conflict could reasonably be perceived to influence the research. The Strategy Science portal asks authors to disclose possible perceived conflicts in the cover letter or related submission questions; if no conflict exists, prepare a "no conflict" statement for the portal/cover letter if asked.
 
 ### Template language
 
@@ -148,7 +153,7 @@ ALWAYS. Even when there is no conflict, state it explicitly.
 
 ### When required
 
-ALWAYS. Disclose funding sources, even if none.
+Funding sources that supported the research must be disclosed. If no funding supported the work, prepare a "no specific funding" statement for the portal/cover letter if asked.
 
 ### Template language
 
@@ -226,7 +231,7 @@ When the study was pre-registered at OSF, aspredicted.org, or a registered repor
 
 ### When applicable
 
-When the authors choose INFORMS gold open access (CC BY 4.0). Some SS articles are published OA; verify the current article status and fee policy before advising.
+When the authors choose INFORMS Open Option. The current Strategy Science guide lists a US$3,000 fee; verify the current rate and license at final-files stage.
 
 ### Template language
 
@@ -263,7 +268,7 @@ of [Institution Name] (Project ID: [Number]). We preregistered our study at
 [URL].
 ```
 
-For the blinded manuscript, REMOVE all of the above (it identifies the authors). Move to Title Page or post-acceptance.
+For the blinded manuscript, REMOVE all of the above (it identifies the authors). Move to ScholarOne author metadata, a title-page file if requested, or post-acceptance files.
 
 ---
 
@@ -271,16 +276,16 @@ For the blinded manuscript, REMOVE all of the above (it identifies the authors).
 
 | Item | Status | Notes |
 |---|---|---|
-| AI / LLM use disclosure | ✓ / ✗ / N/A | Include model name(s) and use case(s) |
-| Author contributions | ✓ / ✗ / N/A | CRediT or alternative |
-| Data Availability Statement | ✓ / ✗ | Required even if data not public |
-| Conflict of Interest | ✓ / ✗ | Required even if none |
-| Funding statement | ✓ / ✗ | Required even if none |
+| AI / LLM use transparency | ✓ / ✗ / N/A | Prepare precise language when AI assisted writing, coding, measurement, analysis, or figures; report LLM-as-measurement in Methods |
+| Author contributions | ✓ / ✗ / N/A | Recommended for 2+ authors; use CRediT or another clear format when requested/finalized |
+| Data access / retention statement | ✓ / ✗ / N/A | Portal/editor/funder/method dependent; keep data ready for editorial review where possible |
+| Conflict of Interest | ✓ / ✗ / N/A | Disclose possible perceived conflicts; state none if requested |
+| Funding statement | ✓ / ✗ / N/A | Disclose all supporting funding; state none if requested |
 | IRB / ethics statement | ✓ / ✗ / N/A | Required for human-subjects work |
 | Pre-registration link | ✓ / ✗ / N/A | When applicable; anonymized for review |
-| Open Access decision | ✓ / ✗ | Subscription or gold OA |
-| Acknowledgments scrubbed for blinding | ✓ / ✗ | All identifying info to Title Page |
-| Title Page separate document | ✓ / ✗ | Standard INFORMS requirement |
+| Open Access decision | ✓ / ✗ / N/A | Subscription or INFORMS Open Option; current guide lists US$3,000 for OA |
+| Acknowledgments scrubbed for blinding | ✓ / ✗ | All identifying info removed from the blinded manuscript |
+| Author metadata/title-page file | ✓ / ✗ / N/A | ScholarOne collects author/institution data; provide a separate title-page file only if requested |
 
 ---
 
@@ -288,8 +293,8 @@ For the blinded manuscript, REMOVE all of the above (it identifies the authors).
 
 | Item | Blinded review version | Post-acceptance version |
 |---|---|---|
-| Authors and affiliations | Removed (in MS) / on Title Page | In MS |
-| Acknowledgments | Removed (in MS) / on Title Page | In MS |
+| Authors and affiliations | Removed from blinded MS; entered in ScholarOne and title-page file if requested | In MS / final cover page |
+| Acknowledgments | Removed from blinded MS; title-page file only if requested | In MS |
 | Funding (institution-named) | Generic ("a faculty fund") | Full institutional name |
 | IRB project ID | Anonymized ("[redacted]") | Full ID |
 | Pre-registration URL | Anonymous OSF view link | Full URL |

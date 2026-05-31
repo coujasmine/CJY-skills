@@ -8,7 +8,18 @@ cases:
       actions:
         - extract_references
         - extract_citation_contexts
+        - audit_citation_coverage
         - require_locator_anchors
+  - id: citation_audit_bidirectional_coverage
+    prompt: "Check whether all Strategy Science in-text citations appear in references and whether every reference is actually cited."
+    expected:
+      mode: CITATION_AUDIT
+      actions:
+        - audit_citation_coverage
+      flags:
+        - cited_missing_reference
+        - uncited_reference
+        - ambiguous_author_year_match
   - id: citation_audit_no_memory_support
     prompt: "Does Gavetti 2012 support this exact novelty claim? I only pasted the citation, not the source text."
     expected:
@@ -22,4 +33,3 @@ cases:
       mode: CITATION_AUDIT
       flags:
         - citation_needed
-

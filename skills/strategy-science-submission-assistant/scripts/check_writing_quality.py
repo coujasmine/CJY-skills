@@ -38,7 +38,10 @@ THROAT_CLEARING_PATTERNS: list[tuple[str, str]] = [
     (r"\bIn\s+recent\s+years,\s+there\s+has\s+been\s+growing\s+interest\s+in\b", "In recent years...growing interest"),
     (r"\bThere\s+has\s+been\s+growing\s+interest\s+in\b", "There has been growing interest"),
     (r"\bIn\s+today'?s\s+rapidly\s+changing\s+business\s+environment\b", "today's rapidly changing business environment"),
+    (r"\bIn\s+an\s+era\s+(where|when|of)\b", "In an era where/when/of"),
+    (r"\bAs\s+(organizations|firms|companies)\s+increasingly\b", "As firms increasingly"),
     (r"^\s*(Furthermore|Moreover|Additionally),\s", "transition opener"),
+    (r"^\s*(Notably|Importantly|Crucially|Together),\s", "adverb opener"),
 ]
 
 STRUCTURAL_PATTERNS: list[tuple[str, str, str]] = [
@@ -55,6 +58,16 @@ STRUCTURAL_PATTERNS: list[tuple[str, str, str]] = [
     (
         r"\bnot\s+only\b[^.]{0,200}?\bbut\s+also\b",
         "not-only-but-also reflex",
+        "MEDIUM",
+    ),
+    (
+        r"\bconsistent\s+with\s+(the|our)\s+[^.]{1,80}?\s+logic\b",
+        "repeated interaction-logic formula",
+        "MEDIUM",
+    ),
+    (
+        r"\b(Notably|Importantly|Crucially|Together),\s[^.]{0,200}\.\s+(Notably|Importantly|Crucially|Together),\s",
+        "serial adverb-openers",
         "MEDIUM",
     ),
     (
@@ -110,13 +123,23 @@ def scan_structures(text: str) -> list[dict[str, str | int]]:
     for pattern, label, severity in STRUCTURAL_PATTERNS:
         for match in re.finditer(pattern, text, flags=re.IGNORECASE | re.DOTALL):
             line_no = text[: match.start()].count("\n") + 1
+            if label == "repeated interaction-logic formula":
+                action = "Vary interaction interpretations: direction, boundary, alternative mechanism, or limitation."
+            elif label == "serial adverb-openers":
+                action = "Replace most adverb openers with subject-led sentences or concrete transitions."
+            elif label == "not-only-but-also reflex":
+                action = "Break the parallel unless it marks a real theoretical contrast."
+            elif label == "generic implication closer":
+                action = "Replace the generic implication with the specific mechanism or delete."
+            else:
+                action = "Recast as one or two precise theoretical movements."
             findings.append(
                 {
                     "line": line_no,
                     "rule": label,
                     "match": re.sub(r"\s+", " ", match.group(0))[:80],
                     "severity": severity,
-                    "action": "Recast as one or two precise theoretical movements.",
+                    "action": action,
                     "excerpt": line_excerpt(text, line_no),
                 }
             )
@@ -166,6 +189,16 @@ def build_report(text: str) -> dict[str, object]:
     ai_rule_counts = Counter(str(f["rule"]) for f in ai_findings)
     ai_risk = risk_from_count(len(ai_findings), medium=3, high=12)
     if any(str(f["severity"]) == "HIGH" for f in ai_findings + structure_findings):
+        ai_risk = "HIGH"
+    structural_rule_counts = Counter(str(f["rule"]) for f in structure_findings)
+    if (
+        structural_rule_counts.get("repeated interaction-logic formula", 0) >= 2
+        or structural_rule_counts.get("serial adverb-openers", 0) >= 2
+        or (
+            structural_rule_counts.get("serial adverb-openers", 0) >= 1
+            and structural_rule_counts.get("not-only-but-also reflex", 0) >= 1
+        )
+    ):
         ai_risk = "HIGH"
     readability_risk = "MEDIUM" if burstiness.get("burstiness") == "LOW" else "LOW"
     if punctuation["em_dash_risk"] == "HIGH":
@@ -255,4 +288,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

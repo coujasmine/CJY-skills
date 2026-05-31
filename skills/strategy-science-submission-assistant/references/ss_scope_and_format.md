@@ -4,7 +4,7 @@ purpose: >
   Strategy Science scope-fit tests, INFORMS formatting norms (abstract length,
   keywords, blinding, structure), and special-issue fit checks. Used in AUDIT,
   PACKAGE, and POLISH Stage 1 & 7.
-last_verified: 2026-05-21
+last_verified: 2026-05-31
 note: >
   INFORMS journal pages and submission portals change. If last_verified is
   more than 6 months before the submission date, re-check the official Author
@@ -23,9 +23,11 @@ note: >
 - Comparison to adjacent outlets
 
 
-Source note: Calibrated against the official INFORMS Strategy Science submission guidelines and four recent SS articles: Asghar, Coff, Mawdsley & Meyer-Doyle (2026, Articles in Advance, DOI 10.1287/stsc.2024.0328); Kanis, Mann & Stumpf-Wollersheim (2026) 11(1):75-92; Qu, Kumar & Tong (2026) 11(1):55-74; and Clough (2026, Articles in Advance). Verify the current official guide before final submission.
+Source note: Calibrated against the official INFORMS Strategy Science submission guidelines and four recent SS articles: Asghar, Coff, Mawdsley & Meyer-Doyle (2026, Articles in Advance, DOI 10.1287/stsc.2024.0328); Kanis, Mann & Stumpf-Wollersheim (2026) 11(1):75-92; Qu, Kumar & Tong (2026) 11(1):55-74; and Clough (2026, Articles in Advance). Official submission rules override published-article patterns whenever they conflict.
 
 Official submission guide: https://pubsonline.informs.org/page/stsc/submission-guidelines
+
+INFORMS file preparation guide: https://pubsonline.informs.org/authorportal/file-preparation
 
 ## Journal Identity
 
@@ -77,6 +79,12 @@ Weak fit signals:
 
 Use these as submission QA checks, then re-check the official author guide and INFORMS portal:
 
+### Basic format
+
+- **Official length expectation: no more than 35 pages all-inclusive.** If longer, the cover letter should briefly justify the exception; the journal can host online supplements.
+- **Official manuscript format:** double-spaced, 11-point standard font such as Times New Roman, with 1-inch margins on all sides.
+- Authors may use any software as long as they can upload a PDF in ScholarOne; the system also allows `.doc` and `.docx` files.
+
 ### Abstract
 
 - **Official limit for the manuscript abstract: no more than 200 words.**
@@ -101,10 +109,12 @@ Use these as submission QA checks, then re-check the official author guide and I
 3. **Methods** (or *Sample and Methods*) — Section 3. Standard subsections: 3.1 Data and Sample, 3.2 Dependent/Independent Variables, 3.3 Control Variables, 3.4 Econometric Model (or for experiments: Task, Design and Manipulation, Procedure, Measures, Participants).
 4. **Results** — Section 4. Standard order: descriptive statistics → correlations → main test → robustness → additional analyses.
 5. **Discussion** (or *Discussion and Conclusion*) — Section 5. Standard subsections: 5.1 Overview, 5.2 Theoretical/Practical Implications, 5.3 Limitations and Future Research (or 5.3 Future Directions).
-6. **Endnotes** — numbered, distinct from page footnotes.
-7. **References** — INFORMS style (see below).
-8. **Appendices / online supplements** — Appendix A, B, C... when extensive.
-9. **Acknowledgments, funding details, author contributions, and author bios** — keep out of the blinded manuscript at initial submission; place identifying material on the separate title page or restore it after acceptance.
+6. **References** — INFORMS style (see below), alphabetized by author.
+7. **Tables and figures** — numbered consecutively, cited in the text, and grouped together after the references for submission.
+8. **Appendices / online supplements** — Appendix A, B, C... when extensive; use online supplements/e-companions for material that would push the paper past the 35-page expectation.
+9. **Acknowledgments and other identifying material** — remove from the blinded manuscript and restore after acceptance or place only in author-identifying metadata/title-page material if requested by ScholarOne.
+
+Official note policy: endnotes and footnotes should be avoided. If a note is necessary, keep it brief and indicate it within the text rather than building a separate notes apparatus.
 
 For **pure-theory papers** (Clough 2026 style), the structure may be:
 1. Introduction → 2. Coordination Challenges (or theoretical setup) → 3. Governance Structures (core building blocks) → 4. From Building Blocks to Ideal Types → 5. Discriminating Alignment Framework → 6. Discussion → Conclusion.
@@ -136,16 +146,37 @@ than those who have narrower industry knowledge breadth.*
 
 ### Tables and figures
 
-- Embedded near first mention in submission version (varies by stage; check portal).
+- Official submission rule: tables and figures should be numbered consecutively and grouped together after the references.
+- Cite the intended position of each table or figure in the text.
 - "Table 1." / "Figure 1." centered headers.
 - Notes below each table starting with "*Notes.*" (italic).
 - Significance markers: \*\*\* p < 0.001, \*\* p < 0.01, \* p < 0.05, † p < 0.10 (with stated p-value direction — one-sided or two-sided).
 - Standard errors in parentheses below coefficients (SS norm; not t-statistics).
 
+### Text and figure source files
+
+Use these INFORMS file-preparation checks when packaging accepted files or doing a production-risk audit:
+
+- All manuscript and figure source files must use embedded standard fonts; do not use custom fonts.
+- Text source files should be Microsoft Word or LaTeX/TeX. Word files should be accompanied by a PDF. LaTeX is encouraged for extensive math content and may be required by some editors.
+- Original images must be at least 300 dpi and will be converted to CMYK or grayscale.
+- Original graphs and drawings should be editable vector graphics when possible.
+- Acceptable figure source formats:
+  - EPS for charts, graphs, and drawings; maximum 1 MB.
+  - TIFF for photographs and screenshots.
+  - High-quality PDF for images/graphs, with embedded fonts and image quality maintained at 600 dpi or higher; the file should be editable, not a bitmap.
+  - MS Word or PowerPoint for charts/graphs when the figures are included in the accepted PDF for comparison.
+  - Adobe Illustrator with layers flattened.
+  - Microsoft Excel plus an editable PDF of the graph/figure.
+- For color figures, check grayscale conversion before submission. By default, figures convert to grayscale for print unless authors pay approved print-color charges.
+- Do not rely only on color to distinguish lines or points; use line types, weights, point shapes, and light/dark contrast.
+- Avoid background shading and 3-D graphics.
+- For screenshots, enlarge the display before capture and prefer lossless TIFF over JPG when possible.
+
 ### Blinding
 
 - Peer review is **double-anonymous** at SS.
-- Separate title page with author identifying info; blinded manuscript scrubbed of:
+- ScholarOne collects author and institution information during submission. Use a separate title page or author-identifying file only when the portal or editor requests it; the blinded manuscript itself must be scrubbed of:
   - Author names
   - Affiliations
   - Acknowledgments (move to title page or post-acceptance)
@@ -171,25 +202,28 @@ Authors do not write this themselves; it is added by INFORMS production. But it 
 
 ### Open Access
 
-- INFORMS offers **gold open access (CC BY 4.0)** as an option (e.g., Clough 2026 is OA).
+- INFORMS Open Option is available for accepted articles; the official Strategy Science guide currently lists a **US$3,000** open-access fee.
 - Standard subscription publication is default.
-- OA fee is non-trivial; check current rates.
+- If choosing OA, use the IOO publication license rather than the regular copyright transfer form and re-check the current fee before final files.
 
 ## Final QA Questions
 
 - Is the manuscript abstract <=200 words, and is the ScholarOne abstract field <=250 words (use `scripts/check_abstract_word_count.py`)?
 - Are keywords within the official 3-10 entry range (use `scripts/check_keywords_count.py`)?
+- Is the manuscript double-spaced, 11-point standard font, with 1-inch margins?
+- Are standard fonts embedded, with no custom fonts?
 - Are hypotheses labeled in INFORMS bold-italic style?
 - Are citations parenthetical author-year WITHOUT a comma?
 - Are SE in parentheses (not t-statistics)?
 - Is the manuscript blinded throughout, including acknowledgments, self-citations, and file metadata?
-- Is there a separate title page with author identifying info?
-- Does the title page match the manuscript title exactly?
+- Are author names/institutions supplied through ScholarOne and, if requested, in a separate title-page file rather than in the blinded manuscript?
 - Do abstract, introduction, cover letter, and discussion describe the same theoretical contribution?
-- Are all tables and figures cited in order?
+- Are all tables and figures cited in order and grouped after the references?
+- Do figure source files meet INFORMS production specs: editable/vector when appropriate, images >=300 dpi, PDFs >=600 dpi with embedded fonts, and accepted formats (EPS/TIFF/PDF/Word/PowerPoint/Illustrator/Excel as applicable)?
+- If figures use color, have they been checked in grayscale and are line/point distinctions still readable?
 - Are references complete, INFORMS-formatted, and consistent with in-text citations?
 - Are supplementary files named and referenced consistently?
-- Is the AI-use disclosure prepared (mandatory per INFORMS)?
+- If AI was used, is a precise AI-use transparency statement prepared for the portal/cover letter/methods if requested or methodologically necessary?
 - Is the IRB approval cited (for human subjects)?
 - Is the pre-registration link anonymized (if pre-registered)?
 

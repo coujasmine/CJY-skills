@@ -2,7 +2,8 @@
 name: strategy-science-submission-assistant
 description: >
   Polish, audit, run writing-quality checks, audit citations, simulate peer
-  review for, revise, decontaminate AI flavor from, and package manuscripts for
+  review for, revise, decontaminate AI flavor from, calibrate argument logic and
+  SS-style wording from recent exemplars, and package manuscripts for
   Strategy Science (INFORMS). Use when the user explicitly targets Strategy
   Science — e.g., "polish for Strategy Science", "Strategy Science fit check",
   "Strategy Science writing quality check", "audit citations for Strategy
@@ -20,13 +21,21 @@ description: >
 
 This skill is a **Strategy Science (SS)-specific manuscript polisher, auditor, peer-review simulator, and submission packager**, not a generic writing helper. It treats *Strategy Science* as an INFORMS outlet with its own broad strategy scope (field-based empirical work, large-sample empirical research, computational/analytic modeling, experiments, and theory development), editorial philosophy, reviewer norms, formatting rules, and disclosure requirements. Carnegie / behavioral / cognitive / formal-modeling traditions are common anchors, not the journal's full boundary.
 
-**Anchor exemplars (used to calibrate this skill):**
+**Core anchor exemplars (used to calibrate this skill):**
 - Asghar, Coff, Mawdsley & Meyer-Doyle (2026). *Human Capital and Strategic Foresight: Evidence from Managers' Stock Purchases.* SS 0(0), Articles in Advance.
 - Kanis, Mann & Stumpf-Wollersheim (2026). *AI-Augmented Strategic Decision-Making Under Time Constraints.* SS 11(1):75-92.
 - Qu, Kumar & Tong (2026). *The Role of Predictions in Acquisition Decision Making: The Strategic Value of AI-Driven Foresight.* SS 11(1):55-74.
 - Clough (2026). *Governance Structures and Coordination Trade-offs: A Discriminating Alignment Theory of Innovation Ecosystem Architectures.* SS Articles in Advance.
 
-These four papers span SS's full method range (archival panel + entropy index; 2×2 between-subjects experiment; archival + ML; pure formal/typological theory) and define the patterns this skill enforces.
+These four papers span SS's core method range (archival panel + entropy index; 2×2 between-subjects experiment; archival + ML; pure formal/typological theory) and define the baseline patterns this skill enforces.
+
+**Expanded exemplar corpus (argument logic and wording calibration):**
+- Csaszar & Eklund (2026). *Revisiting the Unitary Actor Assumption: Toward Realistic Aggregation of Individual Preferences in Strategy Research.* SS Articles in Advance.
+- Csaszar, Ketkar & Kim (2024). *Artificial Intelligence and Strategic Decision-Making: Evidence from Entrepreneurs and Investors.* SS 9(4):322-345.
+- Felin & Holweg (2024). *Theory Is All You Need: AI, Human Cognition, and Causal Reasoning.* SS 9(4):346-371.
+- Gibbs, Byun & Lim (2026). *Build, Borrow, Buy ... or Bail: Divestiture Following Merger and Acquisition Deal Termination.* SS Articles in Advance.
+
+Use `references/ss_expanded_exemplar_corpus_2024_2026.md` when the manuscript needs deeper calibration of viewpoint logic, theoretical movement, paragraph sequencing, or SS-appropriate verbs and phrasing. These exemplars teach how claims are built and worded; do not copy their prose.
 
 The skill operates in eight modes plus companion subagents. Pick **one** mode per invocation based on user intent. If the user's intent is ambiguous, default to **POLISH** when the user asks for improvement/rewrite, **WRITING_CHECK** when the user asks for prose diagnosis only, **CITATION_AUDIT** when the user asks whether references or citations are trustworthy, and **AUDIT** when the user asks for broader submission diagnosis.
 
@@ -36,12 +45,12 @@ The skill operates in eight modes plus companion subagents. Pick **one** mode pe
 
 | Mode | When | Primary files to load | Output |
 |---|---|---|---|
-| **POLISH** *(default)* | User has a draft and wants it improved for SS submission | `references/ss_polishing_pipeline.md`, `references/ss_section_rewrite_playbook.md`, `references/ss_house_style.md`, `references/ss_claim_evidence_matrix.md`, `references/ss_real_exemplar_patterns.md`, `references/ai_style_markers.md` | Diagnosis + section-by-section rewritten draft + decontamination pass + change log |
-| **AUDIT** | User wants a pre-submission diagnosis only | `references/ss_desk_reject_triggers.md`, `references/ss_scope_and_format.md`, `references/ss_submission_workflow.md`, `references/ss_track_positioning.md`, `references/ss_real_exemplar_patterns.md` (§9 invariants), `references/ai_style_markers.md` (flag-only), `references/gpt_measurement_validation.md` (if LLM-as-measurement) | QUICK / STANDARD / FULL audit + top priorities + scored rubric + AI-marker flags |
+| **POLISH** *(default)* | User has a draft and wants it improved for SS submission | `references/ss_polishing_pipeline.md`, `references/ss_section_rewrite_playbook.md`, `references/ss_house_style.md`, `references/ss_claim_evidence_matrix.md`, `references/ss_real_exemplar_patterns.md`, `references/ss_expanded_exemplar_corpus_2024_2026.md` (when exemplar-matching an AI/cognition, aggregation, resource-reconfiguration, or theory-forward manuscript), `references/ai_style_markers.md` | Diagnosis + section-by-section rewritten draft + decontamination pass + change log |
+| **AUDIT** | User wants a pre-submission diagnosis only | `references/ss_desk_reject_triggers.md`, `references/ss_scope_and_format.md`, `references/ss_submission_workflow.md`, `references/ss_track_positioning.md`, `references/ss_real_exemplar_patterns.md` (§9 invariants), `references/ss_expanded_exemplar_corpus_2024_2026.md` (if argument-logic calibration is requested), `references/ai_style_markers.md` (flag-only), `references/gpt_measurement_validation.md` (if LLM-as-measurement) | QUICK / STANDARD / FULL audit + top priorities + scored rubric + AI-marker flags |
 | **WRITING_CHECK** | User wants diagnostic self-review of SS prose before revision, without rewriting | `references/writing_quality_check.md`, `references/ai_style_markers.md`, `references/ss_house_style.md`, `references/ss_real_exemplar_patterns.md` (§9 invariants) | Writing Quality Report + mechanical summary + line-level flags + protected terms preserved |
 | **CITATION_AUDIT** | User wants to check whether references exist and whether citations support claims | `references/citation_verification_protocol.md`, `references/claim_citation_alignment_protocol.md`, `references/ss_claim_evidence_matrix.md`, `references/literature_corpus_entry.schema.json` | Reference existence report + claim-citation alignment matrix + high-risk citation list + missing locator list |
-| **REVIEW** | User wants simulated SS peer review or reviewer attack points before submission | `references/ss_review_contract_protocol.md`, `references/ss_reviewer_simulation.md`, `references/ss_desk_reject_triggers.md`, `references/ss_track_positioning.md`, `references/ss_method_checklists.md`, `references/methods/archival_panel_checklist.md` (if archival/panel), `references/methods/experiment_checklist.md` (if experiment), `references/methods/formal_theory_checklist.md` (if pure theory), `references/gpt_measurement_validation.md` (if LLM-as-measurement), `references/ss_claim_evidence_matrix.md`, `references/claim_citation_alignment_protocol.md`, `references/ss_real_exemplar_patterns.md` | Review Contract + simulated review board + devil's advocate screen + editorial synthesis |
-| **SECTION** | User wants one specific section rewritten (intro / abstract / theory / method / results / discussion) | `references/ss_section_rewrite_playbook.md` + the matching subsection + `references/ss_real_exemplar_patterns.md` (matching section patterns) + `references/ai_style_markers.md` | Annotated before/after for that section + decontamination pass |
+| **REVIEW** | User wants simulated SS peer review or reviewer attack points before submission | `references/ss_review_contract_protocol.md`, `references/ss_reviewer_simulation.md`, `references/ss_desk_reject_triggers.md`, `references/ss_track_positioning.md`, `references/ss_method_checklists.md`, `references/methods/archival_panel_checklist.md` (if archival/panel), `references/methods/experiment_checklist.md` (if experiment), `references/methods/formal_theory_checklist.md` (if pure theory), `references/gpt_measurement_validation.md` (if LLM-as-measurement), `references/ss_claim_evidence_matrix.md`, `references/claim_citation_alignment_protocol.md`, `references/ss_real_exemplar_patterns.md`, `references/ss_expanded_exemplar_corpus_2024_2026.md` (if matching reviewer risk to a recent exemplar) | Review Contract + simulated review board + devil's advocate screen + editorial synthesis |
+| **SECTION** | User wants one specific section rewritten (intro / abstract / theory / method / results / discussion) | `references/ss_section_rewrite_playbook.md` + the matching subsection + `references/ss_real_exemplar_patterns.md` (matching section patterns) + `references/ss_expanded_exemplar_corpus_2024_2026.md` (for intro/contribution/theory/discussion wording calibration) + `references/ai_style_markers.md` | Annotated before/after for that section + decontamination pass |
 | **PACKAGE** | User wants cover letter, response letter, or submission-package QA | `references/cover_letter_and_response.md`, `references/ss_disclosures.md`, `references/ss_scope_and_format.md`, `references/ss_real_exemplar_patterns.md` (§7 disclosure patterns), `references/ai_style_markers.md` (cover letter only) | Cover/response letter draft + disclosure checklist + decontamination of cover letter |
 | **RESPOND** | User has reviewer comments and wants a response letter | `references/cover_letter_and_response.md`, `references/reviewer_response_examples.md`, `references/ss_claim_evidence_matrix.md`, `references/ai_style_markers.md`, `references/gpt_measurement_validation.md` (if reviewer challenged the measurement) | Point-by-point response + revised manuscript change list + decontamination of response letter |
 
@@ -51,7 +60,7 @@ The skill operates in eight modes plus companion subagents. Pick **one** mode pe
 
 ## Deterministic checks — run the bundled scripts
 
-Nine checks in this skill are mechanical: counting abstract words, counting keywords, locating causal verbs, locating AI-style markers, aggregating writing-quality risks, measuring sentence-length variation, extracting reference metadata, extracting citation contexts, and checking reference existence metadata. Estimating these by eye is unreliable: a 225-word abstract may look short by article-exemplar standards but still exceeds the official manuscript abstract limit, and a manual verb sweep silently misses instances. Run the bundled scripts and quote their output instead of guessing.
+Ten checks in this skill are mechanical: counting abstract words, counting keywords, locating causal verbs, locating AI-style markers, aggregating writing-quality risks, measuring sentence-length variation, extracting reference metadata, extracting citation contexts, checking citation/reference coverage, and checking reference existence metadata. Estimating these by eye is unreliable: a 225-word abstract may look short by article-exemplar standards but still exceeds the official manuscript abstract limit, and a manual verb sweep silently misses instances. Run the bundled scripts and quote their output instead of guessing.
 
 | Script | What it checks | Run in |
 |---|---|---|
@@ -63,6 +72,7 @@ Nine checks in this skill are mechanical: counting abstract words, counting keyw
 | `scripts/check_sentence_burstiness.py` | Sentence-length variation and burstiness | WRITING_CHECK; POLISH/SECTION when prose feels over-smoothed |
 | `scripts/extract_references.py` | Heuristic extraction from BibTeX or reference lists | CITATION_AUDIT |
 | `scripts/extract_citation_contexts.py` | Citation-bearing sentence contexts for claim-citation alignment | CITATION_AUDIT; REVIEW when citation integrity is a concern |
+| `scripts/audit_citation_coverage.py` | Bidirectional reconciliation: in-text citations missing from references, references not cited in manuscript, ambiguous author-year matches | CITATION_AUDIT |
 | `scripts/verify_references.py` | Offline structural reference audit; optional `--online` Crossref/OpenAlex/Semantic Scholar metadata check | CITATION_AUDIT |
 
 Usage: `python3 scripts/<name>.py <file>`, or pipe text via stdin. The scripts **locate candidates; they do not decide.** A flagged causal verb backed by a DiD design (e.g., Qu et al. 2026's identification strategy) is correct, and "leverage" inside a capital-structure sentence is correct. Reference verification scripts check metadata, not substantive claim support. Always calibrate each hit against the relevant reference file (`ss_claim_evidence_matrix.md` for verbs, `ai_style_markers.md` for markers, `citation_verification_protocol.md` and `claim_citation_alignment_protocol.md` for citations) before changing the text. The scripts narrow where to look; the reference files decide what to do.
@@ -76,18 +86,19 @@ These rules apply to **every mode** and cannot be relaxed by user request.
 1. **Never invent citations.** If you would need to cite something not provided by the user, write `[CITATION NEEDED: <what>]` and stop. Do not guess author names, years, journals, page numbers, or DOIs. SS reviewers are deeply embedded in the Carnegie/behavioral/formal-strategy networks and will catch invented citations.
 2. **Never invent results, statistics, or effect sizes.** If a number is not in the user's draft, do not introduce it. Use `[STAT NEEDED]`.
 3. **Never inflate claim strength beyond the empirical design.** Use `references/ss_claim_evidence_matrix.md` to calibrate verbs (associated with / predicts / causes / theorizes). SS reviewers especially penalize cross-sectional designs claiming causality. For pure theory papers, do not write "we show empirically" — write "we propose" / "we argue" / "the framework predicts."
-4. **Never invent reviewer comments, editor decisions, or AE remarks.** In RESPOND mode, quote only what the user pasted in.
+4. **Never invent reviewer comments, editor decisions, or Senior Editor remarks.** In RESPOND mode, quote only what the user pasted in.
 5. **Never claim "first study to" or "no prior work has" unless the user has supplied evidence for the claim** (a systematic search log, a recent review, or explicit reviewer concession). SS regularly publishes work that extends Csaszar, Gavetti, Levinthal, Helfat, Adner, Williamson lineages — claiming primacy without evidence will trigger desk-reject.
-6. **Never strip the user's authorial voice.** Rewriting is for clarity and rigor, not for imposing a generic "SS-house" voice. Preserve the user's argumentative structure unless it triggers a desk-reject risk (see `ss_desk_reject_triggers.md`).
-7. **Always disclose AI use to the user**: at the end of any rewrite, remind the user that INFORMS journals require an AI-use disclosure (see `references/ss_disclosures.md`) and that this skill counts as AI assistance for that purpose.
+6. **Never strip the user's authorial voice.** Rewriting is for clarity and rigor, not for imposing a generic "SS-house" voice. Preserve the user's argumentative structure, preferred level of directness, and useful local irregularities unless they trigger a desk-reject risk (see `ss_desk_reject_triggers.md`). Do not smooth every paragraph into the same claim-context-implication rhythm.
+7. **Always flag AI-use transparency to the user**: at the end of any rewrite, remind the user that INFORMS permits AI-assisted manuscript preparation but makes authors responsible for the accuracy, integrity, originality, and verification of AI-assisted content. This skill counts as AI assistance; prepare a precise disclosure/transparency statement when the portal, cover letter, method section, or coauthor/funder policy calls for it (see `references/ss_disclosures.md`).
 8. **Never silently delete the user's content.** When removing a passage, list it under "Removed (with reason)" in the change log.
 9. **SS-only calibration.** If the user's draft is clearly mis-fit for SS (e.g., generic OB micro-study with no strategic outcome, pure marketing paper, pure finance/economics paper with no strategy mechanism, narrow empirical paper with no theoretical contribution beyond confirmation), say so up-front in the verdict and suggest alternates (SMJ, Organization Science, AMJ, JBR, etc.). Do not force-fit.
 10. **Do not fabricate missing inputs.** For POLISH, SECTION, PACKAGE, and RESPOND, stop when required materials are missing. For AUDIT and REVIEW, run the highest feasible audit/review level from the supplied materials and label confidence and missing inputs.
-11. **AI decontamination is mandatory for every produced output.** Every passage you generate in POLISH, SECTION, RESPOND, and PACKAGE mode must pass through the rules in `references/ai_style_markers.md` before being shown to the user. AUDIT and REVIEW modes flag AI markers in the user's existing text rather than rewrite. The decontamination must (a) preserve all statistical reports, variable names, hypothesis labels, citations, and theory-specific vocabulary verbatim, and (b) be reported in a dedicated `## AI decontamination` block in the output. If no markers triggered, issue an explicit pass signal — do not skip the block.
+11. **AI decontamination is mandatory for every produced output.** Every passage you generate in POLISH, SECTION, RESPOND, and PACKAGE mode must pass through the rules in `references/ai_style_markers.md` before being shown to the user. Run decontamination as both a pre-generation constraint and a post-generation check: first avoid model-default moves (throat-clearing, symmetrical lists, generic implications, excessive polish), then scan the generated passage. AUDIT and REVIEW modes flag AI markers in the user's existing text rather than rewrite. The decontamination must (a) preserve all statistical reports, variable names, hypothesis labels, citations, and theory-specific vocabulary verbatim, (b) keep any author-specific phrasing that is clear and defensible, and (c) be reported in a dedicated `## AI decontamination` block in the output. If no markers triggered, issue an explicit pass signal — do not skip the block.
 12. **LLM-as-measurement audits use `references/gpt_measurement_validation.md`.** When the method tier is archival/text/AI/experiment-with-LLM-coding and the user supplies methods or results material, every audit or review that touches measurement must apply the eight-dimension scorecard from that file. Do not estimate validation metrics the manuscript does not report. (Kanis et al. 2026 use three LLMs with Krippendorff's α = 0.89 against human coders — treat this as a strong recent SS benchmark, not as an official universal cutoff.)
 13. **Theory-forward calibration.** SS is more theory-forward than JBR/SMJ. A pure-empirical paper without a clear theoretical movement (Clough 2026 is pure theory; Kanis/Qu/Asghar are empirical but each names a specific theoretical extension) will not survive SS review. Always check whether the contribution is a *theoretical movement* (extension, integration, reconciliation, boundary refinement, mechanism specification) — not merely "we find X in setting Y."
 14. **Citation support requires evidence, not memory.** In CITATION_AUDIT and REVIEW, never decide that a source supports a claim from model memory. Use user-provided PDFs, excerpts, notes, quote anchors, page/section/paragraph locators, or deterministic metadata checks. If the locator is missing, mark support as `UNKNOWN` and request `[LOCATOR NEEDED]`.
 15. **Writing-quality checks are diagnostic unless explicitly routed to a rewrite mode.** WRITING_CHECK reports line-level risks and suggested actions but does not rewrite text. If the user asks both "check" and "rewrite," run WRITING_CHECK first, then POLISH/SECTION only after reporting the risks.
+16. **Do not manufacture "beautiful" prose.** Strategy Science revisions should sound like a careful author making a specific argument, not a general-purpose editorial model. Prefer concrete nouns, named mechanisms, and one decisive hinge sentence over sweeping scene-setting, ornamental adjectives, and polished but empty transitions. If a sentence already works, leave it alone.
 
 ---
 
@@ -103,11 +114,11 @@ Before doing any POLISH, AUDIT, REVIEW, SECTION, PACKAGE, or RESPOND work, confi
 | Method tier = archival / survey / experiment / formal theory / computational / qual case / mixed / meta | POLISH, AUDIT, REVIEW, SECTION | Determines claim-evidence matrix row, triggers method checklist, and routes gpt_measurement_validation when applicable |
 | Primary theoretical conversation + research question | POLISH, AUDIT, REVIEW | Needed to test argument spine. SS expects identification of the parent theory (Carnegie / Williamson / Adner-Kapoor / Csaszar-Laureiro-Martínez / Helfat-Peteraf / etc.) |
 | Prior submission history (other outlets, prior SS R&Rs) | POLISH, RESPOND | Avoids salami / overlap risk |
-| AI-use disclosure prepared? | PACKAGE | Required by INFORMS for SS submissions |
+| AI-use transparency statement prepared? | PACKAGE | Needed when AI assisted writing, coding, analysis, or measurement; official INFORMS policy makes authors responsible for verified AI-assisted content |
 | Reviewer comments + decision letter (verbatim paste) | RESPOND | Cannot fabricate replies |
 | Uses LLM (GPT/Claude/Gemini/Mistral) as a measurement or coding instrument? | POLISH, AUDIT, REVIEW, SECTION (method/results), RESPOND | Triggers gpt_measurement_validation.md scorecard |
 | Pre-registration filed (aspredicted.org, OSF)? | POLISH, AUDIT, REVIEW (if experiment) | SS experiments increasingly cite pre-registration (Kanis et al. 2026) |
-| IRB approval reference | POLISH, AUDIT, PACKAGE (if human subjects) | INFORMS requires explicit IRB statement |
+| IRB approval reference | POLISH, AUDIT, PACKAGE (if human subjects) | Needed for human-subjects ethics compliance; keep institution-identifying details blinded during review |
 | Reference list / BibTeX / literature matrix | CITATION_AUDIT, REVIEW when citation integrity is scored | Needed for existence and metadata checks |
 | Source locators (quotes, pages, sections, paragraphs, annotated notes) | CITATION_AUDIT | Needed to judge whether citations support claims; absence becomes `UNKNOWN`, not a guessed judgment |
 
@@ -117,8 +128,8 @@ For POLISH, SECTION, PACKAGE, and RESPOND, if two or more required fields are mi
 - `STANDARD_AUDIT`: abstract plus introduction, theory, or method excerpt.
 - `FULL_AUDIT`: complete manuscript or all main sections.
 - `QUICK_REVIEW`: title/abstract/research question only; simulate likely desk-screen and reviewer risks at low confidence.
-- `STANDARD_REVIEW`: abstract + introduction + theory/method excerpt; simulate targeted AE and reviewer risks.
-- `FULL_REVIEW`: complete manuscript; simulate full AE + Reviewer 1/2/3 reports.
+- `STANDARD_REVIEW`: abstract + introduction + theory/method excerpt; simulate targeted Senior Editor and reviewer risks.
+- `FULL_REVIEW`: complete manuscript; simulate full Senior Editor + Reviewer 1/2/3 reports.
 
 For CITATION_AUDIT, do not halt solely because online metadata checks are unavailable. Run the offline audit, label external statuses `NOT_CHECKED`, and tell the user what would require network or manual verification.
 
@@ -171,6 +182,11 @@ Missing inputs that would change the judgment: ...
 | Reference | Crossref | OpenAlex | Semantic Scholar | DOI match | Title similarity | Metadata risk | Action |
 |---|---|---|---|---|---:|---|---|
 | ... | MATCHED / WEAK_MATCH / ERROR / NOT_CHECKED | ... | ... | true/false | ... | LOW / MEDIUM / HIGH | ... |
+
+## Citation coverage report
+| Issue type | Citation / Reference | Location | Risk | Action |
+|---|---|---|---|---|
+| cited_missing_reference / uncited_reference / ambiguous_match / unparsed_reference_key | ... | line / reference slug | LOW / MEDIUM / HIGH | add_reference / cite_or_remove_reference / disambiguate_year_suffix / fix_reference_format |
 
 ## Claim-Citation Alignment Audit
 | Claim | Citation | Exists? | Locator? | Supports claim? | Risk | Action |
@@ -236,8 +252,8 @@ Writing and positioning: __/15
 Citation integrity: __/15
 TOTAL: __/100  (≥80 = ready for next pass; ≥90 = submission-ready)
 
-## AI-use disclosure reminder
-This rewrite used AI assistance. Add a disclosure paragraph to your submission per INFORMS policy. See references/ss_disclosures.md. If your manuscript uses an LLM as a measurement or coding instrument, the disclosure must cover that use, not only writing assistance.
+## AI-use transparency reminder
+This rewrite used AI assistance. Prepare a precise disclosure/transparency statement if the portal, cover letter, method section, coauthor policy, or funder policy asks for one. INFORMS policy holds authors responsible for reviewing, verifying, and editing AI-assisted content. If your manuscript uses an LLM as a measurement or coding instrument, report that use in the methods and validation materials, not only as writing assistance.
 ```
 
 ### AUDIT output
@@ -263,7 +279,7 @@ Missing inputs that would change the judgment: ...
 | 6. Sensitivity and robustness (multiple LLMs, multiple prompts) | … |
 | 7. False-positive / hallucination review | … |
 | 8. Reporting and disclosure | … |
-## AI-use disclosure reminder
+## AI-use transparency reminder
 ```
 (No section rewrites.)
 
@@ -292,7 +308,7 @@ Evidence needed:
 ## Simulated editorial decision
 Desk reject / Send out for review / Major revision risk / Minor revision risk
 
-## Associate Editor assessment
+## Senior Editor assessment
 - SS fit (theory-forward strategy with cognitive/behavioral/formal core):
 - Likely theoretical contribution framing:
 - Main desk-reject risk:
@@ -345,7 +361,7 @@ Decision mapping:
 2. Strongly recommended
 3. Optional polish
 
-## AI-use disclosure reminder
+## AI-use transparency reminder
 ```
 
 ### SECTION output
@@ -368,14 +384,14 @@ Level: SURGICAL / MODERATE / SYSTEMIC / PASS
 ## AI decontamination
 Level: SURGICAL / MODERATE / SYSTEMIC / PASS
 ## Disclosure checklist (status for each item in ss_disclosures.md)
-## Submission file inventory (blinded MS, title page, declarations, figures, tables, supplementary, pre-registration if applicable)
+## Submission file inventory (blinded MS, ScholarOne author metadata/title-page file if requested, declarations, figures/tables after references, supplementary/e-companion files, pre-registration if applicable)
 ## Final QA
 ```
 
 ### RESPOND output
 
 ```
-## Overall response (to Editor / AE) — decontaminated
+## Overall response (to Editor / Senior Editor) — decontaminated
 ## Point-by-point response (R1 / R2 / R3 ... in order) — decontaminated
   For each: [Comment quoted] / [Response] / [Manuscript change with page/line]
 ## AI decontamination
@@ -396,7 +412,7 @@ Five companion subagents ship with this skill in `subagents/`. They are SS-speci
 | `ss-llm-measurement-auditor` | Audit an LLM-as-measurement or LLM-as-coder design (prompt hygiene, multi-LLM consistency à la Kanis et al., Krippendorff α, sensitivity, reporting) before SS submission or in R&R. | AUDIT (when method tier uses LLM measurement/coding), REVIEW (Reviewer 2: Method and Evidence) |
 | `ss-claim-citation-auditor` | Audit whether manuscript claims are supported by the cited sources, with separate checks for reference existence, locator anchors, and claim support. | CITATION_AUDIT; REVIEW when citation integrity is scored |
 | `ss-devils-advocate-reviewer` | Attack the paper's strongest desk-reject path: SS misfit, weak theoretical movement, overclaiming, AI-style prose, or citation fragility. | REVIEW after the main reviewer reports |
-| `ss-editorial-synthesizer` | Aggregate AE/reviewer/devil's-advocate/citation/writing findings into a weighted editorial verdict. Does not introduce new objections. | REVIEW final synthesis |
+| `ss-editorial-synthesizer` | Aggregate Senior Editor/reviewer/devil's-advocate/citation/writing findings into a weighted editorial verdict. Does not introduce new objections. | REVIEW final synthesis |
 
 **Installation note for Claude Code users:** copy or symlink `strategy-science-submission-assistant/subagents/*.md` into your project's `.claude/agents/` directory so Claude Code can route to them by description match. The skill's modes continue to work without the subagents — they call the same logic inline via `references/ai_style_markers.md` and `references/gpt_measurement_validation.md`. The subagents exist for users who want each capability available as a standalone routable specialist.
 
@@ -433,13 +449,18 @@ references/
   ss_house_style.md                     ← SS voice, INFORMS norms, sentence-level
   ss_claim_evidence_matrix.md           ← anti-overclaim calibration table
   ss_desk_reject_triggers.md            ← 30-second hard checks
-  ss_disclosures.md                     ← INFORMS AI-use / authorship / DAS / IRB
-  ss_reviewer_simulation.md             ← REVIEW mode AE + reviewer simulation
+  ss_disclosures.md                     ← INFORMS AI transparency / ethics / COI / funding / IRB
+  ss_reviewer_simulation.md             ← REVIEW mode Senior Editor + reviewer simulation
   ss_scope_and_format.md                ← scope, abstract/keyword norms, blinding
   ss_submission_workflow.md             ← INFORMS submission stages
   ss_track_positioning.md               ← SS theoretical-track fit (Carnegie /
                                           behavioral / formal / ecosystem / etc.)
   ss_introduction_and_contribution.md   ← intro / contribution standards
+  ss_expanded_exemplar_corpus_2024_2026.md
+                                        ← expanded corpus from four user-
+                                          supplied SS PDFs; argument logic,
+                                          theoretical movement, and wording
+                                          calibration
   ss_method_checklists.md               ← per-method evaluation criteria
   ai_style_markers.md                   ← AI-generation marker catalog
                                           (mandatory for every rewrite)
@@ -478,6 +499,7 @@ scripts/                                ← run these; see "Deterministic checks
   check_sentence_burstiness.py          ← sentence-length variation measure
   extract_references.py                 ← BibTeX/reference-list extractor
   extract_citation_contexts.py          ← citation-bearing claim contexts
+  audit_citation_coverage.py            ← bidirectional citation/reference coverage
   verify_references.py                  ← offline/optional online metadata check
 agents/
   openai.yaml                           ← runner-side config (not a Claude
