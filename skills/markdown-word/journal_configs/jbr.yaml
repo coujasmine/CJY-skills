@@ -1,0 +1,155 @@
+# Journal of Business Research (JBR) — Elsevier
+# Source: https://www.sciencedirect.com/journal/journal-of-business-research/publish/guide-for-authors
+# Last reviewed: 2026-05
+#
+# JBR is Elsevier. Elsevier accepts wide-ranging formats at first submission; the
+# spec below targets the editor-friendly "double-spaced, line-numbered, APA-like"
+# format that the JBR editorial team has repeatedly told authors to prefer.
+
+name: jbr
+display_name: Journal of Business Research
+publisher: Elsevier
+guideline_url: https://www.sciencedirect.com/journal/journal-of-business-research/publish/guide-for-authors
+notes: |
+  - JBR allows tables/figures embedded OR at end of document. This spec embeds.
+  - Hard abstract cap: 150 words. Keywords: 4-6.
+  - Disclosures (AI use, ethics, funding, CRediT) are required but not formatted here;
+    they go in the cover/manuscript per Elsevier's portal.
+  - Line numbering is editor-friendly and required for double-anonymized review.
+
+blind: true
+
+page:
+  size: letter
+  orientation: portrait
+  margin_top_cm: 2.54
+  margin_bottom_cm: 2.54
+  margin_left_cm: 2.54
+  margin_right_cm: 2.54
+  line_numbers: true
+  line_number_restart: continuous
+  page_numbers: true
+  page_number_position: bottom_center
+
+body:
+  font_name: Times New Roman
+  font_size_pt: 12
+  line_spacing: 2.0
+  space_before_pt: 0
+  space_after_pt: 0
+  first_line_indent_cm: 0
+  alignment: left
+
+headings:
+  numbering: decimal
+  max_level: 4
+  h1:
+    font_name: Times New Roman
+    font_size_pt: 12
+    bold: true
+    italic: false
+    all_caps: false
+    alignment: left
+    space_before_pt: 18
+    space_after_pt: 12
+  h2:
+    font_name: Times New Roman
+    font_size_pt: 12
+    bold: true
+    italic: false
+    alignment: left
+    space_before_pt: 12
+    space_after_pt: 6
+  h3:
+    font_name: Times New Roman
+    font_size_pt: 12
+    bold: false
+    italic: true
+    alignment: left
+    space_before_pt: 6
+    space_after_pt: 3
+  h4:
+    font_name: Times New Roman
+    font_size_pt: 12
+    bold: false
+    italic: true
+    alignment: left
+    space_before_pt: 6
+    space_after_pt: 0
+
+title_page:
+  separate_page: true
+  title:
+    font_size_pt: 14
+    bold: true
+    alignment: center
+  authors:
+    font_size_pt: 12
+    alignment: center
+  affiliations:
+    font_size_pt: 11
+    italic: true
+    alignment: center
+
+abstract:
+  separate_page: true
+  word_limit: 150
+  heading_text: Abstract
+  heading_bold: true
+  heading_alignment: left
+
+keywords:
+  min_count: 4
+  max_count: 6
+  separator: "; "
+  label: "Keywords: "
+  label_bold: true
+
+tables:
+  style: apa
+  alignment: center
+  font_name: Times New Roman
+  font_size_pt: 11
+  header_bold: true
+  cell_padding_pt: 3
+  border_top_pt: 1.5
+  border_header_bottom_pt: 0.5
+  border_bottom_pt: 1.5
+  border_other_pt: 0
+  caption_position: above
+  caption_prefix: "Table"
+  caption_separator: "\n"
+  caption_number_format: arabic
+  caption_font_size_pt: 12
+  caption_prefix_bold: false
+  caption_title_italic: true
+  notes:
+    label: "Note."
+    label_italic: true
+    font_size_pt: 10
+    alignment: left
+    space_before_pt: 6
+  repeat_header_across_pages: true
+  allow_row_split: false
+
+figures:
+  caption_position: below
+  caption_prefix: "Figure"
+  caption_separator: "\n"
+  caption_number_format: arabic
+  caption_font_size_pt: 12
+  caption_prefix_bold: false
+  caption_title_italic: true
+  alignment: center
+
+references:
+  heading_text: References
+  hanging_indent_cm: 1.27
+  font_size_pt: 12
+  line_spacing: 2.0
+  space_after_entry_pt: 0
+  style_note: |
+    JBR uses APA-style (author, year) in-text and APA 7 reference list.
+    This skill does not auto-format citations. Either pre-format in the
+    Markdown manually, or run Pandoc with citeproc before this skill
+    (pandoc input.md --citeproc --bibliography=refs.bib --csl=apa.csl).
