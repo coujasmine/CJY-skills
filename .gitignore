@@ -2,3 +2,21 @@
 .claude/worktrees/
 skills/.DS_Store
 skills/**/.DS_Store
+
+# Python build artifacts
+__pycache__/
+*.pyc
+
+# Editor / OS swap & temp files
+*.swp
+.~*
+
+# Stata / script logs
+*.log
+
+# Nested worktrees inside skills (from earlier worktree experiments)
+skills/**/.claude/
+
+# Skill build artifacts at skill root (templates/ and examples/ docx still tracked)
+skills/*/combined_dictionary_*.docx
+skills/*/strategy_science_variable_tables.docx
