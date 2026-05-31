@@ -1,0 +1,25 @@
+version: 2026-05-23
+skill: strategy-science-submission-assistant
+cases:
+  - id: citation_audit_mode_trigger
+    prompt: "Audit whether my Strategy Science references exist and whether citations support the claims."
+    expected:
+      mode: CITATION_AUDIT
+      actions:
+        - extract_references
+        - extract_citation_contexts
+        - require_locator_anchors
+  - id: citation_audit_no_memory_support
+    prompt: "Does Gavetti 2012 support this exact novelty claim? I only pasted the citation, not the source text."
+    expected:
+      mode: CITATION_AUDIT
+      flags:
+        - support_unknown_without_locator
+        - do_not_use_model_memory
+  - id: citation_audit_missing_citation
+    prompt: "Check this sentence: Strategy Science strongly prefers theory-forward papers."
+    expected:
+      mode: CITATION_AUDIT
+      flags:
+        - citation_needed
+

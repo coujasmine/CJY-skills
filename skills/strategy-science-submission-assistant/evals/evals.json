@@ -1,0 +1,171 @@
+{
+  "skill": "strategy-science-submission-assistant",
+  "version": "2026-05-22",
+  "description": "Trigger and behavior evals for Strategy Science / INFORMS manuscript support.",
+  "evals": [
+    {
+      "id": "trigger_fit_audit",
+      "prompt": "Audit my manuscript for Strategy Science fit before first submission.",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "AUDIT"
+    },
+    {
+      "id": "trigger_ss_reviewers",
+      "prompt": "Simulate three Strategy Science reviewers for this AI strategy paper.",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "REVIEW"
+    },
+    {
+      "id": "trigger_writing_check",
+      "prompt": "Run a Strategy Science writing quality check on this introduction, but do not rewrite it.",
+      "expected_actions": [
+        "use_skill",
+        "run_check_writing_quality",
+        "diagnose_only"
+      ],
+      "mode": "WRITING_CHECK"
+    },
+    {
+      "id": "trigger_citation_audit",
+      "prompt": "Audit my Strategy Science citation list and tell me whether my claims are actually supported.",
+      "expected_actions": [
+        "use_skill",
+        "extract_references",
+        "extract_citation_contexts",
+        "require_locator_anchors"
+      ],
+      "mode": "CITATION_AUDIT"
+    },
+    {
+      "id": "trigger_package_qa",
+      "prompt": "Check my INFORMS double-anonymized Strategy Science submission package.",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "PACKAGE"
+    },
+    {
+      "id": "trigger_llm_measurement",
+      "prompt": "Audit my GPT-coded construct measure for Strategy Science submission.",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "AUDIT"
+    },
+    {
+      "id": "trigger_response_letter",
+      "prompt": "Help me respond to Strategy Science reviewers after a major revision invitation.",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "RESPOND"
+    },
+    {
+      "id": "trigger_special_issue",
+      "prompt": "Assess whether this paper fits the Strategy Science special issue Can AI Do Strategy?",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "AUDIT"
+    },
+    {
+      "id": "trigger_abstract_keywords",
+      "prompt": "Format my abstract and keywords for Strategy Science / INFORMS submission.",
+      "expected_actions": [
+        "use_skill"
+      ],
+      "mode": "PACKAGE"
+    },
+    {
+      "id": "dont_trigger_smk",
+      "prompt": "Polish this paper for Strategic Management Journal, not Strategy Science.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "dont_trigger_jbr",
+      "prompt": "Revise my cover letter for Journal of Business Research.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "dont_trigger_orgsci",
+      "prompt": "Simulate Organization Science reviewers for this cognition paper.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "dont_trigger_generic_polish",
+      "prompt": "Please improve the English of this strategy manuscript without targeting a journal.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "dont_trigger_lit_search",
+      "prompt": "Search the literature on AI and strategy and build me a bibliography.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "dont_trigger_social_science_abbrev",
+      "prompt": "Use SS as an abbreviation for social science in this paragraph.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "dont_trigger_statistics_ss",
+      "prompt": "Explain why the residual sum of squares (SS) fell after adding predictors.",
+      "expected_actions": [
+        "dont_use_skill"
+      ]
+    },
+    {
+      "id": "behavior_official_limits",
+      "prompt": "My Strategy Science abstract is 225 words and keywords are 2 items. Is it compliant?",
+      "expected_actions": [
+        "use_skill",
+        "flag_manuscript_abstract_over_200",
+        "flag_keywords_below_3"
+      ]
+    },
+    {
+      "id": "behavior_no_fake_rates",
+      "prompt": "What is my desk-reject probability at Strategy Science?",
+      "expected_actions": [
+        "use_skill",
+        "do_not_invent_numeric_probability",
+        "qualitative_risk_assessment"
+      ]
+    },
+    {
+      "id": "behavior_no_memory_citation_support",
+      "prompt": "Does Gavetti 2012 support my exact claim? I have not provided the source excerpt.",
+      "expected_actions": [
+        "use_skill",
+        "do_not_use_model_memory_for_claim_support",
+        "mark_support_unknown_without_locator"
+      ],
+      "mode": "CITATION_AUDIT"
+    },
+    {
+      "id": "behavior_review_contract",
+      "prompt": "Give me a full Strategy Science simulated review.",
+      "expected_actions": [
+        "use_skill",
+        "declare_review_contract_before_paper_visible_review",
+        "include_weighted_editorial_synthesis"
+      ],
+      "mode": "REVIEW"
+    }
+  ]
+}

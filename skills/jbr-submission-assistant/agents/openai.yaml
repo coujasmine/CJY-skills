@@ -1,0 +1,7 @@
+interface:
+  display_name: "JBR Submission Assistant"
+  short_description: "JBR audit, review simulation, rewrite, and QA"
+  default_prompt: "Use $jbr-submission-assistant to diagnose, simulate JBR reviewers for, or revise my manuscript; I will provide the target issue, submission stage, method tier, and draft text or reviewer comments."
+
+policy:
+  allow_implicit_invocation: true
