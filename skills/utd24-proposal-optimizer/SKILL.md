@@ -1,24 +1,18 @@
 ---
 name: utd24-proposal-optimizer
 description: >
-  Upstream optimizer for management research proposals and pre-submission
-  manuscripts targeting UTD24 strategy / innovation / entrepreneurship outlets
-  (SMJ, AMJ, ASQ, OS, MS — Strategy/Innovation/Entrepreneurship sections, AMR;
-  also Strategy Science as UTD24-adjacent). Operates in four modes — IDEA,
-  DESIGN (ex-ante research-design consultation), MANUSCRIPT, REVIEW —
-  evaluating across five UTD24 dimensions (Research Question, Literature
-  Conversation, Theoretical Mechanism, Hypothesis Architecture, Methods &
-  Identification) with outlet-specific per-dimension floors, deterministic
-  scripts, and simulated AE / Reviewer reports. Supports Chinese-context and
-  AI × strategy emerging lineages alongside Western mainstream theories.
-  Use when the user says "评价这个idea", "UTD24水平", "怎么改才能投SMJ/AMJ/ASQ",
-  "教授视角", "proposal优化", "我的假设够不够强", "母理论该挂哪棵树",
-  "identification gap", "模拟reviewer", "送审前自检", "我该用什么研究方法",
-  "design choice", "DiD vs PSM", "从机制怎么推假设", "怎么写假设".
-  Do NOT use for: post-acceptance polishing, formatting / cover letters
-  (use journal-specific submission assistants), pure OB micro / marketing /
-  finance / accounting topics, literature search (delegate to research-lit),
-  or running statistical analyses.
+  Optimize management research ideas, designs, proposals, manuscripts, and
+  reviewer simulations for UTD24 strategy / innovation / entrepreneurship
+  outlets (SMJ, AMJ, ASQ, OS, MS, AMR; Strategy Science adjacent). Operates in
+  IDEA, DESIGN, MANUSCRIPT, and REVIEW modes across Research Question,
+  Literature Conversation, Mechanism, Hypothesis Architecture, and Methods &
+  Identification, with outlet floors, academic-storytelling coherence, scripts,
+  and simulated reviewers. Supports Western, Chinese-context, and AI-strategy
+  lineages. Use for "UTD24水平", "proposal优化", "怎么改才能投SMJ/AMJ/ASQ",
+  "模拟reviewer", "DiD vs PSM", "从机制推假设", "论文什么都有却没故事",
+  "story不清楚", or academic storytelling. Do not use for formatting, cover
+  letters, literature searches, statistical analysis, or pure OB micro,
+  marketing, finance, or accounting work.
 ---
 
 # UTD24 Proposal Optimizer
@@ -63,10 +57,10 @@ If user did not specify target outlet, run the floor check against all 6 UTD24 o
 
 | Mode | When | Primary files to load | Output |
 |---|---|---|---|
-| **IDEA** | RQ + sketched mechanism, draft < 2 pages, or "I have an idea, is it UTD24?" | `references/utd24_rubric.md` (IDEA columns + outlet floor), `references/utd24_rq_criteria.md`, `references/utd24_lit_conversation.md`, `references/utd24_strategy_innovation_entrepreneurship_lineages.md` + (`utd24_chinese_context_lineage.md` if China data) + (`utd24_ai_strategy_lineage.md` if AI topic), `references/utd24_desk_reject_triggers.md` (idea-stage subset) | 5-dim score (LOW-confidence) + RQ rewrites (2-3 variants) + 3 candidate parent theories + methods route suggestion + outlet differential fit + UTD24 viability verdict |
+| **IDEA** | RQ + sketched mechanism, draft < 2 pages, or "I have an idea, is it UTD24?" | `references/utd24_rubric.md` (IDEA columns + outlet floor), `references/utd24_rq_criteria.md`, `references/utd24_lit_conversation.md`, `references/utd24_strategy_innovation_entrepreneurship_lineages.md` + (`utd24_chinese_context_lineage.md` if China data) + (`utd24_ai_strategy_lineage.md` if AI topic), `references/utd24_desk_reject_triggers.md` (idea-stage subset); load `references/utd24_storytelling_architecture.md` when the idea is gap-led, multi-story, or explicitly asks about story/coherence | 5-dim score (LOW-confidence) + RQ rewrites (2-3 variants) + 3 candidate parent theories + story spine/coherence gate when triggered + methods route suggestion + outlet differential fit + UTD24 viability verdict |
 | **DESIGN** *(new)* | User has RQ + parent theory but no method commitment; asks "DiD vs PSM", "lab vs field", "qual vs quan", "how should I design this"; or rebuilds after Dim-5-driven rejection | `references/utd24_design_choice_tree.md` (primary), `references/utd24_qual_mixed_design.md` (if qual/mixed in scope), `references/utd24_hypothesis_patterns.md` (architecture must precede design), `references/utd24_methods_identification.md` (for post-design audit), `references/utd24_rubric.md` (Dim 5 floor at target outlet) | Strongest design path + Second-best + Avoid list + Identification strategy + Sample design + Measurement requirements + Endogeneity decision matrix + Pre-registration recommendation + Cross-skill handoffs |
-| **MANUSCRIPT** *(default)* | At least 2 of {intro, theory, methods, results} sections supplied | `references/utd24_rubric.md` (full + outlet floor) + all 5 dimension criteria files + `references/utd24_hypothesis_patterns.md` (when rewriting hypotheses) + `references/utd24_desk_reject_triggers.md` + `references/utd24_exemplar_patterns.md` (when matching a recent published pattern) + lineage companions if applicable | 5-dim score + outlet floor check + section-level BEFORE/AFTER rewrites + per-hypothesis audit + identification gap list + revision priority P0/P1/P2 |
-| **REVIEW** | User asks for adversarial review or pre-submission attack | `references/utd24_reviewer_simulation.md`, `references/utd24_desk_reject_triggers.md`, `references/utd24_rubric.md` (with outlet floor), `references/utd24_strategy_innovation_entrepreneurship_lineages.md` (+ lineage companions if applicable), `references/utd24_exemplar_patterns.md`, `references/utd24_hypothesis_patterns.md` (for hypothesis-level R1 attacks) | AE decision + Reviewer 1 (theory) + Reviewer 2 (method) + Reviewer 3 (positioning) + Devil's Advocate + revision priority |
+| **MANUSCRIPT** *(default)* | At least 2 of {intro, theory, methods, results} sections supplied | `references/utd24_rubric.md` (full + outlet floor) + all 5 dimension criteria files + `references/utd24_hypothesis_patterns.md` (when rewriting hypotheses) + `references/utd24_desk_reject_triggers.md` + `references/utd24_exemplar_patterns.md` (when matching a recent published pattern) + lineage companions if applicable; load `references/utd24_storytelling_architecture.md` when title-to-discussion coherence, gap-to-knot, or multiple-story problems appear | 5-dim score + outlet floor check + section-level BEFORE/AFTER rewrites + Story Coherence Gate when triggered + per-hypothesis audit + identification gap list + revision priority P0/P1/P2 |
+| **REVIEW** | User asks for adversarial review or pre-submission attack | `references/utd24_reviewer_simulation.md`, `references/utd24_desk_reject_triggers.md`, `references/utd24_rubric.md` (with outlet floor), `references/utd24_strategy_innovation_entrepreneurship_lineages.md` (+ lineage companions if applicable), `references/utd24_exemplar_patterns.md`, `references/utd24_hypothesis_patterns.md` (for hypothesis-level R1 attacks); load `references/utd24_storytelling_architecture.md` for explicit story/coherence review or when R1/R3 cannot state what the paper is really about | AE decision + Reviewer 1 (theory) + Reviewer 2 (method) + Reviewer 3 (positioning) + Devil's Advocate + Story Coherence Gate when triggered + revision priority |
 
 > **Routing rule:** Read only the files listed for the active mode. Do not pre-load all references. Lineage companion files (`utd24_chinese_context_lineage.md`, `utd24_ai_strategy_lineage.md`) are loaded conditionally based on phenomenon (China data → load Chinese; AI topic → load AI; both → load both).
 
@@ -88,6 +82,7 @@ These rules apply to **every mode** and cannot be relaxed by user request.
 10. **Do not fabricate missing inputs.** For IDEA, if the parent theory is unclear, halt and ask. For MANUSCRIPT and REVIEW, run the highest feasible scoring level on the supplied material and label confidence + missing inputs.
 11. **The five-dimension score is mandatory and unweighted-equal.** No dimension may be skipped. If you cannot score a dimension because the relevant section is missing, label it `INSUFFICIENT_INPUT` and report what would be needed — do not assign a guessed score.
 12. **HARKing is a fatal flag.** If the manuscript presents results-first then derives hypotheses to match (Hypothesizing After Results are Known), flag as DESK-REJECT-LEVEL. Indicators: hypotheses that suspiciously match unusual mediator/moderator findings; theory section written in past tense as if reporting; no a priori predicted effect direction.
+13. **Coherence never overrides evidence.** Never manufacture a paradox, suppress a null/unexpected result, hide a limitation, or inflate identification to make the story cleaner. When evidence complicates the proposed mechanism, revise the answer or reduce claim strength; do not edit the evidence out of the story.
 
 ---
 
@@ -150,6 +145,41 @@ Detailed sub-criteria in `references/utd24_rubric.md`. The five per-dimension fi
 
 ---
 
+## Story Coherence Gate (cross-dimensional; not a sixth score)
+
+After the five-dimension diagnosis, run a short coherence check whenever the
+user explicitly asks about storytelling/coherence or the draft shows gap-only,
+multiple-story, title-to-discussion mismatch, or generic-contribution signals.
+Load `references/utd24_storytelling_architecture.md` for the full diagnostic and
+rewrite procedure.
+
+The gate asks whether one theoretical problem travels through the entire paper:
+
+1. **Knot:** current knowledge cannot explain a consequential anomaly, conflict,
+   or failed assumption; novelty is not carried only by “few studies.”
+2. **Tension escalation:** theory progressively exposes the limits of existing
+   explanations and motivates one mechanism.
+3. **Resolution:** methods and results can credibly answer the promised question
+   and engage the strongest alternative.
+4. **Before-after:** discussion states a specific change in theoretical
+   understanding, not only “extends / fills / responds.”
+5. **One-story coherence:** title, abstract, RQ, hypotheses, analyses, and
+   contribution serve the same knot.
+
+Report each gate as `PASS / PARTIAL / FAIL` and the overall result as:
+
+- `COHERENT`
+- `REPAIRABLE`
+- `STRUCTURAL REBUILD`
+
+Map each failure back to affected rubric dimensions; **do not add a sixth score,
+change equal weighting, or mechanically deduct points twice**. The gate can
+explain why individually plausible dimensions do not yet form a publishable
+paper, but it cannot rescue weak identification, missing citations, HARKing, or
+unsupported claims.
+
+---
+
 ## Output Contracts
 
 ### IDEA output
@@ -188,6 +218,15 @@ Likely outlet: <SMJ/AMJ/etc.>
 1. <Lineage> — fits because <reason> — anchor papers: <2-3 cites the user supplied or [CITATION NEEDED]>
 2. ...
 3. ...
+
+## Story spine and coherence (include when triggered)
+Knot type: ANOMALY / COMPETING LOGICS / FAILED ASSUMPTION / GAP-ONLY
+Existing understanding: ...
+Unresolved problem: ...
+Mechanism: ...
+Provisional answer: ...
+Before → After: ... → ...
+Gate result: COHERENT / REPAIRABLE / STRUCTURAL REBUILD (LOW confidence at idea stage)
 
 ## Methods Route Suggestion
 Given the RQ and likely outlet:
@@ -267,6 +306,17 @@ Confidence: LOW / MEDIUM / HIGH
 1. [dim affected] [issue] → [action] → [expected score lift]
 2. ...
 3. ...
+
+## Story Coherence Gate (include when triggered)
+| Gate | Result | Evidence from supplied text | Required action |
+|---|---|---|---|
+| Knot | PASS/PARTIAL/FAIL | ... | ... |
+| Tension escalation | PASS/PARTIAL/FAIL | ... | ... |
+| Resolution | PASS/PARTIAL/FAIL | ... | ... |
+| Before-after | PASS/PARTIAL/FAIL | ... | ... |
+| One-story coherence | PASS/PARTIAL/FAIL | ... | ... |
+Overall: COHERENT / REPAIRABLE / STRUCTURAL REBUILD
+Affected rubric dimensions: ...
 
 ## 5-Dimension Diagnosis
 ### Dim 1 — Research Question (__/20)
@@ -369,6 +419,18 @@ Minor concerns:
 The strongest single argument for rejection:
 <one paragraph>
 
+## Story Coherence Gate (include when triggered)
+What is this paper really about? <one sentence or UNANSWERABLE>
+| Gate | Result | Most damaging evidence |
+|---|---|---|
+| Knot | PASS/PARTIAL/FAIL | ... |
+| Tension escalation | PASS/PARTIAL/FAIL | ... |
+| Resolution | PASS/PARTIAL/FAIL | ... |
+| Before-after | PASS/PARTIAL/FAIL | ... |
+| One-story coherence | PASS/PARTIAL/FAIL | ... |
+Overall: COHERENT / REPAIRABLE / STRUCTURAL REBUILD
+Single repair path that preserves the supplied evidence: ...
+
 ## Revision Priority
 - P0 (must fix to avoid desk reject): ...
 - P1 (must fix to avoid R3 / reject after review): ...
@@ -395,15 +457,16 @@ The strongest single argument for rejection:
 
 ## Deterministic checks — run the bundled scripts
 
-Three checks are mechanical and should be run rather than estimated.
+Four checks are mechanical and should be run rather than estimated.
 
 | Script | What it checks | Run in |
 |---|---|---|
 | `scripts/scan_causal_overclaim.py` | Strong causal verbs (causes / leads to / produces / determines / drives) that may not match the design tier | MANUSCRIPT (Dim 5); REVIEW (R2); IDEA only if user pasted RQ text |
 | `scripts/scan_analogy_markers.py` | "Similar to" / "akin to" / "as in" / "parallels" / "mirrors" appearing in mechanism-explanation positions | MANUSCRIPT (Dim 3); REVIEW (R1) |
 | `scripts/check_hypothesis_count.py` | Count of explicitly labeled H1, H2, ... and flag if >5 | MANUSCRIPT (Dim 4); REVIEW (R1) |
+| `scripts/check_story_coherence.py` | Gap-only, knot/tension, resolution/mechanism, and before-after textual signals; locates candidates but does not score coherence | IDEA / MANUSCRIPT / REVIEW when Story Coherence Gate is triggered |
 
-Usage: `python3 scripts/<name>.py <file>`, or pipe text via stdin. The scripts **locate candidates; they do not decide.** A flagged causal verb backed by a DiD design is correct; "similar to" inside a literature-summary sentence (not a mechanism explanation) is correct. Always calibrate each hit against the relevant reference file before changing the diagnosis.
+Usage: `python3 scripts/<name>.py <file>`, or pipe text via stdin. The scripts **locate candidates; they do not decide.** A flagged causal verb backed by a DiD design is correct; "similar to" inside a literature-summary sentence (not a mechanism explanation) is correct; zero storytelling markers does not prove the story is absent. Always calibrate each hit against the relevant reference file before changing the diagnosis.
 
 ---
 
@@ -461,6 +524,7 @@ references/
   utd24_rq_criteria.md                                      ← Dim 1 high/mid/low anchors + rewrites
   utd24_lit_conversation.md                                 ← Dim 2: parent-theory anchoring + conversation framing
   utd24_mechanism_audit.md                                  ← Dim 3: analogy vs mechanism, falsifiability, alt explanations
+  utd24_storytelling_architecture.md                        ← cross-dimensional Story Coherence Gate: gap→knot, tension, evidence resolution, before-after contribution
   utd24_hypothesis_architecture.md                          ← Dim 4: 3-layer audit, HARKing, count, mech-outcome alignment + Mechanism→Hypothesis Derivation Workflow
   utd24_hypothesis_patterns.md                              ← writing templates for 10+ hypothesis architectures (linear / mediation / moderation / curvilinear / threshold / congruence / QCA / propositions)
   utd24_methods_identification.md                           ← Dim 5: identification, construct validity, robustness
@@ -476,6 +540,7 @@ scripts/
   scan_causal_overclaim.py
   scan_analogy_markers.py
   check_hypothesis_count.py
+  check_story_coherence.py
 CHANGELOG.md
 ```
 
@@ -486,6 +551,7 @@ CHANGELOG.md
 - **Phenomenon-determined**: `utd24_chinese_context_lineage.md` (load if data is from China / emerging markets); `utd24_ai_strategy_lineage.md` (load if phenomenon involves AI / ML / algorithms / digital strategy); both can co-load
 - **Outlet-determined**: `utd24_qual_mixed_design.md` (load if target outlet is ASQ / qual section of AMJ / qual section of OS, or if user's planned method is qual or mixed)
 - **Stage-determined**: `utd24_hypothesis_patterns.md` (load when deriving or rewriting hypotheses); `utd24_design_choice_tree.md` (load in DESIGN mode, or in MANUSCRIPT/REVIEW mode when Dim 5 audit recommends redesign)
+- **Storytelling-determined**: `utd24_storytelling_architecture.md` (load when the user explicitly asks about story/coherence, gap-only framing carries importance, hypotheses form separable story lines, methods/results do not resolve the promised RQ, or Discussion lacks a specific before-after contribution)
 
 ---
 

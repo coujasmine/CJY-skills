@@ -1,5 +1,37 @@
 # utd24-proposal-optimizer — Changelog
 
+## 2026.08.a — Academic storytelling coherence upgrade
+
+This release integrates academic storytelling as a cross-dimensional coherence
+diagnostic. It does **not** add a sixth score or change the equal-weighted
+five-dimension rubric.
+
+### New reference
+
+- **`references/utd24_storytelling_architecture.md`**: operationalizes the
+  gap→knot distinction, theory-as-rising-tension structure, methods/results as
+  credible resolution, and Discussion as a specific before→after change in
+  theoretical understanding. Adds a five-part Story Coherence Gate, mode-specific
+  IDEA/MANUSCRIPT/REVIEW workflows, pruning rules, and output templates. Based on
+  Pollock (2021), Chapter 2, and the user-supplied Chinese interpretive article.
+
+### New deterministic check
+
+- **`scripts/check_story_coherence.py`**: bilingual English/Chinese candidate
+  locator for gap-only, knot/tension, resolution/mechanism, and before-after
+  signals. Marker counts never determine gate results; qualitative evaluation
+  remains authoritative.
+
+### SKILL.md integration
+
+- Added storytelling/coherence discovery triggers.
+- Added conditional routing for the new reference in IDEA, MANUSCRIPT, and REVIEW.
+- Added a cross-dimensional Story Coherence Gate without changing `/100` scoring.
+- Extended IDEA, MANUSCRIPT, and REVIEW output contracts with conditional story
+  spine / gate blocks.
+- Added Hard Rule 13: coherence never overrides evidence.
+- Updated deterministic-check table, file map, and conditional-loading rules.
+
 ## 2026.06.a — P0 capability upgrade (ex-ante workflows + outlet calibration + context lineages)
 
 This release closes the four largest gaps identified in the May 2026 audit: the skill was originally ex-post-only (audit after writing), outlet-uniform (one bar for all UTD24 outlets), and Western-mainstream-only (no Chinese-context or AI-strategy lineages). 2026.06.a adds ex-ante workflows and reorients the rubric to outlet-conditioned scoring.
